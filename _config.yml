@@ -3,31 +3,49 @@ description: Automate Your Infrastructure with Ease
 logo: "/assets/images/codifyme_logo.png"
 author: Ravi Joshi
 email: ravijoshi1810@github.io
-baseurl: "" # Leave empty for root hosting
-url: "http://localhost:4000" # For local testing
-theme: bulma-clean-theme
-#remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0  #use when github pages are in use
+
+# Base URL for the repository when hosted on GitHub Pages (leave empty for root hosting)
+baseurl: "/codifyme"  # Change this to match your repository name or leave as "" for root hosting
+
+# URL for your live site (change it to your actual GitHub Pages URL)
+url: "https://github.com/ravijoshi1810/codifyme"  # Change this to your actual live URL when deployed
+
+# For local testing, uncomment the below line and comment out the live URL above
+# url: "http://localhost:4000" 
+
+#theme: bulma-clean-theme
+
+# Uncomment this line for GitHub Pages hosting (uses remote theme)
+remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0  # Use when GitHub Pages are in use
+# theme: bulma-clean-theme  # Comment out the theme line if using remote_theme
+
 markdown: kramdown
+
+# Plugins to be used in the Jekyll site
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-#permalink: pretty
+
+# Pagination settings
 paginate: 5
 paginate_path: "/blog/page:num"
+
+# Other settings
 show_sidebar: true
 fixed_navbar: top
 nav_enabled: true
 heading_anchors: true
-disable_disk_cache: true
+disable_disk_cache: true  # Optional for local testing, comment for production
+
+# Social media links
 social:
   facebook: https://www.facebook.com/
   instagram: https://www.instagram.com/
-  threads: https://www.threads.net/
-  tiktok: https://www.tiktok.com/
   x: https://www.x.com/
   youtube: https://www.youtube.com/
 
+# Collections settings for posts and blog series
 collections:
   posts:
     output: true
@@ -37,7 +55,10 @@ collections:
     output: true
     permalink: /blog-series/:name/
     directory: docs/blog-series
+
+# Disqus comments settings
 disqus:
   shortname: codifyme
-environment: "{{ jekyll.environment }}"
 
+# Jekyll environment settings (optional)
+environment: "{{ jekyll.environment }}"
