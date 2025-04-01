@@ -54,3 +54,71 @@ build-iPhoneSimulator/
 
 # Used by RuboCop. Remote config files pulled in from inherit_from directive.
 # .rubocop-https?--*
+# .gitignore for Jekyll and non-Terraform files
+
+# Jekyll specific files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Terraform specific files
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+.terraform.d
+
+# Ignore any other non-Terraform files
+*.bak
+*.tmp
+*.swp
+*.swo
+*.old
+*.orig
+*.rej
+*.backup
+*.log
+*.out
+*.err
+*.pid
+*.seed
+*.pid.lock
+*.pidfile
+*.lock
+*.cache
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+*.rej
+*.backup
+*.log
+*.out
+*.err
+*.pid
+*.seed
+*.pid.lock
+*.pidfile
+*.lock
+*.cache
+*.tmp
+*.temp

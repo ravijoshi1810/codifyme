@@ -1,0 +1,13 @@
+{% if site.disqus.shortname %}
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '{{ site.disqus.shortname }}'; // required: replace with your Disqus shortname
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.head || document.body).appendChild(dsq);
+    })();
+  </script>
+{% endif %}
