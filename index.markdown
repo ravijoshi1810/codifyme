@@ -26,11 +26,16 @@ CodifyMe is your one-stop resource for learning **Infrastructure as Code**, **De
 
 ---
 
-## 🔥 Featured Series  
+<!-- ## 🔥 Featured Series  
 - [Terraform Import and Refactoring](/docs/blog-series/Terraform-import-and-refactoring/)  
 - [Kubernetes Deep Dive](/docs/blog-series/kubernetes-deep-dive/)  
-- [Cloud Automation](/docs/blog-series/cloud-automation/)  
+- [Cloud Automation](/docs/blog-series/cloud-automation/)   -->
 
+## 🔥 Featured Series  
+{% assign featured_series = site.pages | where: "layout", "series" %}
+{% for series in featured_series %}
+- [{{ series.title }}]({{ series.url }})
+{% endfor %}
 ---
 
 ## 🌐 Explore by Category  
