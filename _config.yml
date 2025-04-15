@@ -13,7 +13,7 @@ url: "https://github.com/ravijoshi1810/codifyme"  # Change this to your actual l
 # For local testing, uncomment the below line and comment out the live URL above
 #url: "http://localhost:4000" 
 
-theme: bulma-clean-theme
+#theme: bulma-clean-theme
 
 # Uncomment this line for GitHub Pages hosting (uses remote theme)
 remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0  # Use when GitHub Pages are in use
