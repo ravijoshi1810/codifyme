@@ -17,7 +17,7 @@ title: "All Series"
       <div class="card mb-5"> {% comment %} Bulma card with bottom margin {% endcomment %}
         <div class="card-content">
           <p class="title is-4 mb-4"> {% comment %} Series Title (increased margin slightly) {% endcomment %}
-            <a href="{{ series_item.url | relative_url }}">{{ series_item.title }}</a>
+            <a href="{{ series_item.url | absolute_url }}">{{ series_item.title }}</a>
           </p>
           {% if series_item.date %} {% comment %} Optional: Display date if available for the series {% endcomment %}
             <p class="subtitle is-6 has-text-grey mb-3">
@@ -39,7 +39,7 @@ title: "All Series"
           </div>
           {% endif %}
 
-          <a href="{{ series_item.url | relative_url }}" class="button is-link is-light is-small">View Series</a> {% comment %} Link to the series page {% endcomment %}
+          <a href="{{ series_item.url | prepend: site.baseurl | relative_url }}" class="button is-link is-light is-small">View Series</a> {% comment %} Link to the series page {% endcomment %}
 
         </div>{% comment %} End card-content {% endcomment %}
       </div>{% comment %} End card {% endcomment %}

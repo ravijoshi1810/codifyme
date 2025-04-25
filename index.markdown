@@ -20,7 +20,7 @@ show_banner: false
         </div>
         <div class="column is-4">
           <figure class="image is-4by3">
-            <img src="/images/hero-image3.png" alt="CodifyMe Logo">
+            <img src="{{ site.baseurl }}/images/hero-image3.png" alt="CodifyMe Logo">
           </figure>
         </div>
       </div>
@@ -54,9 +54,9 @@ show_banner: false
       <div class="column is-12-mobile is-6-tablet is-4-desktop">
         <div class="card">
           <div class="card-content">
-            <h3 class="title is-5"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <h3 class="title is-5"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
             <p class="is-size-6">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-            <a href="{{ post.url }}" class="button is-small is-link mt-2">Read More</a>
+            <a href="{{ site.baseurl }}{{ post.url }}" class="button is-small is-link mt-2">Read More</a>
           </div>
         </div>
       </div>
@@ -75,9 +75,9 @@ show_banner: false
       <div class="column is-12-mobile is-6-tablet is-4-desktop">
         <div class="card">
           <div class="card-content">
-            <h3 class="title is-5"><a href="{{ series.url }}">{{ series.title }}</a></h3>
+            <h3 class="title is-5"><a href="{{ site.baseurl }}{{ series.url }}">{{ series.title }}</a></h3>
             <p class="is-size-6">A deep dive into {{ series.title | downcase }} with real-world examples.</p>
-            <a href="{{ series.url }}" class="button is-small is-primary mt-2">Explore Series</a>
+            <a href="{{ site.baseurl }}{{ series.url }}" class="button is-small is-primary mt-2">Explore Series</a>
           </div>
         </div>
       </div>
@@ -94,27 +94,27 @@ show_banner: false
       <div class="column is-12-mobile is-6-tablet is-4-desktop">
         <div class="card">
           <div class="card-content">
-            <h3 class="title is-5"><a href="/categories/terraform/">Terraform</a></h3>
+            <h3 class="title is-5"><a href="{{ site.baseurl }}/categories/terraform/">Terraform</a></h3>
             <p class="is-size-6">Modules, tips, and IaC strategies with Terraform.</p>
-            <a href="/categories/terraform/" class="button is-small is-primary mt-2">Browse Terraform</a>
+            <a href="{{ site.baseurl }}/categories/terraform/" class="button is-small is-primary mt-2">Browse Terraform</a>
           </div>
         </div>
       </div>
       <div class="column is-12-mobile is-6-tablet is-4-desktop">
         <div class="card">
           <div class="card-content">
-            <h3 class="title is-5"><a href="/categories/kubernetes/">Kubernetes</a></h3>
+            <h3 class="title is-5"><a href="{{ site.baseurl }}/categories/kubernetes/">Kubernetes</a></h3>
             <p class="is-size-6">From basics to advanced orchestration with K8s.</p>
-            <a href="/categories/kubernetes/" class="button is-small is-primary mt-2">Browse Kubernetes</a>
+            <a href="{{ site.baseurl }}/categories/kubernetes/" class="button is-small is-primary mt-2">Browse Kubernetes</a>
           </div>
         </div>
       </div>
       <div class="column is-12-mobile is-6-tablet is-4-desktop">
         <div class="card">
           <div class="card-content">
-            <h3 class="title is-5"><a href="/categories/cloud-automation/">Cloud Automation</a></h3>
+            <h3 class="title is-5"><a href="{{ site.baseurl }}/categories/cloud-automation/">Cloud Automation</a></h3>
             <p class="is-size-6">Automation strategies across AWS, Azure, and GCP.</p>
-            <a href="/categories/cloud-automation/" class="button is-small is-primary mt-2">Browse Cloud Automation</a>
+            <a href="{{ site.baseurl }}/categories/cloud-automation/" class="button is-small is-primary mt-2">Browse Cloud Automation</a>
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@ show_banner: false
       Through CodifyMe, I aim to provide actionable tutorials, real-world examples, and practical insights to bridge the gap between theory and implementation. Whether you're just starting or looking to refine your skills, you're in the right place.
     </p>
     <p>
-      <a href="/about" class="button is-link is-light mt-3">Learn More About Me</a>
+      <a href="{{ site.baseurl }}/about" class="button is-link is-light mt-3">Learn More About Me</a>
     </p>
   </div>
 </section>

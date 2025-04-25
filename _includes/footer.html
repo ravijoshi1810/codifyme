@@ -1,22 +1,21 @@
 <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        Follow me on:
-        {% for item in site.social %}
-          <a href="{{ item[1] }}" target="_blank" rel="noopener noreferrer">
-            {% case item[0] %}
-              {% when 'x' %}
-                <i class="fab fa-x-twitter"></i>
-              {% when 'threads' %}
-                <img src="/assets/images/threads-icon.svg" alt="Threads" style="width: 20px; height: 20px;">
-              {% else %}
-                <i class="fab fa-{{ item[0] }}"></i>
-            {% endcase %}
-            {{ item[0] | capitalize }}
-          </a>
-          {% unless forloop.last %} | {% endunless %}
-        {% endfor %}
-      </p>
-    </div>
+  <div class="content has-text-centered">
+    <p>
+    Follow me on:
+    {% for item in site.social %}
+      <a href="{{ item[1] | prepend: site.baseurl | prepend: site.url }}" target="_blank" rel="noopener noreferrer">
+      {% case item[0] %}
+        {% when 'x' %}
+        <i class="fab fa-x-twitter"></i>
+        {% when 'threads' %}
+        <img src="{{ '/assets/images/threads-icon.svg' | prepend: site.baseurl | prepend: site.url }}" alt="Threads" style="width: 20px; height: 20px;">
+        {% else %}
+        <i class="fab fa-{{ item[0] }}"></i>
+      {% endcase %}
+      {{ item[0] | capitalize }}
+      </a>
+      {% unless forloop.last %} | {% endunless %}
+    {% endfor %}
+    </p>
+  </div>
   </footer>
-  

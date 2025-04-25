@@ -1,8 +1,8 @@
 <nav class="navbar is-primary is-fixed-top">
   <div class="container">
     <div class="navbar-brand">
-      <a href="/" class="navbar-item">
-        <img src="/images/codifyme-logo.png" alt="Codifyme Logo" style="max-height: 50px; margin-right: 10px;">
+      <a href="{{ site.baseurl }}/" class="navbar-item">
+        <img src="{{ site.baseurl }}/images/codifyme-logo.png" alt="Codifyme Logo" style="max-height: 50px; margin-right: 10px;">
           Home
       </a>
       <a
@@ -23,21 +23,21 @@
         <div class="navbar-start">
           {% for item in site.data.navigation %}
             <div class="navbar-item {% if item.dropdown %}has-dropdown is-hoverable{% endif %}">
-              <a href="{{ item.link }}" class="navbar-link">{{ item.name }}</a>
+              <a href="{{ site.baseurl }}{{ item.link }}" class="navbar-link">{{ item.name }}</a>
               {% if item.dropdown %}
                 <div class="navbar-dropdown">
                   {% if item.dropdown == "posts" %}
                     {% for post in site.posts %}
-                      <a href="{{ post.url }}" class="navbar-item">{{ post.title }}</a>
+                      <a href="{{ site.baseurl }}{{ post.url }}" class="navbar-item">{{ post.title }}</a>
                     {% endfor %}
                   {% elsif item.dropdown == "series" %}
                     {% assign series_index_pages = site.series | where: "is_series_index", true %}
                     {% for series in series_index_pages %}
-                      <a href="{{ series.url }}" class="navbar-item">{{ series.title }}</a>
+                      <a href="{{ site.baseurl }}{{ series.url }}" class="navbar-item">{{ series.title }}</a>
                     {% endfor %}
                   {% elsif item.dropdown == "categories" %}
                     {% for category in site.categories %}
-                      <a href="/categories/{{ category[0] | slugify }}/" class="navbar-item">{{ category[0] }}</a>
+                      <a href="{{ site.baseurl }}/categories/{{ category[0] | slugify }}/" class="navbar-item">{{ category[0] }}</a>
                     {% endfor %}
                   {% endif %}
                 </div>
@@ -90,7 +90,7 @@
           return;
         }
 
-        fetch('/search.json')
+        fetch('{{ site.baseurl }}/search.json')
           .then(res => res.json())
           .then(data => {
             const results = data.filter(post =>
@@ -102,7 +102,7 @@
               const snippet = highlightKeyword(post.content.substring(0, 160) + '...', query);
               return `
                 <div class="box">
-                  <a href="${post.url}" class="has-text-weight-semibold is-size-5">
+                  <a href="{{ site.baseurl }}${post.url}" class="has-text-weight-semibold is-size-5">
                     ${highlightKeyword(post.title, query)}
                   </a>
                   <p class="is-size-7 mt-1">${snippet}</p>

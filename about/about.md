@@ -43,7 +43,7 @@ permalink: /about/
 
     <h2 class="title is-4 has-text-link">Let’s Connect</h2>
     <p>
-      🤝 Interested in collaborating, consulting, or simply have questions? I’d love to hear from you. Let’s connect on <a href="https://www.linkedin.com/in/ravijoshi" target="_blank">LinkedIn</a>, <a href="https://github.com/yourusername" target="_blank">GitHub</a>, or drop a message via the <a href="/contact/">Contact</a> page.
+      🤝 Interested in collaborating, consulting, or simply have questions? I’d love to hear from you. Let’s connect on <a href="{{ site.baseurl }}/https://www.linkedin.com/in/ravijoshi" target="_blank">LinkedIn</a>, <a href="{{ site.baseurl }}/https://github.com/yourusername" target="_blank">GitHub</a>, or drop a message via the <a href="{{ site.baseurl }}/contact/">Contact</a> page.
     </p>
 
     <div class="notification is-info is-light mt-5">

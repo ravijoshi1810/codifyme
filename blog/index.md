@@ -27,7 +27,7 @@ pagination:
       <div class="card mb-5">
         <div class="card-content">
           <p class="title is-4 mb-6">
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <a href="{{ site.baseurl }}{{ post.url | relative_url }}">{{ post.title }}</a>
           </p>
           <p class="subtitle is-6 has-text-grey mb-3">
             {{ post.date | date: "%B %d, %Y" }}
@@ -48,7 +48,7 @@ pagination:
           </div>
           {% endif %}
 
-          <a href="{{ post.url | relative_url }}" class="button is-link is-light is-small">Read More</a>
+          <a href="{{ site.baseurl }}{{ post.url | relative_url }}" class="button is-link is-light is-small">Read More</a>
 
         </div>
       </div>
@@ -62,13 +62,13 @@ pagination:
 {% if paginator.total_pages > 1 %}
 <nav class="pagination is-centered" role="navigation" aria-label="pagination" style="margin-top: 3rem;">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-previous">Previous</a>
+    <a href="{{ site.baseurl }}{{ paginator.previous_page_path | relative_url }}" class="pagination-previous">Previous</a>
   {% else %}
     <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
   {% endif %}
 
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-next">Next page</a>
+    <a href="{{ site.baseurl }}{{ paginator.next_page_path | relative_url }}" class="pagination-next">Next page</a>
   {% else %}
     <a class="pagination-next" title="This is the last page" disabled>Next page</a>
   {% endif %}
@@ -79,10 +79,10 @@ pagination:
         <li><a class="pagination-link is-current" aria-label="Page {{ page }}" aria-current="page">{{ page }}</a></li>
       {% elsif page == 1 %}
         {% assign first_page_path = paginator.previous_page_path | default: page.url | relative_url | replace: '/page2', '/' %}
-         <li><a href="{{ first_page_path }}" class="pagination-link" aria-label="Goto page {{ page }}">{{ page }}</a></li>
+         <li><a href="{{ site.baseurl }}{{ first_page_path }}" class="pagination-link" aria-label="Goto page {{ page }}">{{ page }}</a></li>
       {% else %}
          {% assign page_path = site.paginate_path | relative_url | replace: ':num', page %}
-         <li><a href="{{ page_path }}" class="pagination-link" aria-label="Goto page {{ page }}">{{ page }}</a></li>
+         <li><a href="{{ site.baseurl }}{{ page_path }}" class="pagination-link" aria-label="Goto page {{ page }}">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
   </ul>
