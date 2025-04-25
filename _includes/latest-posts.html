@@ -1,47 +1,76 @@
-<!-- _includes/sidebar.html -->
-<aside class="sidebar">
-    <!-- Latest Posts Section -->
-    <section class="sidebar-section">
-      <h3>Latest Posts</h3>
-      <ul>
-        {% for post in site.posts limit:5 %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </section>
-  
-    <!-- Categories Section (if you have categories set up) -->
-    {% if site.categories %}
-    <section class="sidebar-section">
-      <h3>Categories</h3>
-      <ul>
-        {% for category in site.categories %}
-          <li><a href="/categories/{{ category[0] | slugify }}/">{{ category[0] }}</a></li>
-        {% endfor %}
-      </ul>
-    </section>
-    {% endif %}
-  
-    <!-- Tags Section (optional, but useful for filtering content) -->
-    {% if site.tags %}
-    <section class="sidebar-section">
-      <h3>Popular Tags</h3>
-      <ul>
-        {% for tag in site.tags %}
-          <li><a href="/tags/{{ tag[0] | slugify }}/">{{ tag[0] }}</a></li>
-        {% endfor %}
-      </ul>
-    </section>
-    {% endif %}
-  
-    <!-- Archive Section (can help visitors find older posts) -->
-    <section class="sidebar-section">
-      <h3>Archives</h3>
-      <ul>
-        {% for post in site.posts %}
-          <li><a href="{{ post.url }}">{{ post.date | date: "%B %Y" }}</a></li>
-        {% endfor %}
-      </ul>
-    </section>
-  </aside>
-  
+<aside class="menu" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 0.9rem; color: #4a4a4a;">
+
+  <section class="menu-section" style="margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #f5f8fa; border-radius: 6px; background-color: #fff; box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);">
+    <p class="menu-label" style="font-size: 1.1rem; font-weight: 600; color: #363636; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e6e6e6;">Latest Posts</p>
+    <ul class="menu-list" style="list-style: none; padding: 0;">
+      {% for post in site.posts limit:5 %}
+        <li style="margin-bottom: 1.2rem;">
+          <a href="{{ post.url | relative_url }}" style="color: #485fc7; text-decoration: none; display: block; padding-bottom: 0.2rem; transition: color 0.2s ease-in-out; font-weight: 500;">{{ post.title }}</a>
+          <p class="post-date" style="font-size: 0.8rem; color: #7a7a7a; margin-top: 0.1rem; margin-bottom: 0.4rem;">{{ post.date | date: "%B %d, %Y" }}</p>
+          {% if post.excerpt %}
+            <p class="post-excerpt" style="font-size: 0.85rem; color: #7a7a7a; line-height: 1.4; margin-bottom: 0.4rem;">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more-link" style="font-size: 0.8rem; color: #007bff; text-decoration: none; transition: color 0.2s ease-in-out;">Read More</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="menu-section" style="margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #f5f8fa; border-radius: 6px; background-color: #fff; box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);">
+    <p class="menu-label" style="font-size: 1.1rem; font-weight: 600; color: #363636; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e6e6e6;">Latest Series</p>
+    <ul class="menu-list" style="list-style: none; padding: 0;">
+      {% assign series_index_pages = site.series | where: "is_series_index", true | sort: 'date' | reverse %}
+      {% for series in series_index_pages limit:5 %}
+        <li style="margin-bottom: 1rem;">
+          <a href="{{ series.url | relative_url }}" style="color: #485fc7; text-decoration: none; display: block; padding-bottom: 0.2rem; transition: color 0.2s ease-in-out; font-weight: 500;">{{ series.title }}</a>
+           {% if series.date %}
+             <p class="post-date" style="font-size: 0.8rem; color: #7a7a7a; margin-top: 0.1rem; margin-bottom: 0.4rem;">{{ series.date | date: "%B %d, %Y" }}</p>
+           {% endif %}
+          {% if series.description %}
+            <p class="series-description" style="font-size: 0.85rem; color: #7a7a7a; line-height: 1.4; margin-bottom: 0.4rem;">{{ series.description | strip_html | truncatewords: 30 }}</p>
+            <a href="{{ series.url | relative_url }}" class="read-more-link" style="font-size: 0.8rem; color: #007bff; text-decoration: none; transition: color 0.2s ease-in-out;">Read More</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% assign sorted_categories = site.categories | sort %}
+  {% if sorted_categories %}
+  <section class="menu-section" style="margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #f5f8fa; border-radius: 6px; background-color: #fff; box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);">
+    <p class="menu-label" style="font-size: 1.1rem; font-weight: 600; color: #363636; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e6e6e6;">Categories</p>
+    <ul class="menu-list" style="list-style: none; padding: 0;">
+      {% for category in sorted_categories %}
+        {% assign category_slug = category[0] | slugify %}
+        {% assign category_url = '/categories/' | append: category_slug | append: '/' | relative_url %}
+        <li style="margin-bottom: 0.6rem;">
+          <a href="{{ category_url }}" style="color: #485fc7; text-decoration: none; display: block; padding: 0.4rem 0; transition: color 0.2s ease-in-out; font-weight: 500;">{{ category[0] }} ({{ category[1].size }})</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% assign sorted_tags = site.tags | sort %}
+  {% if sorted_tags %}
+  <section class="menu-section" style="margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #f5f8fa; border-radius: 6px; background-color: #fff; box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);">
+    <p class="menu-label" style="font-size: 1.1rem; font-weight: 600; color: #363636; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e6e6e6;">Popular Tags</p>
+    <div class="tags" style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.6rem;">
+      {% for tag in sorted_tags %}
+        {% assign current_tag_name = tag[0] %}
+        {% include tag.html tag=current_tag_name style="is-primary is-light" %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% comment %}
+  <section class="menu-section" style="margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #f5f8fa; border-radius: 6px; background-color: #fff; box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);">
+     <p class="menu-label" style="font-size: 1.1rem; font-weight: 600; color: #363636; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e6e6e6;">Archives</p>
+     <ul class="menu-list" style="list-style: none; padding: 0;">
+       <li><a href="/archive/" style="color: #485fc7; text-decoration: none;">View All Posts</a></li> {# Example Link #}
+     </ul>
+   </section>
+  {% endcomment %}
+
+</aside>

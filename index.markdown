@@ -2,62 +2,217 @@
 title: "Home"
 layout: page
 permalink: /
+hide_hero: true
+show_banner: false
 ---
 
-![CodifyMe Logo](/docs/blog-series/Terraform-import-and-refactoring/images/codifyme_logo.png)
+<!-- Hero Section -->
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-8">
+          <h1 class="title is-1">Welcome to CodifyMe</h1>
+          <p class="subtitle is-4">
+            Learn Infrastructure as Code, DevOps, and Cloud Automation through real-world, actionable tutorials. Built by engineer—for engineers.
+          </p>
+          <a href="javascript:void(0)" class="button is-light is-medium mt-3" onclick="openSubscribeModal()">📩 Subscribe for Updates</a>
+        </div>
+        <div class="column is-4">
+          <figure class="image is-4by3">
+            <img src="/images/hero-image3.png" alt="CodifyMe Logo">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-# Welcome to CodifyMe  
-CodifyMe is your one-stop resource for learning **Infrastructure as Code**, **DevOps practices**, and **Cloud Automation**. This space is dedicated to breaking down complex topics into **simple, actionable tutorials** that help you take control of your infrastructure.  
+<!-- What You’ll Learn Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3">🚀 What You’ll Learn</h2>
+    <div class="columns">
+      <div class="column is-8">
+        <ul>
+          <li>✅ Build and manage infrastructure using <strong>Terraform</strong>, <strong>Ansible</strong>.</li>
+          <li>✅ Work confidently across <strong>AWS</strong>, <strong>Azure</strong>, and <strong>GCP</strong>.</li>
+          <li>✅ Automate end-to-end delivery with <strong>CI/CD pipelines</strong>.</li>
+          <li>✅ Solve practical challenges in cloud infrastructure and automation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
----
+<!-- Latest Posts -->
+<section class="section has-background-light">
+  <div class="container">
+    <h2 class="title is-3">📝 Latest Posts</h2>
+    <div class="columns is-multiline">
+      {% for post in site.posts limit:3 %}
+      <div class="column is-12-mobile is-6-tablet is-4-desktop">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title is-5"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p class="is-size-6">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+            <a href="{{ post.url }}" class="button is-small is-link mt-2">Read More</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-## 🚀 What You’ll Learn  
-✅ How to build and manage infrastructure with tools like **Terraform** and **Ansible**.  
-✅ Insights into working with **AWS**, **Azure**, **GCP**, and other major public clouds.  
-✅ Best practices for setting up **CI/CD pipelines** and automating workflows.  
-✅ Step-by-step guidance for tackling real-world infrastructure challenges.  
+<!-- Featured Series -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3">🔥 Featured Series</h2>
+    <div class="columns is-multiline">
+      {% assign featured_series = site.series | where: "is_series_index", true %}
+      {% for series in featured_series %}
+      <div class="column is-12-mobile is-6-tablet is-4-desktop">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title is-5"><a href="{{ series.url }}">{{ series.title }}</a></h3>
+            <p class="is-size-6">A deep dive into {{ series.title | downcase }} with real-world examples.</p>
+            <a href="{{ series.url }}" class="button is-small is-primary mt-2">Explore Series</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
----
+<!-- Explore by Category -->
+<section class="section has-background-light">
+  <div class="container">
+    <h2 class="title is-3">🌐 Explore by Category</h2>
+    <div class="columns is-multiline">
+      <div class="column is-12-mobile is-6-tablet is-4-desktop">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title is-5"><a href="/categories/terraform/">Terraform</a></h3>
+            <p class="is-size-6">Modules, tips, and IaC strategies with Terraform.</p>
+            <a href="/categories/terraform/" class="button is-small is-primary mt-2">Browse Terraform</a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-4-desktop">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title is-5"><a href="/categories/kubernetes/">Kubernetes</a></h3>
+            <p class="is-size-6">From basics to advanced orchestration with K8s.</p>
+            <a href="/categories/kubernetes/" class="button is-small is-primary mt-2">Browse Kubernetes</a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-4-desktop">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title is-5"><a href="/categories/cloud-automation/">Cloud Automation</a></h3>
+            <p class="is-size-6">Automation strategies across AWS, Azure, and GCP.</p>
+            <a href="/categories/cloud-automation/" class="button is-small is-primary mt-2">Browse Cloud Automation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-## 🌟 Latest Posts  
-{% for post in site.posts limit:3 %}
-- [{{ post.title }}]({{ post.url }})
-{% endfor %}
+<!-- Why CodifyMe -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3">💡 Why CodifyMe?</h2>
+    <p>
+      CodifyMe is designed for developers, sysadmins, and cloud architects who want to upskill fast. We focus on simplicity, clarity, and practical application—so you can stop googling and start shipping.
+    </p>
+  </div>
+</section>
 
----
+<!-- About Me -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3">👋 About Me</h2>
+    <p>
+      I'm a DevOps engineer and cloud architect passionate about simplifying complex infrastructure topics. My mission is to help developers, sysadmins, and cloud architects master Infrastructure as Code (IaC), DevOps practices, and cloud automation.
+    </p>
+    <p>
+      Through CodifyMe, I aim to provide actionable tutorials, real-world examples, and practical insights to bridge the gap between theory and implementation. Whether you're just starting or looking to refine your skills, you're in the right place.
+    </p>
+    <p>
+      <a href="/about" class="button is-link is-light mt-3">Learn More About Me</a>
+    </p>
+  </div>
+</section>
 
-<!-- ## 🔥 Featured Series  
-- [Terraform Import and Refactoring](/docs/blog-series/Terraform-import-and-refactoring/)  
-- [Kubernetes Deep Dive](/docs/blog-series/kubernetes-deep-dive/)  
-- [Cloud Automation](/docs/blog-series/cloud-automation/)   -->
+<!-- Final CTA -->
+<section class="section has-background-light">
+  <div class="container has-text-centered">
+    <p class="mb-3">📩 Like what you see? Subscribe to get fresh content straight to your inbox.</p>
+    <form action="https://your-email-service-provider-url" method="POST" class="subscribe-form" style="max-width: 500px; margin: 0 auto;">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input
+            class="input is-medium"
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
+        </div>
+        <div class="control">
+          <button class="button is-primary is-medium" type="submit">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </form>
+    <p class="is-size-6 mt-3">Happy automating! 🚀</p>
+  </div>
+</section>
 
-## 🔥 Featured Series  
-{% assign featured_series = site.pages | where: "layout", "series" %}
-{% for series in featured_series %}
-- [{{ series.title }}]({{ series.url }})
-{% endfor %}
----
+<!-- Subscribe Modal -->
+<div id="subscribeModal" class="modal">
+  <div class="modal-background" onclick="closeSubscribeModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">📩 Subscribe to CodifyMe</p>
+      <button class="delete" aria-label="close" onclick="closeSubscribeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <form action="https://your-email-service-provider-url" method="POST" class="subscribe-form">
+        <div class="field">
+          <label class="label">Email Address</label>
+          <div class="control">
+            <input
+              class="input"
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary" type="submit">Subscribe</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+<script>
+  // Function to open the Subscribe Modal
+  function openSubscribeModal() {
+    document.getElementById('subscribeModal').classList.add('is-active');
+  }
 
-## 🌐 Explore by Category  
-- [Terraform](/categories/terraform/)  
-- [Kubernetes](/categories/kubernetes/)  
-- [Cloud Automation](/categories/cloud-automation/)  
-
----
-
-## 💡 Why CodifyMe?  
-CodifyMe is built for anyone looking to dive into the world of **IaC and DevOps**—whether you're just starting out or sharpening your skills. Every tutorial is written with clarity and practicality in mind, so you can start applying what you learn right away.  
-
----
-
-## 👋 About Us  
-We are a team of experienced cloud engineers and DevOps experts focused on simplifying complex cloud infrastructure challenges. Learn more on our [About](/about) page.  
-
----
-
-## 📩 Stay Updated  
-Subscribe to our newsletter for the latest updates and guides!  
-
----
-
-Happy coding! 😎  
+  // Function to close the Subscribe Modal
+  function closeSubscribeModal() {
+    document.getElementById('subscribeModal').classList.remove('is-active');
+  }
+</script>

@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<section class="section">
+  <div class="container">
+    {% unless page.content contains page.title %}
+      <h1 class="title">{{ page.title }}</h1>
+    {% endunless %}
+    <p class="subtitle">{{ page.description }}</p>
+
+    <!-- Series Content -->
+    <div class="content">
+      {{ content }}
+    </div>
+  </div>
+</section>

@@ -2,9 +2,9 @@
 layout: post
 title: "4. Code Refactoring: why it matters"
 subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
+subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 description: "Learn why refactoring Terraform code is crucial for scalability and maintainability in your infrastructure management."
-permalink: /docs/blog-series/Terraform-import-and-refactoring/4-code-refactoring-part1/
-parent: "Terraform Import and Refactoring"
+permalink: series/Terraform-import-and-refactoring/4-code-refactoring-part1/
 nav_order: 4
 show_sidebar: true
 date: 2025-04-03
@@ -15,7 +15,7 @@ tags: [terraform, IAC, Refactoring, AWS, EC2, Import]
 
 # 🧩 Code Refactoring: Enhancing Terraform Configurations 
 
-In the previous post, **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/3-practical-example-aws-ec2/' | relative_url }}" target="_blank">Terraform Import: Bringing Resources Under Control</a>**, we demonstrated how to import existing AWS EC2 resources into Terraform. We explored the step-by-step process of transitioning manually provisioned resources into Terraform-managed infrastructure, enabling better control and collaboration.
+In the previous post, **<a href="{{ 'series/terraform-import-and-refactoring/3-practical-example-aws-ec2/' | relative_url }}" target="_blank">Terraform Import: Bringing Resources Under Control</a>**, we demonstrated how to import existing AWS EC2 resources into Terraform. We explored the step-by-step process of transitioning manually provisioned resources into Terraform-managed infrastructure, enabling better control and collaboration.
 
 Now, we move to the next critical step: **refactoring the imported Terraform code**. Refactoring is essential to ensure that your Infrastructure as Code (IaC) remains scalable, maintainable, and reusable as your environment grows. Without proper refactoring, your Terraform configurations can become repetitive, difficult to manage, and prone to errors.
 
@@ -78,6 +78,6 @@ In the upcoming sections, we’ll walk through the process of refactoring Terraf
 
 Refactoring Terraform code is a critical step in the IaC journey. It ensures that your configurations are scalable, maintainable, and aligned with best practices. By modularizing resources, parameterizing inputs, and integrating with pipelines, you can streamline your infrastructure management and reduce operational overhead.
 
-- In the next sections **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/5-code-refactoring-part2/' | relative_url }}" target="_blank">Code Refactoring: Enhancing Terraform Configurations (Part 2)</a>**, we will dive into the practical steps of refactoring Terraform code, focusing on creating reusable modules and parameterizing inputs. Stay tuned for more insights and best practices! 🌟
+- In the next sections **<a href="{{ 'series/terraform-import-and-refactoring/5-code-refactoring-part2/' | relative_url }}" target="_blank">Code Refactoring: Enhancing Terraform Configurations (Part 2)</a>**, we will dive into the practical steps of refactoring Terraform code, focusing on creating reusable modules and parameterizing inputs. Stay tuned for more insights and best practices! 🌟
 
 Catch you later, code Ninjas! Happy Codifying! ⚙️💻🚀

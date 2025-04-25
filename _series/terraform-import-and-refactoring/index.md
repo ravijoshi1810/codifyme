@@ -1,8 +1,10 @@
 ---
-layout: post
+layout: series
 series: "Terraform Import and Refactoring"
+description: "teraform is one of the most popular tools for managing Infrastructure as Code (IaC). However, managing pre-existing cloud resources can be challenging when they are not initially provisioned by Terraform. This is where the terraform import command becomes invaluable." 
+is_series_index: true
 title: Terraform Import and Refactoring
-permalink: /docs/blog-series/Terraform-import-and-refactoring/
+permalink: /series/terraform-import-and-refactoring/
 show_sidebar: true
 ---
 

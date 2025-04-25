@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "3. Terraform Import: Bringing Resources Under Control"
+subtitle: "A Practical Example of Importing AWS EC2 Instances into Terraform"
 description: "A practical example of importing AWS EC2 instances into Terraform for Infrastructure as Code management."
-permalink: /docs/blog-series/Terraform-import-and-refactoring/3-practical-example-aws-ec2/
-parent: "Terraform Import and Refactoring"
+permalink: series/Terraform-import-and-refactoring/3-practical-example-aws-ec2/
 nav_order: 3
 show_sidebar: true
 date: 2025-03-28
@@ -14,11 +14,11 @@ tags: [terraform, IAC, Refactoring, AWS, EC2, Import]
 
 # 🕹️ Terraform Import: Bringing Resources Under Control 
 
-In the previous post **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/2-getting-started-with-import/' | relative_url }}" target="_blank">🔰 Getting Started with Terraform Import</a>**, we explored how ABC Corp tackled the challenges of managing cloud infrastructure by leveraging Terraform Import. We discussed the importance of bringing unmanaged resources under Infrastructure-as-Code (IaC) control and refactoring Terraform configurations for scalability. The post outlined ABC Corp's environment, the challenges they faced (like configuration drift and manual operations), and the prerequisites for getting started with Terraform Import.
+In the previous post **<a href="{{ 'series/terraform-import-and-refactoring/2-getting-started-with-import/' | relative_url }}" target="_blank">🔰 Getting Started with Terraform Import</a>**, we explored how ABC Corp tackled the challenges of managing cloud infrastructure by leveraging Terraform Import. We discussed the importance of bringing unmanaged resources under Infrastructure-as-Code (IaC) control and refactoring Terraform configurations for scalability. The post outlined ABC Corp's environment, the challenges they faced (like configuration drift and manual operations), and the prerequisites for getting started with Terraform Import.
 
 We also introduced a systematic workflow for importing resources, integrating automation, and aligning infrastructure with GitOps principles. This sets the stage for this post, where we’ll dive into a **hands-on example** of importing AWS EC2 instances into Terraform. By following this guide, you’ll learn how to transition manually provisioned resources into Terraform-managed infrastructure, enabling better control, scalability, and collaboration.
 
-Before diving into the example, ensure you have reviewed the prerequisites outlined in the previous blog post. If not, refer to for detailed guidance. **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/2-getting-started-with-import/' | relative_url }}" target="_blank">🔰 Getting Started with Terraform Import</a>**
+Before diving into the example, ensure you have reviewed the prerequisites outlined in the previous blog post. If not, refer to for detailed guidance. **<a href="{{ 'series/terraform-import-and-refactoring/2-getting-started-with-import/' | relative_url }}" target="_blank">🔰 Getting Started with Terraform Import</a>**
 
 ---
 
@@ -318,7 +318,7 @@ congratulations! You have successfully imported the AWS EC2 instance into Terraf
 ## 📝 Conclusion
 In this blog post, we successfully imported an existing AWS EC2 instance into Terraform using a custom Python script and a tagging script. We also discussed the importance of managing the state file in Terraform Enterprise (TFE) and best practices for handling plan outputs.
 
-- ➡️ In the next blog post, we will explore how to refactor the imported Terraform code for better organization and maintainability. Stay tuned for **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/4-code-refactoring-part1/' | relative_url }}" target="_blank">Refactoring Terraform Code: Why It Matters</a>**.
+- ➡️ In the next blog post, we will explore how to refactor the imported Terraform code for better organization and maintainability. Stay tuned for **<a href="{{ 'series/terraform-import-and-refactoring/4-code-refactoring-part1/' | relative_url }}" target="_blank">Refactoring Terraform Code: Why It Matters</a>**.
 ---
 
 Catch you later, code Ninjas! Happy Codifying! ⚙️💻🚀

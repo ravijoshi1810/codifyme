@@ -1,0 +1,32 @@
+- name: Blog
+  link: /blog/
+  dropdown:
+    - name: EC2 Lifecycle Management using Terraform and Ansible
+      link: /docs/posts/2025-03-21-ec2-lifecycle-mgmt-terraform-ansible/
+    - name: Kubernetes Deep Dive
+      link: /docs/posts/2025-03-21-kubernetes-deep-dive/
+    - name: Cloud Automation
+      link: /docs/posts/2025-03-21-cloud-automation/
+    - name: All Blog Posts
+      link: /blog/  # Link to the main blog page
+
+- name: Series
+  link: /series/
+  dropdown:
+    - name: Terraform Import and Refactoring
+      link: /docs/blog-series/Terraform-import-and-refactoring/
+    - name: Kubernetes Deep Dive
+      link: /docs/blog-series/kubernetes-deep-dive/
+    - name: Cloud Automation
+      link: /docs/blog-series/cloud-automation/
+    - name: All Series
+      link: /series/  # Link to the main series page, if you have one
+
+- name: Categories
+  link: /categories/
+
+- name: About
+  link: /docs/about/
+
+- name: Contact
+  link: /contact/

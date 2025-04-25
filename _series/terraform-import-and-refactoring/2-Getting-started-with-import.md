@@ -3,8 +3,7 @@ layout: post
 title: "2. ABC Corp’s IaC Evolution: Bringing Infrastructure Under Control"
 subtitle: "Getting Started with Terraform Import"
 description: "A practical guide to importing existing resources into Terraform and refactoring code for better scalability."
-permalink: /docs/blog-series/Terraform-import-and-refactoring/2-getting-started-with-import/
-parent: Terraform Import and Refactoring
+permalink: /series/terraform-import-and-refactoring/2-getting-started-with-import/
 nav_order: 2
 show_sidebar: true
 date: 2025-03-21
@@ -15,7 +14,7 @@ tags: [terraform, IAC, Refactoring, AWS, EC2, Import]
 
 # 🔰 Getting Started with Terraform Import
 
-In the previous post **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/1-intro-terraform-refactoring/' | relative_url }}" target="_blank">🛠️ Introduction to Terraform Import and Refactoring</a>**, we discussed the importance of Terraform Import in managing existing cloud resources and the need for refactoring Terraform code for better scalability. We also introduced the concept of Infrastructure as Code (IaC) and its significance in modern cloud operations.
+In the previous post **<a href="{{ 'series/terraform-import-and-refactoring/1-intro-terraform-import-refactoring/' | relative_url }}" target="_blank">🛠️ Introduction to Terraform Import and Refactoring</a>**, we discussed the importance of Terraform Import in managing existing cloud resources and the need for refactoring Terraform code for better scalability. We also introduced the concept of Infrastructure as Code (IaC) and its significance in modern cloud operations.
 
 This foundation sets the stage for our next step: diving into the **🚦 Getting Started with Terraform Import**.
 
@@ -274,7 +273,7 @@ aws configure list
 
 In the following posts, we will dive deeper into the **Practical Example of Importing AWS EC2 Instances** to see the step-by-step process to complete the import work.
 
-**Part 3**: **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/3-practical-example-aws-ec2/' | relative_url }}" target="_blank">Practical Example of Importing AWS EC2 Instances</a>**
+**Part 3**: **<a href="{{ 'series/terraform-import-and-refactoring/3-practical-example-aws-ec2/' | relative_url }}" target="_blank">Practical Example of Importing AWS EC2 Instances</a>**
    - Hands-on example of importing an AWS EC2 instance.
    - Managing imported resources with Terraform state.
 

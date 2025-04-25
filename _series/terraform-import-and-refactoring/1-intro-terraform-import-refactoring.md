@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "1. Introduction to Terraform Import and Refactoring - Why It Matters"
-permalink: /docs/blog-series/Terraform-import-and-refactoring/1-intro-terraform-import-refactoring/
-parent: Terraform Import and Refactoring
+subtitle: "Bridging the Gap Between Manual Infrastructure Management and IaC Best Practices"
+permalink: /series/terraform-import-and-refactoring/1-intro-terraform-import-refactoring/
 nav_order: 1
 show_sidebar: true
 date: 2025-03-14
 author: "Ravi Joshi"
-categories: [Terraform]
+categories: [terraform]
 tags: [terraform, IAC, Refactoring, AWS, EC2, Import]
 ---
 
@@ -208,7 +208,7 @@ A production environment contains critical resources, but the Terraform codebase
 
 In the following posts, we will dive deeper into the practical aspects of using **Terraform Import** to resolve common challenges in Day 2 operations:
 
-**Part 2**: **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/2-Getting-started-with-import/' | relative_url }}" target="_blank">🚦 Getting Started with Terraform Import</a>**
+**Part 2**: **<a href="{{ 'series/terraform-import-and-refactoring/2-Getting-started-with-import/' | relative_url }}" target="_blank">🚦 Getting Started with Terraform Import</a>**
     - Step-by-step guide to using `terraform import`.
     - Prerequisites and setup.
     - Common challenges and how to resolve them.

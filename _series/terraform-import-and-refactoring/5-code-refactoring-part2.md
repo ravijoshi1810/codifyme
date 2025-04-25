@@ -3,8 +3,7 @@ layout: post
 title: "5. Code Refactoring: Enhancing Terraform Configurations (Part 2)"
 subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 description: "Learn how to refactor Terraform code for better scalability and maintainability in your infrastructure management (Part 2)."
-permalink: /docs/blog-series/Terraform-import-and-refactoring/5-code-refactoring-part2/ 
-parent: "Terraform Import and Refactoring"
+permalink: series/Terraform-import-and-refactoring/5-code-refactoring-part2/ 
 nav_order: 5
 show_sidebar: true
 date: 2025-04-03    
@@ -15,7 +14,7 @@ tags: [terraform, IAC, Refactoring, AWS, EC2, Import]
 
 # ♻️ Code Refactoring: Enhancing Terraform Configurations (Part 2) 
 
-In the previous post, **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/4-code-refactoring-why-its-matter/' | relative_url }}" target="_blank">Code Refactoring: Why It Matters</a>**, we discussed the importance of refactoring Terraform code for scalability and maintainability. We identified key challenges in the current setup and outlined the goals of refactoring.  
+In the previous post, **<a href="{{ 'series/terraform-import-and-refactoring/4-code-refactoring-why-its-matter/' | relative_url }}" target="_blank">Code Refactoring: Why It Matters</a>**, we discussed the importance of refactoring Terraform code for scalability and maintainability. We identified key challenges in the current setup and outlined the goals of refactoring.  
 In this post, we will continue our journey into refactoring Terraform code, focusing on practical steps to enhance the configurations and improve the overall infrastructure management process.
 
 ---
@@ -191,6 +190,6 @@ output "OUTPUT_example_ACCOUNT" {
 ## 📝 Conclusion 
 
 - In this post, we have learned how to refactor Terraform code and use reusable modules. We also explored how to move the state of resources to the module using the `moved` block. This approach helps manage resources more efficiently and avoids code duplication.
-- In the next post, **<a href="{{ '/docs/blog-series/Terraform-import-and-refactoring/6-final-thoughts-and-common-issues/' | relative_url }}" target="_blank">Final Thoughts and Common Issues</a>**, we will summarize the entire series and provide solutions to common issues you may face while using Terraform for import and refactoring.
+- In the next post, **<a href="{{ 'series/terraform-import-and-refactoring/6-final-thoughts-and-common-issues/' | relative_url }}" target="_blank">Final Thoughts and Common Issues</a>**, we will summarize the entire series and provide solutions to common issues you may face while using Terraform for import and refactoring.
 
 Catch you later, code Ninjas! Happy Codifying! ⚙️💻🚀

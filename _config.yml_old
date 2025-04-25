@@ -1,4 +1,4 @@
-title: Welcome to CodifyMe 
+title: 👋 Welcome to CodifyMe 
 description: Transforming Cloud Operations with Purpose-Built Automation
 logo: "/assets/images/codifyme_logo.png"
 author: Ravi Joshi
@@ -26,13 +26,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-archives 
 
 # Pagination settings
-pagination:
-  enabled: true 
-  per_page: 5   
-  permalink: '/page/:num/'
+paginate: 5
+paginate_path: "/blog/page:num"
 
 # Other settings
 show_sidebar: true
@@ -53,33 +50,15 @@ collections:
   posts:
     output: true
     permalink: /posts/:name/
-    directory: _posts
-  series:
+    directory: docs/posts
+  blog-series:
     output: true
-    permalink: /series/:name/
-    directory: _series
-
-jekyll-archives:
-  enabled:
-    - tags
-    - categories
-  layout: archive # Use the layout for the archive page
-  permalinks:
-    tag: '/tags/:name/'
-    category: '/categories/:name/'
+    permalink: /blog-series/:name/
+    directory: docs/blog-series
 
 # Disqus comments settings
 disqus:
   shortname: codifyme
 
-sass:
-  style: compressed
-
 # Jekyll environment settings (optional)
 environment: "{{ jekyll.environment }}"
-
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
