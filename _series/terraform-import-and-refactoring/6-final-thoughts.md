@@ -3,7 +3,7 @@ layout: post
 title: "6. Final Thoughts and Common Issues in Terraform Import and Refactoring"
 subtitle: "Summarizing Key Insights and Addressing Common Challenges"
 description: "A summary of the Terraform Import and Refactoring series, along with common issues and solutions to help you streamline your infrastructure management."
-permalink: series/terraform-import-and-refactoring/6-final-thoughts-and-common-issues
+permalink: /series/terraform-import-and-refactoring/6-final-thoughts-and-common-issues
 nav_order: 6
 show_sidebar: true
 date: 2025-04-13

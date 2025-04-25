@@ -3,7 +3,7 @@ layout: post
 title: "3. Terraform Import: Bringing Resources Under Control"
 subtitle: "A Practical Example of Importing AWS EC2 Instances into Terraform"
 description: "A practical example of importing AWS EC2 instances into Terraform for Infrastructure as Code management."
-permalink: series/Terraform-import-and-refactoring/3-practical-example-aws-ec2/
+permalink: /series/terraform-import-and-refactoring/3-practical-example-aws-ec2/
 nav_order: 3
 show_sidebar: true
 date: 2025-03-28

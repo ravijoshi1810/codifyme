@@ -4,7 +4,7 @@ title: "4. Code Refactoring: why it matters"
 subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 description: "Learn why refactoring Terraform code is crucial for scalability and maintainability in your infrastructure management."
-permalink: series/Terraform-import-and-refactoring/4-code-refactoring-part1/
+permalink: /series/terraform-import-and-refactoring/4-code-refactoring-part1/
 nav_order: 4
 show_sidebar: true
 date: 2025-04-03
