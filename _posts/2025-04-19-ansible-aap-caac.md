@@ -29,7 +29,10 @@ CaaC involves managing configuration files in a version-controlled repository. F
 2. After approval via a merge request, a webhook triggers synchronization with AAP controllers.
 3. AAP controllers apply the updated configurations across all platforms.
 
-![CaaC Workflow](images/ansible-aap-caac-images/AAP2_flow.jpg)
+<!-- ![CaaC Workflow](../images/blog-ansible-aap-caac-images/AAP2_flow.png) -->
+
+![CaaC Workflow]({{ "/images/blog-ansible-aap-caac-images/AAP2_flow.png" | relative_url }})
+
 
 ---
 
@@ -43,7 +46,9 @@ The Provider-Consumer model, similar to the Hub-Spoke architecture, centralizes 
 2. **Consumer Repositories**: Store organization-specific configurations.
 3. **Ansible CLI**: Used for initial setup and automation.
 
-![CaaC Physical Design](images/ansible-aap-caac-images/caac_physical_design.jpg)
+<!-- ![CaaC Physical Design](../images/blog-ansible-aap-caac-images/caac_physical_design.jpg) -->
+
+![CaaC Physical Design]({{ "/images/blog-ansible-aap-caac-images/caac_physical_design.jpg" | relative_url }})
 
 ---
 
@@ -104,19 +109,25 @@ To set up the Provider organization, use the following CLI command:
 ansible-playbook controller_config.yml -i inv_provider_org_prod -e "controller_username='your_username' controller_password='your_password'" --ask-vault-pass --tags settings,organizations,projects,users,inventories,inventory_sources,credential_types,credentials,job_templates
 ```
 
-![Initial CLI Config](images/ansible-aap-caac-images/Provider_Org_cli_provisioned.jpg)
+<!-- ![Initial CLI Config](../images/blog-ansible-aap-caac-images/Provider_Org_cli_provisioned.jpg) -->
+
+![Initial CLI Config]({{ "/images/blog-ansible-aap-caac-images/Provider_Org_cli_provisioned.jpg" | relative_url }})
 
 ### Enabling CaaC for Consumer Organizations
 
 This flow provisions resources required for new Consumer organizations.
 
-![New Consumer Org](images/ansible-aap-caac-images/request_flow4_new_consumer_org.jpg)
+<!-- ![New Consumer Org](../images/blog-ansible-aap-caac-images/request_flow4_new_consumer_org.jpg) -->
+
+![New Consumer Org]({{ "/images/blog-ansible-aap-caac-images/request_flow4_new_consumer_org.jpg" | relative_url }})
 
 ### Requesting AAP Resources Within Consumer Organizations
 
 Consumer organizations can request resources using the CaaC automation.
 
-![Consumer Org](images/ansible-aap-caac-images/request_flow4_resources_within_consumer_org.jpg)
+<!-- ![Consumer Org](../images/blog-ansible-aap-caac-images/request_flow4_resources_within_consumer_org.jpg) -->
+
+![Consumer Org]({{ "/images/blog-ansible-aap-caac-images/request_flow4_resources_within_consumer_org.jpg" | relative_url }})
 
 ---
 

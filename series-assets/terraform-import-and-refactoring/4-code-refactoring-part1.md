@@ -5,7 +5,6 @@ subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 description: "Learn why refactoring Terraform code is crucial for scalability and maintainability in your infrastructure management."
 permalink: /series/terraform-import-and-refactoring/4-code-refactoring-part1/
-image_folder: /series-assets/terraform-import-and-refactoring/images
 nav_order: 4
 show_sidebar: true
 date: 2025-04-03
@@ -23,10 +22,9 @@ Now, we move to the next critical step: **refactoring the imported Terraform cod
 ---
 
 ## Why Refactoring Matters 🛠️
-<!-- 
-![refactoring](../../series-assets/terraform-import-and-refactoring/images/refactoring.png) -->
 
-![refactoring]({{ page.image_folder | append: "/refactoring.png" | relative_url }})
+<!-- ![refactoring](images/refactoring.png) -->
+![refactoring]({{ "/images/refactoring.png" | relative_url }})
 
 Refactoring Terraform code is not just about cleaning up configurations—it’s about enabling your infrastructure to scale efficiently while reducing operational overhead. Here’s why it’s crucial:
 

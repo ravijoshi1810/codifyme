@@ -3,8 +3,7 @@ layout: post
 title: "5. Code Refactoring: Enhancing Terraform Configurations (Part 2)"
 subtitle: "Refactoring Terraform Code for Scalability and Maintainability"
 description: "Learn how to refactor Terraform code for better scalability and maintainability in your infrastructure management (Part 2)."
-permalink: /series/terraform-import-and-refactoring/5-code-refactoring-part2/
-image_folder: /series-assets/terraform-import-and-refactoring/images 
+permalink: /series/terraform-import-and-refactoring/5-code-refactoring-part2/ 
 nav_order: 5
 show_sidebar: true
 date: 2025-04-03    

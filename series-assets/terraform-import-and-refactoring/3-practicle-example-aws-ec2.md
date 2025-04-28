@@ -4,7 +4,6 @@ title: "3. Terraform Import: Bringing Resources Under Control"
 subtitle: "A Practical Example of Importing AWS EC2 Instances into Terraform"
 description: "A practical example of importing AWS EC2 instances into Terraform for Infrastructure as Code management."
 permalink: /series/terraform-import-and-refactoring/3-practical-example-aws-ec2/
-image_folder: /series-assets/terraform-import-and-refactoring/images
 nav_order: 3
 show_sidebar: true
 date: 2025-03-28
@@ -141,9 +140,8 @@ cd aws_resource_tag.v2
 
 ⬇️ Download the Python script into the example folder and open it in VS Code.
 
-<!-- ![Python Script](../../series-assets/terraform-import-and-refactoring/images/post3-tf_import_script.png) -->
-
-![Python Script]({{ page.image_folder | append: "/post3-tf_import_script.png" | relative_url }})
+<!-- ![Python Script](images/post3-tf_import_script.png) -->
+![Python Script]({{ "/images/post3-tf_import_script.png" | relative_url }})
 
 ### 6. 🚀 Run the Custom Python Script
 
@@ -202,24 +200,24 @@ python3 main.py --resource ec2 --local-repo-path ../terraform-import-example/imp
 
 After successfully running the script, you will see the following directory structure:
 
-<!-- ![Directory Structure](../../series-assets/terraform-import-and-refactoring/images/post3_tf_import_directory_structure.png) -->
+<!-- ![Directory Structure](images/post3_tf_import_directory_structure.png) -->
 
-![Directory Structure]({{ page.image_folder | append: "/post3_tf_import_directory_structure.png" | relative_url }})
+![Directory Structure]({{ "/images/post3_tf_import_directory_structure.png" | relative_url }})
 
 ### 7. 🔍 Verify the Plan Output
 
 After running the script, review the Terraform plan output and the generated files in the import directory.
 
-<!-- ![Generated Files](../../series-assets/terraform-import-and-refactoring/images/post3_tf_import_generated_files.png) -->
-![Generated Files]({{ page.image_folder | append: "/post3_tf_import_generated_files.png" | relative_url }})
+<!-- ![Generated Files](images/post3_tf_import_generated_files.png) -->
+![Generated Files]({{ "/images/post3_tf_import_generated_files.png" | relative_url }})
 
 #### ⚠️ Important:
 
 -   ✅ Ensure that only the import count has changed in the plan output and no other changes are present.
 
-    <!-- ![Plan Output](../../series-assets/terraform-import-and-refactoring/images/post3_tf_import_plan_output.png) -->
+    <!-- ![Plan Output](images/post3_tf_import_plan_output.png) -->
 
-    ![Plan Output]({{ page.image_folder | append: "/post3_tf_import_plan_output.png" | relative_url }})
+    ![Plan Output]({{ "/images/post3_tf_import_plan_output.png" | relative_url }})
 
 -   🛠️ If there are changes, review and update the Terraform code accordingly before proceeding.
 
@@ -232,9 +230,8 @@ Once you confirm that only the import count has changed during plan, run the fol
   ```
 This will import the resources into the Terraform state file locally.
 
-<!-- ![terraform apply output](../../series-assets/terraform-import-and-refactoring/images/post3_tf_import_local_apply_output.png) -->
-
-![terraform apply output]({{ page.image_folder | append: "/post3_tf_import_local_apply_output.png" | relative_url }})
+<!-- ![Terraform Apply](images/post3_tf_import_local_apply_output.png) -->
+![Terraform Apply]({{ "/images/post3_tf_import_local_apply_output.png" | relative_url }})
 
 **🎉🏆 Great job done, folks!**  
 You have successfully imported the EC2 instances into Terraform. **But the work is not done yet.**
@@ -251,9 +248,8 @@ The main goal is to have the Terraform code in the TFE workspace or in remote st
 
 📄 Copy the `import_codifyme-web-1`, `generated-plan-import-codifyme-web-1` files from the local folder to the cloned repository.
 
-<!-- ![copy\_files](../../series-assets/terraform-import-and-refactoring/images/post3_tf_import_copy_files.png) -->
-
-![copy\_files]({{ page.image_folder | append: "/post3_tf_import_copy_files.png" | relative_url }})
+<!-- ![copy\_files](images/post3_tf_import_copy_files.png) -->
+![copy\_files]({{ "/images/post3_tf_import_copy_files.png" | relative_url }})
 
 
 **Note:** ⚠️ Make sure the existing code repository must already have the `provider` block defined in the `backend.tf` file.
@@ -272,38 +268,32 @@ Up to this point, if you have VCS integration enabled in TFE or a GitOps-trigger
   ```hcl
   terraform login https://your-tfe-url -token your-token
   ```
-  <!-- ![post3_tflogin](../../series-assets/terraform-import-and-refactoring/images/post3_tflogin.png) -->
-  
-  ![post3_tflogin]({{ page.image_folder | append: "/post3_tflogin.png" | relative_url }})
+  <!-- ![post3_tflogin](images/post3_tflogin.png) -->
+  ![post3_tflogin]({{ "/images/post3_tflogin.png" | relative_url }})
 
 - 🚀 Run the following command to initialize the Terraform working directory:
     ```bash
     terraform init
     ```
-  <!-- ![terraform init](../../series-assets/terraform-import-and-refactoring/images/post3_tfinit.png) -->
-
-  ![terraform init]({{ page.image_folder | append: "/post3_tfinit.png" | relative_url }})
+  <!-- ![terraform init](images/post3_tfinit.png) -->
+  ![terraform init]({{ "/images/post3_tfinit.png" | relative_url }})
 
 - Run the following command to generate an execution plan:
   ```bash
   terraform plan
   ```
-  <!-- ![terraform plan](../../series-assets/terraform-import-and-refactoring/images/post3_tf_remote_plan1.png) -->
-
-  ![terraform plan]({{ page.image_folder | append: "/post3_tf_remote_plan1.png" | relative_url }})
+  <!-- ![terraform plan](images/post3_tf_remote_plan1.png) -->
+  ![terraform plan]({{ "/images/post3_tf_remote_plan1.png" | relative_url }})
 
 - Review the plan output to ensure that only the import count has changed and no other changes are present.
-  <!-- ![terraform plan](../../series-assets/terraform-import-and-refactoring/images/post3_tf_remote_plan2.png) -->
-
-  ![terraform plan]({{ page.image_folder | append: "/post3_tf_remote_plan2.png" | relative_url }})
-
+  <!-- ![terraform plan](images/post3_tf_remote_plan2.png) -->
+  ![terraform plan]({{ "/images/post3_tf_remote_plan2.png" | relative_url }})
 - If everything looks good, run the following command to apply the changes:
   ```bash
   terraform apply -auto-approve
   ```
-  <!-- ![terraform apply](../../series-assets/terraform-import-and-refactoring/images/post3_import_status_post_apply.png) -->
-
-  ![terraform apply]({{ page.image_folder | append: "/post3_import_status_post_apply.png" | relative_url }})
+  <!-- ![terraform apply](images/post3_import_status_post_apply.png) -->
+  ![terraform apply]({{ "/images/post3_import_status_post_apply.png" | relative_url }})
 
 This will import the resources into the Terraform state file in the TFE workspace.
 - ✅ Verify the import by checking the TFE workspace for the imported resources.
