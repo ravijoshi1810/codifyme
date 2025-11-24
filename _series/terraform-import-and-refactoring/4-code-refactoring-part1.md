@@ -24,7 +24,7 @@ Now, we move to the next critical step: **refactoring the imported Terraform cod
 
 ## Why Refactoring Matters 🛠️
 <!-- 
-![refactoring](../../series-assets/terraform-import-and-refactoring/images/refactoring.png) -->
+![refactoring](images/refactoring.png) -->
 
 ![refactoring]({{ page.image_folder | append: "/refactoring.png" | relative_url }})
 

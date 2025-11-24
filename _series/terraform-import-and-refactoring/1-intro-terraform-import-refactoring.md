@@ -116,9 +116,9 @@ A production environment contains critical resources, but the Terraform codebase
 
 ## 🗺️ Standard Example Workflow: Resolving Drift with Terraform Import
 
-![import_high_level](images/import_high_level.png)
+<!-- ![import_high_level](images/import_high_level.png) -->
 
-![import_high_level]({{ 'images/import_high_level.png' | relative_url }})
+![import_high_level]({{ page.image_folder | append: "/import_high_level.png" | relative_url }})
 
 ### 1. **🔍 Identify Drift**
     - Inspect live infrastructure (e.g., AWS Management Console, Azure Portal) and compare it with the Terraform state to identify unmanaged or drifted resources.

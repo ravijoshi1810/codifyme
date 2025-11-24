@@ -2,7 +2,7 @@
 layout: post
 subtitle: "Why GitOps/DevOps and Infrastructure as Code (IaC) Matter"
 title: "Streamlining Application Infra Deployment with Modern Practices"
-permalink: /series/devops-and-iac/1-devops-iac/
+permalink: /series/devops-and-iac-foundation/1-devops-iac/
 show_sidebar: true
 date: 2025-10-10
 author: "Ravi Joshi"
@@ -75,7 +75,9 @@ These challenges include:
 #### <span class="icon-title">🎯</span> Objective
 The Application teams within the Cloud Management Platform (CMP) Business unit need to update deployment practices for their application portfolio. By adopting modern methods like `GitOps/DevOps` and `Infrastructure as Code (IaC)`, they aim to solve various challenges, including inconsistent provisioning, approval delays, security risks, limited code knowledge, lifecycle management issues, manual processes, visibility problems, and teamwork gaps. The goal is to make deployments smoother, scale better, and work more efficiently for the pilot `todo_demoapp` and follow the same practice for future onboarded applications.
 
-![GitOps Workflow](src_images/gitOps_workflow.png)
+<!-- ![GitOps Workflow](src_images/gitOps_workflow.png) -->
+
+![GitOps Workflow]({{ page.image_folder | append: "/gitOps_workflow.png" | relative_url }})
 
 ---
 
@@ -170,7 +172,9 @@ It is assumed you already have azure devops private or public instance available
  2.   **ado-iac-run-pipelines:** host ADO pipleine templates repo and CICD pipeline yamls
  3.   **tfcli-root-modules-workspace-repo:** host Application specifc code to deploy and provision infra
 
-![Ado project repo relationship](src_images/ADO_project_repo_relationship.png)
+<!-- ![Ado project repo relationship](src_images/ADO_project_repo_relationship.png) -->
+
+![Ado project repo relationship]({{ page.image_folder | append: "/ADO_project_repo_relationship.png" | relative_url }})
 
 
 ### <span class="icon-title">🔹</span> 5.2 Unified Resuable DevOps Pipeline Templates 
@@ -241,8 +245,8 @@ The objective is to establish a unified pipeline structure leveraging Azure DevO
 
       steps:
       - ${{ each step in parameters.buildSteps }}:
-        - ${{ each pair in step }}:
-            ${{ pair.key }}: ${{ pair.value }}  
+          - ${{ each pair in step }}:
+              ${{ pair.key }}: ${{ pair.value }}  
            
       - template: ../steps/terraform_cli/terraform_install_task.yml
         parameters:
@@ -582,7 +586,8 @@ Temporarily used as there is an issue with the Terraform plugin to display the o
 ## <span class="icon-title">🔷</span> 8. Execution Flow for E2E Request Fullfilment 
 The end to end deployment request should look something like this when you fulfill all the requiment and complete the tools configuration as directed.
 
-![deploymentflow](src_images/iac_request_flow.gif)
+<!-- ![deploymentflow](src_images/iac_request_flow.gif) -->
+![deploymentflow]({{ page.image_folder | append: "/iac_request_flow.gif" | relative_url }})
 
 ### 1. User requests
   - ***Main branch clone Repo:*** user requests to clone the main branch repository where the application's infra source code resides.

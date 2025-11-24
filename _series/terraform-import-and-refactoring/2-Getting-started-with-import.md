@@ -27,7 +27,7 @@ Before diving into the details of Terraform Import and refactoring, let's take a
 
 **Scenario Overview**:
 
-<!-- ![ABC Corp](../../series-assets/terraform-import-and-refactoring/images/post2_abc_scenario.png) -->
+<!-- ![ABC Corp](images/post2_abc_scenario.png) -->
 
 ![ABC Corp]({{ page.image_folder | append: "/post2_abc_scenario.png" | relative_url }})
 
@@ -59,7 +59,7 @@ ABC Corp has multiple environments (production and development), and their infra
 
 The following workflow outlines how ABC Corp systematically approached the import process to align their resources with Terraform, integrating automation and GitOps principles to maintain efficiency and reliability.
 
-<!-- ![terraform-import-workflow](../../series-assets/terraform-import-and-refactoring/images/post2_terraform_import_workflow.gif) -->
+<!-- ![terraform-import-workflow](images/post2_terraform_import_workflow.gif) -->
 
 ![Terraform Import Workflow]({{ page.image_folder | append: "/post2_terraform_import_workflow.gif" | relative_url }})
 
@@ -98,7 +98,7 @@ Before using Terraform Import, ensure you have the following prerequisites and s
     vi ~/.aws/config
     ```
 
-    <!-- ![Terraform Cloud Workspace](../../series-assets/terraform-import-and-refactoring/images/post2_terraform_cloud_workspace.png) -->
+    <!-- ![Terraform Cloud Workspace](images/post2_terraform_cloud_workspace.png) -->
 
     ![Terraform Cloud Workspace]({{ page.image_folder | append: "/post2_terraform_cloud_workspace.png" | relative_url }} )
 
@@ -234,7 +234,7 @@ Using Terraform Cloud:
     -   🏷️ Name the workspace based on your environment (e.g., prod-app-xyz).
     -   🔗 Link your Git repository to the workspace for automated plan and apply workflows (valid only if using VCS-driven workflow).
 
-    <!-- ![Terraform Cloud Workspace](../../series-assets/terraform-import-and-refactoring/images/post2_terraform_cloud_workspace.png) -->
+    <!-- ![Terraform Cloud Workspace](images/post2_terraform_cloud_workspace.png) -->
 
     ![Terraform Cloud Workspace]({{ page.image_folder | append: "/post2_terraform_cloud_workspace.png" | relative_url }} )
 3.  ⚙️ Configure `main.tf` with the remote backend:

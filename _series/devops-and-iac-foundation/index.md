@@ -1,11 +1,13 @@
 ---
 layout: series
 series: "DevOps and Infrastructure as Code (IaC) Foundation"
-description: "Establishing a robust DevOps and Infrastructure as Code (IaC) foundation is crucial for modern software development and IT operations. This series provides a comprehensive guide to setting up and optimizing your DevOps practices and IaC strategies, ensuring efficient, scalable, and secure infrastructure management."
 is_series_index: true
 title: Streamlining Application Infra Deployment with Modern Practices
 permalink: /series/devops-and-iac-foundation/
 show_sidebar: true
+---
+> 🚀 **Welcome!** This series will help you learn modern DevOps and Infrastructure as Code (IaC) practices for scalable, secure, and efficient deployments. Whether you're a beginner or an experienced engineer, you'll find actionable guidance and real-world examples to streamline your infrastructure workflows.
+
 ---
 
 # Table of Contents
