@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="subtitle">{{ page.description }}</p>
+    {% endif %}
+    
+    <div class="content">
+      {% assign category_name = page.category | default: "AI" %}
+      {% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains category_name" %}
+      {% assign series_in_category = site.series | where_exp: "post", "post.categories contains category_name" %}
+      {% assign all_posts = posts_in_category | concat: series_in_category | sort: 'date' | reverse %}
+      
+      {% if all_posts.size > 0 %}
+        {% for post in all_posts %}
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong>
+                <br>
+                <small>{{ post.date | date: "%B %d, %Y" }}</small>
+                {% if post.chapter %}
+                <br>
+                <small class="has-text-grey">{{ post.chapter }}</small>
+                {% endif %}
+                <br>
+                {{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}
+              </p>
+            </div>
+          </div>
+        </article>
+        <hr>
+        {% endfor %}
+      {% else %}
+        <p>No posts found in this category.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

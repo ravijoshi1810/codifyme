@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="subtitle">{{ page.description }}</p>
+    {% endif %}
+    
+    <div class="content">
+      {% assign tag_name = page.tag %}
+      {% assign posts_with_tag = site.posts | where_exp: "post", "post.tags contains tag_name" %}
+      {% assign series_with_tag = site.series | where_exp: "post", "post.tags contains tag_name" %}
+      {% assign all_posts = posts_with_tag | concat: series_with_tag | sort: 'date' | reverse %}
+      
+      {% if all_posts.size > 0 %}
+        {% for post in all_posts %}
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong>
+                <br>
+                <small>{{ post.date | date: "%B %d, %Y" }}</small>
+                {% if post.chapter %}
+                <br>
+                <small class="has-text-grey">{{ post.chapter }}</small>
+                {% endif %}
+                <br>
+                {{ post.description | default: post.excerpt | strip_html | truncatewords: 30 }}
+              </p>
+            </div>
+          </div>
+        </article>
+        <hr>
+        {% endfor %}
+      {% else %}
+        <p>No posts found with this tag.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

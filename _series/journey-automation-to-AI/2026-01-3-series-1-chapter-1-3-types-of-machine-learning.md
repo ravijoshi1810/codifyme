@@ -30,7 +30,7 @@ Understanding ML types helps you:
 
 ---
 
-## 2. The Three Main Types
+## 2. The Main Types
 
 ML systems are categorized by **how they learn**:
 

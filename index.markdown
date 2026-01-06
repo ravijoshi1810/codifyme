@@ -118,6 +118,15 @@ show_banner: false
           </div>
         </div>
       </div>
+      <div class="column is-12-mobile is-6-tablet is-4-desktop">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title is-5"><a href="{{ site.baseurl }}/categories/ai/">AI & Machine Learning</a></h3>
+            <p class="is-size-6">AI concepts for automation engineers and solution architects.</p>
+            <a href="{{ site.baseurl }}/categories/ai/" class="button is-small is-primary mt-2">Browse AI</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
