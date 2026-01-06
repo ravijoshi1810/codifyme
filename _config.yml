@@ -8,10 +8,10 @@ email: ravijoshi1810@github.io
 baseurl: "/codifyme"  # Change this to match your repository name or leave as "" for root hosting
 #baseurl: "" 
 # URL for your live site (change it to your actual GitHub Pages URL)
-url: "https://ravijoshi1810.github.io/codifyme/"  # Change this to your actual live URL when deployed
+#url: "https://ravijoshi1810.github.io/codifyme/"  # Change this to your actual live URL when deployed
 #google_site_verification: "QjpYArnVm19JwasXg2TK74OyWE6Xsp54jhd_x9-CF48"
 # For local testing, uncomment the below line and comment out the live URL above
-# url: "http://localhost:4000" 
+url: "http://localhost:4000" 
 
 #theme: bulma-clean-theme
 
@@ -20,6 +20,8 @@ remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0  # Use when GitHub Pages are
 # theme: bulma-clean-theme  # Comment out the theme line if using remote_theme
 
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
 
 # Plugins to be used in the Jekyll site
 plugins:

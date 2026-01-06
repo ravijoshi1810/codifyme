@@ -227,6 +227,7 @@ The objective is to establish a unified pipeline structure leveraging Azure DevO
    
    **Example:** A job template for building and testing an Azure AKS cluster might require testing and linting the TF code dependency on and going through the process of Init, plan, and apply.
    
+    {% raw %}
     ```yaml
     parameters:
     - name: buildSteps
@@ -262,6 +263,7 @@ The objective is to establish a unified pipeline structure leveraging Azure DevO
           serviceName: ${{ parameters.serviceName }}    
           terraformDirectory: ${{ parameters.terraformDirectory }}
     ```
+    {% endraw %}
 
 4. **Stage Templates:**
    If a pipeline involves multiple jobs that represent distinct stages or phases of the deployment process, stage templates can be used to organize these jobs. A stage template should define a complete stage within the pipeline, orchestrating the execution of multiple jobs in a sequential or parallel manner.
