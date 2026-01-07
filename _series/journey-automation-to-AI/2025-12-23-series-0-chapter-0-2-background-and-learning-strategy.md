@@ -14,22 +14,21 @@ tags: [solution-architect, automation, ai, terraform, ansible, devops, cloud]
 ## My Background and Learning Strategy  
 *(Why I’m Learning AI the Way I Am)*
 
+← [Previous: Chapter 0.1 - Why Automation Engineers Should Learn AI](/codifyme/series/journey-automation-to-ai/chapter-0-1-why-automation-engineers-should-learn-ai/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 1.1 - What Is AI, Really?](/codifyme/series/journey-automation-to-ai/chapter-1-1-what-is-ai-really/) →
+
 ---
 
-## 1. Setting the Context
+>AI is automation's natural evolution, not its replacement.
 
-In **Chapter 0.1**, we established an important idea:
-
-> AI is not a replacement for automation—it is its natural evolution.
-
-This chapter adds the **personal and architectural context** behind this series:
+Before diving into ML concepts, here's the context for how I'm approaching this learning:
 - Where I’m coming from professionally
-- Why I’m not following the traditional “data scientist” learning path
-- How I plan to learn and document AI in a way that aligns with real-world solutioning
+- Why I’m not following the traditional “data scientist” learning path 
+- How this series aligns with real-world platform design
+
 
 ---
 
-## 2. My Background: Automation to Architecture
+## 1. My Background: Automation to Architecture
 
 My career has been centered around **designing, solutioning, and implementing platforms**, not isolated tools.
 
@@ -95,7 +94,7 @@ Static rules felt... insufficient.
 
 ---
 
-## 3. The Architectural Progression
+## 2. The Architectural Progression
 
 Looking at this journey end-to-end, the progression is clear:
 
@@ -115,7 +114,7 @@ Intelligent Decision-Making
 
 ---
 
-## 4. Why I'm NOT Taking the "Data Scientist" Path
+## 3. Why I'm NOT Taking the "Data Scientist" Path
 
 Most AI content assumes you want to become a data scientist:
 
@@ -127,7 +126,7 @@ Most AI content assumes you want to become a data scientist:
 
 ---
 
-## 5. The Solution Architect's Objective
+## 4. The Solution Architect's Objective
 
 My questions are different:
 
@@ -140,7 +139,7 @@ My questions are different:
 
 ---
 
-## 6. How I'll Learn AI in This Series
+## 5. How I'll Learn AI in This Series
 
 My approach: **Concepts → Intuition → Examples**
 
@@ -157,7 +156,7 @@ Real-world use cases. Platform implications. Where AI fits in DevOps and CMP wor
 
 ---
 
-## 7. What This Series Skips
+## 6. What This Series Skips
 
 To stay focused on architecture, I'm intentionally avoiding:
 - Deep mathematical derivations
@@ -169,7 +168,7 @@ Those are valuable—but they distract from system design.
 
 ---
 
-## 8. Who This Is For
+## 7. Who This Is For
 
 You, if you already think in terms of:
 - Pipelines and state
@@ -184,7 +183,7 @@ Specifically:
 
 ---
 
-## 9. Key Takeaways
+## 8. Key Takeaways
 
 - AI is the next step in the automation-to-architecture evolution
 - Focus: architectural understanding, not academic depth

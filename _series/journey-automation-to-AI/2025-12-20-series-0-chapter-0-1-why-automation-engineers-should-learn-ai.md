@@ -16,7 +16,10 @@ tags: [automation, ai, ml, devops, cloud, learning-journey]
 
 ---
 
-## 1. Why This Topic Matters
+[Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 0.2 - Background and Learning Strategy](/codifyme/series/journey-automation-to-ai/chapter-0-2-background-and-learning-strategy/) →
+
+---
+
 
 If you work in automation, you're good at one thing: 
 
@@ -42,7 +45,7 @@ That's when AI stopped being hype and started feeling necessary—not as a repla
 
 ---
 
-## 2. Automation vs AI – The Real Difference
+## 1. Automation vs AI – The Real Difference
 
 Strip away the hype:
 
@@ -74,7 +77,7 @@ Automation executes known logic. AI handles unknown patterns.
 
 ---
 
-## 3. Where Automation Reaches Its Limits
+## 2. Where Automation Reaches Its Limits
 
 I've seen this pattern repeatedly:
 
@@ -95,7 +98,7 @@ Unmaintainable Mess
 
 This isn't bad design—it's the natural limit of static logic.
 
-## 4. Where AI Fits (Practically, Not Magically)
+## 3. Where AI Fits (Practically, Not Magically)
 
 AI makes sense when:
 - Rules are hard to define
@@ -110,7 +113,7 @@ AI makes sense when:
 
 AI augments decision-making. It doesn't replace your IaC, CI/CD, or pipelines.
 
-## 5. IaC/CI/CD vs AI – A Familiar Analogy
+## 4. IaC/CI/CD vs AI – A Familiar Analogy
 
 ### Infrastructure as Code (IaC)
 
@@ -153,7 +156,7 @@ AI Addition: System learns from data
 
 **Both are needed.** IaC/CI/CD provides control. AI handles complexity that's too dynamic for static rules.
 
-## 6. What You Do NOT Need to Learn First
+## 5. What You Do NOT Need to Learn First
 
 Here's what I wish someone had told me:
 
@@ -165,7 +168,7 @@ You do **NOT** need to start with:
 
 That's the data scientist path. It's not yours (unless you want it to be).
 
-## 7. What You Should Learn First
+## 6. What You Should Learn First
 
 Focus on:
 - Core ML concepts (not the math)
@@ -179,7 +182,7 @@ Automation Foundations → ML Concepts → Deep Learning (Intuition)
   → Generative AI & LLMs → MLOps
 ```
 
-## 8. What This Series Is (And Isn't)
+## 7. What This Series Is (And Isn't)
 
 **NOT:**
 - "Become a data scientist"
@@ -190,12 +193,14 @@ Automation Foundations → ML Concepts → Deep Learning (Intuition)
 - Architecture-first thinking
 - A reference for practitioners who build systems
 
-## 9. Key Takeaways
+## 8. Key Takeaways
 
 - AI is automation's evolution, not its replacement
 - AI starts where rules become unmaintainable
 - You don't need heavy math—you need architectural intuition
 - Your automation background is an advantage
+
+---
 
 ## What's Next?
 

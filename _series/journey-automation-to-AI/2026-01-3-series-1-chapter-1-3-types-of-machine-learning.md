@@ -12,25 +12,23 @@ show_sidebar: true
 ---
 
 ## Types of Machine Learning
+← [Previous: Chapter 1.2 - How Machines Learn](/codifyme/series/journey-automation-to-ai/chapter-1-2-how-machines-learn/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 2.1 - Data Quality and Preparation](/codifyme/series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation/) →
 
 ---
 
-## 1. Why This Matters
+We've covered how machines learn from examples instead of explicit rules.
 
-When I first started exploring ML, I kept seeing these terms thrown around: supervised, unsupervised, reinforcement learning.
+Now the practical question: **which type of learning should you use?**
 
-I'd nod along in meetings, but honestly? I didn't get why it mattered.
+Supervised, unsupervised, semi-supervised, reinforcement learning—these aren't just academic categories. Pick the wrong one and you'll waste weeks.
 
-Then I realized: **choosing the wrong type of ML for a problem is like using Terraform to solve a scripting problem.** It works, but you've overcomplicated everything.
+Turns out, choosing the wrong ML type is like using Terraform to restart a service. Technically works, completely overcomplicated.
 
-Understanding ML types helps you:
-- Pick the right approach for the problem
-- Avoid wasting time on the wrong solution
-- Have better conversations with data scientists
+The ML type you choose depends entirely on what data you have and what problem you're solving.
 
 ---
 
-## 2. The Main Types
+## 1. The Main Types
 
 ML systems are categorized by **how they learn**:
 
@@ -41,7 +39,7 @@ ML systems are categorized by **how they learn**:
 
 ---
 
-## 3. Supervised Learning: Known Desired State
+## 2. Supervised Learning: Known Desired State
 
 ### The Automation Analogy
 
@@ -467,7 +465,7 @@ Beyond supervision type, ML systems are also categorized by:
 
 ---
 
-## 9. Common Mistakes I've Seen
+## 10. Common Mistakes I've Seen
 
 **Mistake 1: Using ML when rules work fine**
 - Don't use supervised learning for simple if/then logic
@@ -500,5 +498,5 @@ We'll demystify what happens during training, how models learn, and what "parame
 
 ---
 
-**Previous:** [Chapter 1.2 – How Machines Learn](/codifyme/series/journey-automation-to-ai/chapter-1-2-how-machines-learn/) | [Series Index](/codifyme/series/journey-automation-to-ai/)
+**Previous:** [Chapter 1.2 – How Machines Learn](/codifyme/series/journey-automation-to-ai/chapter-1-2-how-machines-learn/) | **Next:** [Chapter 2.1 – Data Quality and Preparation](/codifyme/series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation/) | [Series Index](/codifyme/series/journey-automation-to-ai/)
 

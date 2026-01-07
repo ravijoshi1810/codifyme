@@ -129,56 +129,162 @@ This series establishes clear definitions before going deeper.
 
 Understanding ML from an engineering perspective: data preparation, model training, and inference in production systems.
 
-#### 🚧 Chapter 2.1 – Data Quality and Preparation (Coming Soon)
+#### ✅ Chapter 2.1 – Data: The New Configuration File
 
-- Data as configuration
+- Data as input, output, and state
+- Bad data = bad model (garbage variables = broken infra)
+- Data quality checklist: completeness, accuracy, consistency
 - Training vs validation vs test sets
 - Feature engineering basics
-- Data quality and bias
+- Data bias and how to detect it
+- Practical automation-inspired guidelines
 
-#### 🚧 Chapter 2.2 – Model Training Fundamentals (Coming Soon)
+➡ [Read Chapter 2.1](chapter-2-1-data-quality-and-preparation)
 
-- What happens during training
-- Loss functions and optimization
-- Overfitting vs underfitting
-- Model evaluation metrics
+#### ✅ Chapter 2.2 – Features, Labels, and Models
 
-#### 🚧 Chapter 2.3 – From Training to Inference (Coming Soon)
+- What is a feature? (Input variables)
+- What is a label? (Expected output)
+- What is a model? (The learned logic)
+- Mapping to automation: Inputs → Logic → Outputs
+- Feature engineering techniques
+- Common pitfalls and how to avoid them
+- Practical automation-inspired guidelines
 
-- Training vs inference modes
-- Model artifacts and versioning
-- Deployment considerations
-- Monitoring model performance
+➡ [Read Chapter 2.2](chapter-2-2-features-labels-and-models)
+
+#### 🚧 Chapter 2.3 – Model Training vs Execution (Coming Soon)
+
+- Training ≠ inference (build time vs runtime)
+- One-time vs continuous learning
+- Terraform analogy: `terraform apply` vs runtime behavior
+- Model artifacts and deployment
+- When models need retraining
 
 ---
 
 ## Future Series (Planned)
 
-These series will be added incrementally. Detailed chapter breakdowns will be published as each series begins.
+### Series 3 – Core ML Concepts (Without Heavy Math)
 
-### Series 3 – Deep Learning (Demystified)
+Understanding machine learning algorithms and model behavior from a practical perspective.
 
-- Why deep learning exists
-- Neural networks as pipelines
-- Transformers and modern AI
+#### 🚧 Chapter 3.1 – Common ML Algorithms (Intuition Only) (Coming Soon)
 
-### Series 4 – Generative AI & LLMs
+- Linear Regression
+- Decision Trees
+- Random Forest
+- K-Nearest Neighbors (KNN)
+- Focus: When to use and why they work (not equations)
 
-- How LLMs work conceptually
-- Prompting as an interface
-- Limits and risks of generative AI
+#### 🚧 Chapter 3.2 – Overfitting & Underfitting (Coming Soon)
 
-### Series 5 – AI for DevOps, IaC & CMPs
+- "Works in dev, fails in prod" analogy
+- Why models fail in production
+- Balancing model complexity
 
-- Intelligent approvals
-- Predictive operations
-- AI-assisted self-service catalogs
+#### 🚧 Chapter 3.3 – Model Evaluation (Coming Soon)
 
-### Series 6 – MLOps (AI's DevOps)
+- Accuracy, precision, recall (intuition)
+- Why accuracy alone is misleading
+- Choosing the right metrics
 
-- Model lifecycle management
-- Monitoring, drift, and retraining
-- Operating AI in production
+---
+
+### Series 4 – Deep Learning (Demystified)
+
+Understanding neural networks and deep learning from an infrastructure perspective.
+
+#### 🚧 Chapter 4.1 – Why Deep Learning Exists (Coming Soon)
+
+- Limits of traditional ML
+- Problems suited for deep learning: images, text, speech
+- When to consider deep learning
+
+#### 🚧 Chapter 4.2 – Neural Networks Explained Like Infrastructure (Coming Soon)
+
+- Neurons as processing units
+- Layers as pipelines
+- Weights as configuration values
+- Backpropagation (conceptually)
+
+#### 🚧 Chapter 4.3 – Popular Deep Learning Models (Coming Soon)
+
+- CNNs (Convolutional Neural Networks) for images
+- RNNs / LSTM for sequences
+- Transformers and modern AI architecture
+
+---
+
+### Series 5 – Generative AI & LLMs
+
+Understanding how ChatGPT and similar models work.
+
+#### 🚧 Chapter 5.1 – What Is Generative AI (Coming Soon)
+
+- Predicting the next token
+- Why ChatGPT works
+- Generative vs discriminative models
+
+#### 🚧 Chapter 5.2 – How LLMs Are Trained (High Level) (Coming Soon)
+
+- Pre-training on massive datasets
+- Fine-tuning for specific tasks
+- RLHF (Reinforcement Learning from Human Feedback)
+
+#### 🚧 Chapter 5.3 – Prompt Engineering for Engineers (Coming Soon)
+
+- Prompts as interfaces
+- Deterministic vs probabilistic outputs
+- Best practices for working with LLMs
+
+---
+
+### Series 6 – AI for Automation Engineers (Your Strength)
+
+Practical AI applications in automation, IaC, and DevOps workflows.
+
+#### 🚧 Chapter 6.1 – Where AI Fits in Automation (Coming Soon)
+
+- Incident prediction and detection
+- Smart remediation
+- ChatOps and conversational interfaces
+
+#### 🚧 Chapter 6.2 – AI + IaC (Coming Soon)
+
+- Drift detection and analysis
+- Intelligent policy enforcement
+- Code generation limits and realities
+
+#### 🚧 Chapter 6.3 – AI in Self-Service Catalogs (Coming Soon)
+
+- Smarter forms and input validation
+- Recommendation engines
+- Risk-based approvals
+
+---
+
+### Series 7 – MLOps (AI's DevOps)
+
+Operating AI systems in production with reliability and governance.
+
+#### 🚧 Chapter 7.1 – What Is MLOps (Coming Soon)
+
+- CI/CD vs ML lifecycle
+- Why models rot over time
+- MLOps vs traditional DevOps
+
+#### 🚧 Chapter 7.2 – Model Versioning & Deployment (Coming Soon)
+
+- Model ≠ code
+- Data versioning strategies
+- Deployment patterns for ML models
+
+#### 🚧 Chapter 7.3 – Monitoring AI in Production (Coming Soon)
+
+- Data drift detection
+- Concept drift and model degradation
+- Retraining triggers and automation
 
 ---
 

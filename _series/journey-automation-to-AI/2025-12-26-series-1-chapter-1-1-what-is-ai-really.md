@@ -10,12 +10,10 @@ permalink: /series/journey-automation-to-ai/chapter-1-1-what-is-ai-really/
 author: Ravi Joshi
 show_sidebar: true
 ---
-
 ## What Is AI (Really?)
+← [Previous: Chapter 0.2 - Background and Learning Strategy](/codifyme/series/journey-automation-to-ai/chapter-0-2-background-and-learning-strategy/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 1.2 - How Machines Learn](/codifyme/series/journey-automation-to-ai/chapter-1-2-how-machines-learn/) →
 
 ---
-
-## 1. Why This Topic Matters
 
 Here's an embarrassing confession: I spent months calling everything "AI" in architecture discussions.
 
@@ -33,7 +31,7 @@ Precision matters in architecture. Vague terms lead to bad decisions.
 
 ---
 
-## 2. AI Is Not a Single Thing
+## 1. AI Is Not a Single Thing
 
 AI is **not one technology**, tool, or model.
 
@@ -51,7 +49,7 @@ This definition is intentionally broad—and that’s where confusion starts.
 
 ---
 
-## 3. AI vs Automation – Clearing the Confusion
+## 2. AI vs Automation – Clearing the Confusion
 
 A common misconception is:
 
@@ -100,9 +98,57 @@ AI          → Learns unknown patterns
 
 **Automation is deterministic. AI is adaptive.**
 
+Visually, the workflows look like this:
+
+```mermaid
+flowchart LR
+    subgraph prog["Traditional Programming/Automation Workflow"]
+        direction TB
+        P1[Study Problem] --> P2[Write Rules]
+        P2 --> P3{Test & Evaluate}
+        P3 -->|Success| P4[Deploy]
+        P3 -->|Failure| P5[Analyze Errors]
+        P5 --> P2
+        
+        style P1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+        style P2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+        style P3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+        style P4 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+        style P5 fill:#ffebee,stroke:#d32f2f,stroke-width:2px
+    end
+    subgraph ml["Machine Learning Workflow"]
+        direction TB
+        M1[Collect Data] --> M2[Prepare & Label]
+        M2 --> M3[Train Model]
+        M3 --> M4{Evaluate Performance}
+        M4 -->|Good Performance| M5[Deploy Model]
+        M4 -->|Poor Performance| M6[Update Data/Features]
+        M6 --> M2
+        M5 -.->|Monitor & Retrain| M6
+        
+        style M1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+        style M2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+        style M3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+        style M4 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+        style M5 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+        style M6 fill:#ffebee,stroke:#d32f2f,stroke-width:2px
+    end
+    
+    style prog fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
+    style ml fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
+```
+
+**Key differences:**
+- **Programming/Automation:** You write the logic (rules)
+- **ML:** The system learns the logic (from data)
+- **Programming:** Fix bugs by changing code
+- **ML:** Fix issues by improving data or retraining
+- **ML only:** Continuous monitoring and retraining cycle
+
+
 ---
 
-## 4. Common Myths About AI
+## 3. Common Myths About AI
 
 Before going further, let’s explicitly bust some common myths.
 
@@ -155,7 +201,7 @@ Engineers are still responsible for:
 
 ---
 
-## 5. Breaking AI into Practical Layers
+## 4. Breaking AI into Practical Layers
 
 Think of AI as a hierarchy:
 
@@ -173,7 +219,7 @@ Artificial Intelligence
 
 ---
 
-## 6. Machine Learning → Deep Learning → Generative AI
+## 5. Machine Learning → Deep Learning → Generative AI
 
 ### Machine Learning
 
@@ -211,7 +257,7 @@ Powerful, but easy to misuse if you don't understand what's underneath.
 
 ---
 
-## 8. A Familiar Architecture Analogy
+## 6. A Familiar Architecture Analogy
 
 Let’s map these concepts to something familiar.
 
@@ -222,54 +268,6 @@ System executes exactly as written
 Machine Learning:
 You define the goal
 System learns the rules from data
-
-
-Or visually:
-
-```mermaid
-flowchart LR
-    subgraph ml["Machine Learning Workflow"]
-        direction TB
-        M1[Collect Data] --> M2[Prepare & Label]
-        M2 --> M3[Train Model]
-        M3 --> M4{Evaluate Performance}
-        M4 -->|Good Performance| M5[Deploy Model]
-        M4 -->|Poor Performance| M6[Update Data/Features]
-        M6 --> M2
-        M5 -.->|Monitor & Retrain| M6
-        
-        style M1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-        style M2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-        style M3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-        style M4 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-        style M5 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-        style M6 fill:#ffebee,stroke:#d32f2f,stroke-width:2px
-    end
-    subgraph prog["Traditional Programming Workflow"]
-        direction TB
-        P1[Study Problem] --> P2[Write Rules]
-        P2 --> P3{Test & Evaluate}
-        P3 -->|Success| P4[Deploy]
-        P3 -->|Failure| P5[Analyze Errors]
-        P5 --> P2
-        
-        style P1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-        style P2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-        style P3 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-        style P4 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-        style P5 fill:#ffebee,stroke:#d32f2f,stroke-width:2px
-    end
-    
-    style prog fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
-    style ml fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
-```
-
-**Key differences:**
-- **Programming:** You write the logic (rules)
-- **ML:** The system learns the logic (from data)
-- **Programming:** Fix bugs by changing code
-- **ML:** Fix issues by improving data or retraining
-- **ML only:** Continuous monitoring and retraining cycle
 
 ---
 
@@ -286,7 +284,7 @@ The simplest effective solution usually wins.
 
 ---
 
-## 8. Key Takeaways
+## 7. Key Takeaways
 
 - AI is an umbrella term, not one technology
 - Automation ≠ AI (different fundamentals)
