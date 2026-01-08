@@ -80,8 +80,20 @@ sass:
 # Jekyll environment settings (optional)
 environment: "{{ jekyll.environment }}"
 
+# Don't publish future-dated posts
+future: false
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
+  - "**/*_future"
+  - "**/*_future.*"
+  - "**/*_old"
+  - "**/*_old.*"
+  - "**/*_draft"
+  - "**/*_draft.*"
+  - "**/*_wip"
+  - "**/*_wip.*"
+  - "**/*.bak"

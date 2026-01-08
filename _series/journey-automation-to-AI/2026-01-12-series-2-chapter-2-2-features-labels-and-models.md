@@ -3,7 +3,8 @@ layout: post
 title: "Chapter 2.2 – Features, Labels, and Models"
 series: "From Automation to AI – A Practitioner's Journey"
 chapter: "Series 2, Chapter 2.2"
-date: 2026-01-012
+date: 2026-01-12
+published: false
 categories: [AI, Machine-Learning, Automation, Architecture]
 tags: [ai, machine-learning, features, labels, models, automation]
 description: "Understanding features, labels, and models through the lens of automation. Mapping ML concepts to familiar inputs, logic, and outputs."

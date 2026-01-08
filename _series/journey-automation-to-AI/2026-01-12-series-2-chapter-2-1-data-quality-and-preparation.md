@@ -4,6 +4,7 @@ title: "Chapter 2.1 – Data: The New Configuration File"
 series: "From Automation to AI – A Practitioner's Journey"
 chapter: "Series 2, Chapter 2.1"
 date: 2026-01-12
+published: false
 categories: [AI, Machine-Learning, Automation, Architecture]
 tags: [ai, machine-learning, data-quality, feature-engineering, automation]
 description: "Understanding data quality, preparation, and splits from an automation engineer's perspective. Data is the new configuration file."
