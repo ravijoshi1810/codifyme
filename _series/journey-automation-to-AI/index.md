@@ -7,6 +7,7 @@ series: "From Automation to AI – A Practitioner's Journey"
 description: "A learning journey documenting AI from the perspective of a Solution Architect working with automation, IaC, DevOps, and cloud platforms. Architecture-focused, concept-first, and tool-agnostic."
 date: 2025-12-20
 show_sidebar: true
+author: Ravi Joshi
 categories: [Automation, AI, DevOps, Architecture]
 tags: [automation, ai, devops, terraform, ansible, solution-architecture]
 ---
@@ -123,9 +124,9 @@ This series establishes clear definitions before going deeper.
 
 ---
 
-##  What's Coming Next 
+## 🔜 What's Coming Next 
 
-### 🔜 Series 2 – Machine Learning Basics (Practitioner View)
+###  Series 2 – Machine Learning Basics (Practitioner View)
 
 Understanding ML from an engineering perspective: data preparation, model training, and inference in production systems.
 
@@ -153,21 +154,37 @@ Understanding ML from an engineering perspective: data preparation, model traini
 
 ➡ [Read Chapter 2.2](chapter-2-2-features-labels-and-models)
 
-#### 🚧 Chapter 2.3 – Model Training vs Execution (Coming Soon)
+#### ✅ Chapter 2.3 – Model Training vs Execution
 
 - Training ≠ inference (build time vs runtime)
 - One-time vs continuous learning
 - Terraform analogy: `terraform apply` vs runtime behavior
 - Model artifacts and deployment
 - When models need retraining
+- Data drift and concept drift
+- Retraining strategies and triggers
+
+➡ [Read Chapter 2.3](chapter-2-3-training-vs-inference)
+
+---
+
+## Series 3 – Core ML Concepts (Without Heavy Math)
+
+Understanding machine learning algorithms and model behavior from a practical perspective.
+
+### ✅ Chapter 3.0 – The ML Project Workflow
+
+- Putting it all together: problem to production
+- The seven phases of ML projects
+- Mapping to automation workflows
+- How all previous concepts connect
+- Complete end-to-end example
+
+➡ [Read Chapter 3.0](chapter-3-0-ml-project-workflow)
 
 ---
 
 ## Future Series (Planned)
-
-### Series 3 – Core ML Concepts (Without Heavy Math)
-
-Understanding machine learning algorithms and model behavior from a practical perspective.
 
 #### 🚧 Chapter 3.1 – Common ML Algorithms (Intuition Only) (Coming Soon)
 
