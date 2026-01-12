@@ -11,8 +11,11 @@ author: Ravi Joshi
 show_sidebar: true
 ---
 
-## Types of Machine Learning
 ← [Previous: Chapter 1.2 - How Machines Learn](/codifyme/series/journey-automation-to-ai/chapter-1-2-how-machines-learn/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 2.1 - Data Quality and Preparation](/codifyme/series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation/) →
+
+---
+
+## Picking the Right Tool for Your Data
 
 ---
 

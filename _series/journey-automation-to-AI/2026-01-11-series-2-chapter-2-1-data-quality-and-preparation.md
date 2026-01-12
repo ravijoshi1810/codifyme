@@ -1,21 +1,45 @@
 ---
 layout: post
-title: "Chapter 2.1 – Data: The New Configuration File"
+
+# Series & Navigation
 series: "From Automation to AI – A Practitioner's Journey"
+series_id: journey-automation-to-ai
+series_order: 2.1
 chapter: "Series 2, Chapter 2.1"
-date: 2026-01-12
-published: false
-categories: [AI, Machine-Learning, Automation, Architecture]
-tags: [ai, machine-learning, data-quality, feature-engineering, automation]
-description: "Understanding data quality, preparation, and splits from an automation engineer's perspective. Data is the new configuration file."
+
+# Page Identity
+title: "Chapter 2.1 – Data: The New Configuration File"
 permalink: /series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation
+
+# Metadata
+description: "Understanding data quality, preparation, and splits from an automation engineer's perspective. Data is the new configuration file."
 author: Ravi Joshi
+date: 2026-01-11
+published: true
+
+# Classification
+categories:
+  - AI
+  - Machine-Learning
+  - Automation
+  - Architecture
+
+tags:
+  - ai
+  - machine-learning
+  - data-quality
+  - feature-engineering
+  - automation
+
+# Layout Controls
 show_sidebar: true
 ---
 
-## Chapter 2.1 – Data: The New Configuration File
-
 ← [Previous: Chapter 1.3 - Types of Machine Learning](/codifyme/series/journey-automation-to-ai/chapter-1-3-types-of-machine-learning/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 2.2 - Features, Labels, and Models](/codifyme/series/journey-automation-to-ai/chapter-2-2-features-labels-and-models/) →
+
+---
+
+## When Bad Data Breaks Everything
 
 ---
 

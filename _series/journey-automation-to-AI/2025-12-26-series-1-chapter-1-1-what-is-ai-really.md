@@ -10,8 +10,12 @@ permalink: /series/journey-automation-to-ai/chapter-1-1-what-is-ai-really/
 author: Ravi Joshi
 show_sidebar: true
 ---
-## What Is AI (Really?)
+
 ← [Previous: Chapter 0.2 - Background and Learning Strategy](/codifyme/series/journey-automation-to-ai/chapter-0-2-background-and-learning-strategy/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 1.2 - How Machines Learn](/codifyme/series/journey-automation-to-ai/chapter-1-2-how-machines-learn/) →
+
+---
+
+## Cutting Through the AI Hype
 
 ---
 

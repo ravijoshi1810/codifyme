@@ -11,9 +11,11 @@ author: Ravi Joshi
 show_sidebar: true
 ---
 
-## How Machines Learn
-
 ← [Previous: Chapter 1.1 - What Is AI, Really?](/codifyme/series/journey-automation-to-ai/chapter-1-1-what-is-ai-really/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 1.3 - Types of Machine Learning](/codifyme/series/journey-automation-to-ai/chapter-1-3-types-of-machine-learning/) →
+
+---
+
+## The Core Mental Shift: Rules vs Patterns
 
 ---
 

@@ -1,13 +1,36 @@
 ---
 layout: post
-title: "Chapter 2.3 – Model Training vs Execution"
+
+# Series & Navigation
 series: "From Automation to AI – A Practitioner's Journey"
+series_id: journey-automation-to-ai
+series_order: 2.3
+chapter: "Series 2, Chapter 2.3"
+
+# Page Identity
+title: "Chapter 2.3 – Model Training vs Execution"
 permalink: /series/journey-automation-to-ai/chapter-2-3-training-vs-inference
-categories: [AI, Machine Learning, Automation]
-tags: [ai, machine-learning, automation, devops, mlops]
-date: 2026-01-12
-published: false
-author: "Ravi Joshi"
+
+# Metadata
+description: "Understanding the difference between training and inference, mapped to build time vs runtime concepts from automation."
+author: Ravi Joshi
+date: 2026-01-11
+published: true
+
+# Classification
+categories:
+  - AI
+  - Machine-Learning
+  - Automation
+
+tags:
+  - ai
+  - machine-learning
+  - automation
+  - devops
+  - mlops
+
+# Layout Controls
 show_sidebar: true
 ---
 
@@ -15,7 +38,9 @@ show_sidebar: true
 
 ---
 
-## 1. The Two Distinct Phases (and Why I Confused Them)
+## Build Time vs Runtime: The ML Edition
+
+### 1. The Two Distinct Phases (and Why I Confused Them)
 
 In automation, I'm used to thinking about "build time" vs "runtime":
 

@@ -1,22 +1,44 @@
 ---
 layout: post
-title: "Chapter 3.0 – The ML Project Workflow"
+
+# Series & Navigation
 series: "From Automation to AI – A Practitioner's Journey"
+series_id: journey-automation-to-ai
+series_order: 3.0
+chapter: "Series 3, Chapter 3.0"
+
+# Page Identity
+title: "Chapter 3.0 – The ML Project Workflow"
 permalink: /series/journey-automation-to-ai/chapter-3-0-ml-project-workflow/
-categories: [AI, Machine Learning, Automation]
-published: false
-date: 2026-01-16
-tags: [ai, machine-learning, automation, devops, mlops]
+
+# Metadata
+description: "The complete end-to-end ML workflow mapped to automation concepts. From problem definition to production deployment."
 author: Ravi Joshi
+date: 2026-01-16
+published: false
+
+# Classification
+categories:
+  - AI
+  - Machine-Learning
+  - Automation
+
+tags:
+  - ai
+  - machine-learning
+  - automation
+  - devops
+  - mlops
+
+# Layout Controls
 show_sidebar: true
+---
+
+← [Previous: Chapter 2.3 – Model Training vs Execution](/codifyme/series/journey-automation-to-ai/chapter-2-3-training-vs-inference) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 3.1 – Common ML Algorithms](/series/journey-automation-to-ai/chapter-3-1-common-ml-algorithms) →
 
 ---
 
-← [Previous: Chapter 2.3 – Model Training vs Execution](/codifyme/series/journey-automation-to-ai/chapter-2-3-training-vs-inference) | [Series Index](/codifyme/series/journey-automation-to-ai/) | Next: Chapter 3.1 – Common ML Algorithms (Coming Soon) →
-
----
-
-## Putting It All Together
+## Putting It All Together: From Scattered Concepts to Complete Workflow
 
 After spending weeks learning AI fundamentals, I kept asking: **"Okay, but how do I actually BUILD something?"**
 

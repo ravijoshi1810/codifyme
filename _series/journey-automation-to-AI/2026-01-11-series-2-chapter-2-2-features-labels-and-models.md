@@ -1,21 +1,46 @@
 ---
 layout: post
-title: "Chapter 2.2 – Features, Labels, and Models"
+
+# Series & Navigation
 series: "From Automation to AI – A Practitioner's Journey"
+series_id: journey-automation-to-ai
+series_order: 2.2
 chapter: "Series 2, Chapter 2.2"
-date: 2026-01-12
-published: false
-categories: [AI, Machine-Learning, Automation, Architecture]
-tags: [ai, machine-learning, features, labels, models, automation]
-description: "Understanding features, labels, and models through the lens of automation. Mapping ML concepts to familiar inputs, logic, and outputs."
+
+# Page Identity
+title: "Chapter 2.2 – Features, Labels, and Models"
 permalink: /series/journey-automation-to-ai/chapter-2-2-features-labels-and-models
+
+# Metadata
+description: "Understanding features, labels, and models through the lens of automation. Mapping ML concepts to familiar inputs, logic, and outputs."
 author: Ravi Joshi
+date: 2026-01-11
+published: true
+
+# Classification
+categories:
+  - AI
+  - Machine-Learning
+  - Automation
+  - Architecture
+
+tags:
+  - ai
+  - machine-learning
+  - features
+  - labels
+  - models
+  - automation
+
+# Layout Controls
 show_sidebar: true
 ---
 
-## Chapter 2.2 – Features, Labels, and Models
-
 ← [Previous: Chapter 2.1 - Data Quality and Preparation](/codifyme/series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 2.3 - Model Training vs Execution](/codifyme/series/journey-automation-to-ai/chapter-2-3-training-vs-inference) →
+
+---
+
+## Decoding the ML Language: Inputs, Logic, and Outputs
 
 ---
 
