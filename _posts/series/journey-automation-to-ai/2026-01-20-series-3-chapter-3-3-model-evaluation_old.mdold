@@ -1,0 +1,431 @@
+---
+layout: post
+title: "Model Evaluation Metrics"
+date: 2026-01-20 00:00:00 +0530
+author: Ravi Joshi
+categories: [journey-automation-to-AI]
+tags: [metrics, model-evaluation, precision, recall]
+description: "Going beyond accuracy - understanding precision, recall, and other ML metrics."
+show_sidebar: true
+---
+---
+
+← [Previous: Chapter 3.2 - Overfitting & Underfitting](/series/journey-automation-to-ai/chapter-3-2-overfitting-underfitting/) | [Series Index](/series/journey-automation-to-ai/) | [Next: Chapter 3.4 - Feature Engineering](/series/journey-automation-to-ai/chapter-3-4-feature-engineering/) →
+
+---
+
+## Why "Accuracy" Isn't Enough
+
+You build a deployment risk model with **95% accuracy**.
+
+Sounds great, right?
+
+But then you deploy it and discover:
+- It approves all high-risk deployments
+- It blocks all low-risk deployments
+- Production incidents triple
+
+**What went wrong?**
+
+Accuracy alone doesn't tell the full story. This chapter shows you the metrics that matter.
+
+---
+
+## 1. The Problem with Accuracy
+
+### Example: Security Alert System
+
+You build a model to detect security incidents.
+
+**Your dataset:**
+- 990 normal events
+- 10 security incidents
+
+**Your "smart" model:**
+```python
+def predict(event):
+    return "Normal"  # Always predict normal
+```
+
+**Result:**
+```text
+Correct predictions: 990 (all normal events)
+Total predictions: 1,000
+Accuracy: 99%
+```
+
+**But this model is useless!** It never detects any security incidents.
+
+### The Lesson
+
+When classes are **imbalanced**, accuracy is misleading.
+
+---
+
+## 2. The Four Outcomes (Confusion Matrix)
+
+Every prediction falls into one of four categories:
+
+| | **Predicted: Low Risk** | **Predicted: High Risk** |
+|---|---|---|
+| **Actually: Low Risk** | ✅ **True Negative (TN)**<br>Correctly predicted safe | ❌ **False Positive (FP)**<br>"False alarm" |
+| **Actually: High Risk** | ❌ **False Negative (FN)**<br>"Missed threat" | ✅ **True Positive (TP)**<br>Correctly caught threat |
+
+### Deployment Risk Example
+
+```text
+100 deployments evaluated:
+
+True Negatives (TN) = 70   (Correctly identified as safe)
+True Positives (TP) = 20   (Correctly identified as risky)
+False Positives (FP) = 5   (Safe but flagged as risky)
+False Negatives (FN) = 5   (Risky but marked as safe)
+```
+
+---
+
+## 3. Key Metrics Explained
+
+### Accuracy
+
+**Formula:** `(TP + TN) / Total`
+
+**What it means:** Overall correctness.
+
+```text
+Accuracy = (20 + 70) / 100 = 90%
+```
+
+**When to use:** Balanced datasets only.
+
+**When NOT to use:** Imbalanced classes (fraud detection, rare events).
+
+---
+
+### Precision
+
+**Formula:** `TP / (TP + FP)`
+
+**What it means:** Of all items flagged as positive, how many were actually positive?
+
+**Question it answers:** "When the model says HIGH RISK, how often is it right?"
+
+```text
+Precision = 20 / (20 + 5) = 80%
+```
+
+**Interpretation:** 80% of flagged deployments are actually risky.
+
+**Automation Analogy:**
+Like a CI/CD pipeline that blocks builds:
+- High precision = Few false alarms
+- Low precision = Blocking good builds constantly
+
+**Use when:** False positives are costly.
+
+**Example:** Email spam filter
+- High precision = Few legitimate emails marked as spam
+- Low precision = Your important emails land in spam
+
+---
+
+### Recall (Sensitivity)
+
+**Formula:** `TP / (TP + FN)`
+
+**What it means:** Of all actual positive cases, how many did we catch?
+
+**Question it answers:** "Of all HIGH RISK deployments, how many did we detect?"
+
+```text
+Recall = 20 / (20 + 5) = 80%
+```
+
+**Interpretation:** We caught 80% of risky deployments.
+
+**Automation Analogy:**
+Like a security scanner:
+- High recall = Catches most vulnerabilities
+- Low recall = Misses critical issues
+
+**Use when:** False negatives are costly.
+
+**Example:** Cancer screening
+- High recall = Catch most cancer cases
+- Low recall = Miss people who have cancer
+
+---
+
+### F1 Score
+
+**Formula:** `2 × (Precision × Recall) / (Precision + Recall)`
+
+**What it means:** Harmonic mean of precision and recall.
+
+```text
+F1 = 2 × (0.80 × 0.80) / (0.80 + 0.80) = 0.80 (or 80%)
+```
+
+**Use when:** You need balance between precision and recall.
+
+---
+
+## 4. The Precision-Recall Tradeoff
+
+You can't maximize both at the same time.
+
+### Example: Deployment Approval Threshold
+
+Your model outputs a risk score (0-1).
+
+**Scenario 1: Strict (High Precision)**
+```text
+Threshold: Only flag if risk > 0.9
+
+Result:
+- Few false alarms (high precision)
+- But miss some risky deployments (low recall)
+```
+
+**Scenario 2: Lenient (High Recall)**
+```text
+Threshold: Flag if risk > 0.3
+
+Result:
+- Catch almost all risky deployments (high recall)
+- But many false alarms (low precision)
+```
+
+**DevOps Analogy:**
+
+Like setting security alert thresholds:
+- Strict → Miss real threats
+- Lenient → Alert fatigue
+
+---
+
+## 5. Which Metric Should You Optimize?
+
+### Use Case: Security Incident Detection
+
+**Priority:** Don't miss threats (even if false alarms)
+
+**Metric:** **Recall**
+
+```text
+Better to investigate 10 false alarms than miss 1 real incident
+```
+
+### Use Case: Spam Filter
+
+**Priority:** Don't block important emails
+
+**Metric:** **Precision**
+
+```text
+Better to let some spam through than block legitimate emails
+```
+
+### Use Case: Medical Diagnosis
+
+**Priority:** Don't miss sick patients
+
+**Metric:** **Recall**
+
+```text
+Better 10 false positives than 1 missed diagnosis
+```
+
+### Use Case: Deployment Automation
+
+**Priority:** Balance (catch risks without blocking too much)
+
+**Metric:** **F1 Score**
+
+```text
+Need to catch risky deployments without creating alert fatigue
+```
+
+---
+
+## 6. Beyond Binary Classification
+
+### Mean Absolute Error (MAE) - Regression
+
+**Use when:** Predicting continuous values (e.g., deployment duration)
+
+```text
+Actual durations: [10, 15, 20] minutes
+Predicted: [12, 14, 22] minutes
+
+MAE = (|10-12| + |15-14| + |20-22|) / 3 = 1.67 minutes
+```
+
+**Lower is better.**
+
+### Root Mean Squared Error (RMSE) - Regression
+
+**Use when:** Big errors are worse than small errors
+
+```text
+Penalizes large errors more heavily than MAE
+```
+
+**DevOps Example:**
+Predicting deployment time:
+- 2 minutes off = Not critical
+- 30 minutes off = Major planning issue
+
+RMSE punishes the 30-minute error more.
+
+---
+
+## 7. Real-World Example: Deployment Risk Model
+
+### Business Context
+
+```text
+Risky deployments that slip through → Production incidents → $$$
+False alarms → Developer frustration → Ignored alerts
+```
+
+### Metric Selection
+
+**Primary Metric:** **Recall** (catch risky deployments)
+
+**Secondary Metric:** **Precision** (avoid alert fatigue)
+
+**Target:**
+```text
+Recall ≥ 85% (catch most risky deployments)
+Precision ≥ 70% (acceptable false alarm rate)
+```
+
+### Results
+
+```text
+Model A:
+- Recall: 95%
+- Precision: 60%
+- Result: Too many false alarms → Alert fatigue
+
+Model B:
+- Recall: 75%
+- Precision: 85%
+- Result: Misses too many risks
+
+Model C:
+- Recall: 87%
+- Precision: 74%
+- Result: ✅ Acceptable balance
+```
+
+**Deployed: Model C**
+
+---
+
+## 8. Practical Evaluation Workflow
+
+```text
+Step 1: Understand the business problem
+        ↓
+Step 2: Identify cost of false positives vs false negatives
+        ↓
+Step 3: Choose primary metric
+        ↓
+Step 4: Set acceptable thresholds
+        ↓
+Step 5: Evaluate model
+        ↓
+Step 6: Tune threshold if needed
+        ↓
+Step 7: Monitor in production
+```
+
+---
+
+## 9. Common Pitfalls
+
+### Pitfall 1: Optimizing Accuracy on Imbalanced Data
+
+```text
+❌ 99.9% accuracy (but misses all fraud)
+✅ 95% recall on fraud cases
+```
+
+### Pitfall 2: Ignoring Business Context
+
+```text
+❌ "F1 score is 0.80, ship it!"
+✅ "Recall is 60%, but we need 85% to prevent incidents"
+```
+
+### Pitfall 3: Not Setting Thresholds
+
+```text
+❌ Use default 0.5 threshold for everything
+✅ Tune threshold based on precision/recall requirements
+```
+
+### Pitfall 4: Evaluating on Training Data
+
+```text
+❌ 99% accuracy (on training data)
+✅ 85% accuracy (on test data)
+```
+
+---
+
+## 10. Monitoring in Production
+
+Metrics don't stop at deployment.
+
+### Track Over Time
+
+```text
+Week 1: Precision = 80%, Recall = 85%
+Week 2: Precision = 79%, Recall = 84%
+Week 5: Precision = 65%, Recall = 70% ← Model degrading
+```
+
+**Why?** Data drift, changing patterns, new edge cases.
+
+**Solution:** Retrain with recent data.
+
+---
+
+## 11. Quick Reference
+
+| Metric | Use When | Formula |
+|--------|----------|---------|
+| **Accuracy** | Balanced classes | `(TP + TN) / Total` |
+| **Precision** | False positives are costly | `TP / (TP + FP)` |
+| **Recall** | False negatives are costly | `TP / (TP + FN)` |
+| **F1 Score** | Need balance | `2 × (P × R) / (P + R)` |
+| **MAE** | Regression, all errors equal | `Avg(|actual - predicted|)` |
+| **RMSE** | Regression, big errors worse | `√(Avg((actual - predicted)²))` |
+
+---
+
+## 12. Key Takeaways
+
+- Accuracy alone is often misleading
+- Precision = "How often am I right when I flag something?"
+- Recall = "How many actual cases did I catch?"
+- F1 = Balance between precision and recall
+- Choose metrics based on **business impact**, not arbitrary goals
+- Monitor metrics in production, not just during training
+- There's always a tradeoff—optimize for what matters most
+
+---
+
+## What's Next?
+
+**→ Series 3 – Chapter 3.4: Feature Engineering**
+
+How to create better input features to improve model performance.
+
+---
+
+**Previous:** [Chapter 3.2 – Overfitting & Underfitting](/series/journey-automation-to-ai/chapter-3-2-overfitting-underfitting/) | **Next:** [Chapter 3.4 – Feature Engineering](/series/journey-automation-to-ai/chapter-3-4-feature-engineering/) | [Series Index](/series/journey-automation-to-ai/)
+

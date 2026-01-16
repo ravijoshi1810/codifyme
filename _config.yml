@@ -1,0 +1,172 @@
+# =====================================================
+# Basic Site Settings
+# =====================================================
+
+theme: jekyll-theme-chirpy
+lang: en
+timezone: Asia/Kolkata
+
+#remote_theme: cotes2020/jekyll-theme-chirpy
+
+# plugins:
+#   - jekyll-remote-theme
+
+#title: 'Ravi Joshi | CodifyMe' 
+title: 'Ravi Joshi'
+# Alternative title for SEO purposes
+seo_title: 'Ravi Joshi | CodifyMe - Cloud Automation Enthusiast'
+tagline: Learn the way, find your own way!!!
+description: A blog about AI, Cloud Computing, DevOps, Automation, SRE and Programming.
+
+# =====================================================
+# URL Settings (LOCAL DEVELOPMENT)
+# =====================================================
+
+
+# url: "http://localhost:4000"
+# baseurl: ""   # IMPORTANT: keep empty for local dev
+# (Later for GitHub Pages)
+url: "https://ravijoshi1810.github.io"
+baseurl: "/codifyme"
+
+# =====================================================
+# Branding
+# =====================================================
+
+
+# Site logo for Chirpy
+#logo: assets/img/codifyme-logo1.png
+avatar: /assets/img/favicons/favicon.svg
+favicon: /assets/img/favicons/favicon.svg
+# Used for SEO preview
+social_preview_image: /assets/img/favicons/favicon.svg
+
+# =====================================================
+# Theme Behavior
+# =====================================================
+
+toc: true
+theme_mode:  # light | dark | empty = system default
+paginate: 10
+
+# =====================================================
+
+# Comments (Disqus enabled)
+# =====================================================
+comments:
+  provider: disqus
+  disqus:
+    shortname: codifyme
+
+# =====================================================
+# Analytics (Optional)
+# =====================================================
+
+analytics:
+  google:
+    id:
+
+# =====================================================
+# Collections (Tabs like About, Contact)
+# =====================================================
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+# =====================================================
+# Defaults (CRITICAL FOR POSTS)
+# =====================================================
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+# =====================================================
+# Markdown & Syntax Highlighting
+# =====================================================
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# =====================================================
+# Assets
+# =====================================================
+
+cdn:
+
+assets:
+  self_host:
+    enabled: false
+
+# =====================================================
+# PWA
+# =====================================================
+
+pwa:
+  enabled: true
+  cache:
+    enabled: true
+
+# =====================================================
+
+# Archives (Categories & Tags)
+# =====================================================
+#
+# jekyll-archives:
+#   enabled: [categories, tags]
+#   layouts:
+#     category: category
+#     tag: tag
+#   permalinks:
+#     category: /categories/:name/
+#     tag: /tags/:name/
+
+# =====================================================
+# Build Optimizations
+# =====================================================
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+
+exclude:
+  - README.md
+  - LICENSE
+  - docs
+  - tools
+  - "*.config.js"
+  - "package*.json"
+
+# =====================================================
+include:
+  - series/**/images
+  - assets/img
+
+# Google Search Console verification
+google_site_verification: QjpYArnVm19JwasXg2TK74OyWE6Xsp54jhd_x9-CF48

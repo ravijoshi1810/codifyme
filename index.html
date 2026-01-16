@@ -1,0 +1,213 @@
+---
+layout: page
+---
+<!-- layout: home -->
+<!-- Hero Section (Chirpy style, fixed image) -->
+
+<section class="hero bg-light py-5 mb-4">
+	<div class="container">
+		<div class="row align-items-center justify-content-center">
+			<div class="col-lg-6 col-md-7 col-12 mb-4 mb-md-0">
+				<h1 class="display-4 font-weight-bold mb-3">Welcome to CodifyMe</h1>
+				<p class="lead mb-4">
+					Learn Infrastructure as Code, DevOps, and Cloud Automation through real-world, actionable tutorials. Built by engineer—for engineers.
+				</p>
+				<a href="#subscribe" class="btn btn-primary btn-lg">📩 Subscribe for Updates</a>
+			</div>
+			<div class="col-lg-6 col-md-5 col-12 text-center d-flex flex-column align-items-center justify-content-center">
+				<img src="{{ '/assets/images/avtar-rj2.png' | relative_url }}" alt="CodifyMe Logo" class="hero-img-responsive hero-img-large">
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- What You’ll Learn Section -->
+<section class="section">
+	<div class="container">
+		<h2 class="title is-3">🚀 What You’ll Learn</h2>
+		<div class="columns">
+			<div class="column is-8">
+				<ul>
+					<li>✅ Build and manage infrastructure using <strong>Terraform</strong>, <strong>Ansible</strong>.</li>
+					<li>✅ Work confidently across <strong>AWS</strong>, <strong>Azure</strong>, and <strong>GCP</strong>.</li>
+					<li>✅ Automate end-to-end delivery with <strong>CI/CD pipelines</strong>.</li>
+					<li>✅ Solve practical challenges in cloud infrastructure and automation.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Latest Articles (standalone blog posts only) -->
+<section class="section has-background-light py-5">
+	<div class="container">
+		<h2 class="title is-3 mb-4">📝 Latest Articles</h2>
+		<div class="row">
+			{% assign blog_posts = site.posts | where_exp: "post", "post.series == nil" %}
+			{% for post in blog_posts limit:3 %}
+				<div class="col-md-4 mb-4">
+					<div class="card h-100 shadow-sm">
+						<div class="card-body">
+							<h3 class="h5 card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+							<p class="card-text small text-muted">{{ post.date | date: '%b %d, %Y' }}</p>
+							<p class="card-text">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+							<a href="{{ post.url | relative_url }}" class="btn btn-outline-primary btn-sm mt-2">Read More</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="text-center mt-4">
+			<a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">View All Articles</a>
+		</div>
+	</div>
+</section>
+
+<!-- Featured Series Section -->
+<section class="section py-5 has-background-light">
+	<div class="container">
+		<h2 class="title is-3 mb-4">🔥 Latest Series</h2>
+		<div class="row">
+			{%- assign all_series = site.posts | map: 'series' | uniq | compact -%}
+			{%- for series_name in all_series -%}
+				{%- assign series_posts = site.posts | where: 'series', series_name | sort: 'series_order' -%}
+				{%- if series_posts and series_posts.size > 0 -%}
+					{%- assign index_page = site.pages | where: "title", series_name | first -%}
+					{%- if index_page -%}
+						{%- assign series_url = index_page.url | relative_url -%}
+					{%- else -%}
+						{%- assign series_url = '/series/' | append: series_name | slugify | append: '/' | relative_url -%}
+					{%- endif -%}
+					<div class="col-md-3 mb-4">
+						<div class="card h-100 shadow-sm">
+							<div class="card-body">
+								<h3 class="h5 card-title"><a href="{{ series_url }}">{{ series_name }}</a></h3>
+								<p class="card-text">
+									{%- if series_posts[0].description -%}
+										{{ series_posts[0].description | truncate: 100 }}
+									{%- else -%}
+										No description available.
+									{%- endif -%}
+								</p>
+								<a href="{{ series_url }}" class="btn btn-outline-primary btn-sm mt-2">Explore Series</a>
+							</div>
+						</div>
+					</div>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+		<div class="text-center mt-4">
+			<a href="{{ '/series/' | relative_url }}" class="btn btn-secondary">View All Series</a>
+		</div>
+	</div>
+</section>
+<!-- Categories Section -->
+<section class="section py-5">
+	<div class="container">
+		<h2 class="title is-3 mb-4">📚 Categories</h2>
+		<div class="row">
+			{%- assign all_categories = site.categories | sort -%}
+			{%- for category in all_categories -%}
+				{%- assign category_name = category[0] -%}
+				{%- assign category_posts = category[1] -%}
+				{%- if category_posts and category_posts.size > 0 -%}
+					<div class="col-md-3 mb-4">
+						<div class="card h-100 shadow-sm">
+							<div class="card-body">
+								<h3 class="h5 card-title"><a href="{{ '/categories/' | append: category_name | append: '/' | relative_url }}">{{ category_name | replace: '-', ' ' | capitalize }}</a></h3>
+								<p class="card-text">{{ category_posts.size }} post{% if category_posts.size > 1 %}s{% endif %} in this category.</p>
+								<a href="{{ '/categories/' | append: category_name | append: '/' | relative_url }}" class="btn btn-outline-primary btn-sm mt-2">Explore Category</a>
+							</div>
+						</div>
+					</div>
+				{%- endif -%}
+			{%- endfor -%}
+		</div>
+		<div class="text-center mt-4">
+			<a href="{{ '/categories/' | relative_url }}" class="btn btn-secondary">View All Categories</a>
+		</div>
+	</div>
+</section>
+
+<!-- Why CodifyMe -->
+<section class="section">
+	<div class="container">
+		<h2 class="title is-3">💡 Why CodifyMe?</h2>
+		<p>
+			CodifyMe is designed for developers, sysadmins, and cloud architects who want to upskill fast. We focus on simplicity, clarity, and practical application—so you can stop googling and start shipping.
+		</p>
+	</div>
+</section>
+
+<!-- About Me -->
+<section class="section">
+	<div class="container">
+		<h2 class="title is-3">👋 About Me</h2>
+		<p>
+			I'm a DevOps engineer and cloud architect passionate about simplifying complex infrastructure topics. My mission is to help developers, sysadmins, and cloud architects master Infrastructure as Code (IaC), DevOps practices, and cloud automation.
+		</p>
+		<p>
+			Through CodifyMe, I aim to provide actionable tutorials, real-world examples, and practical insights to bridge the gap between theory and implementation. Whether you're just starting or looking to refine your skills, you're in the right place.
+		</p>
+		<p>
+			<a href="{{ site.baseurl }}/about" class="button is-link is-light mt-3">Learn More About Me</a>
+		</p>
+	</div>
+</section>
+
+<!-- Final CTA (Chirpy style) -->
+<section class="section has-background-light py-5" id="subscribe">
+	<div class="container text-center">
+		<p class="mb-3">📩 Like what you see? Subscribe to get fresh content straight to your inbox.</p>
+		<form action="https://your-email-service-provider-url" method="POST" class="subscribe-form mx-auto" style="max-width: 500px;">
+			<div class="input-group mb-3">
+				<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email address" required />
+				<button class="btn btn-primary btn-lg" type="submit">Subscribe</button>
+			</div>
+		</form>
+		<p class="is-size-6 mt-3">Happy automating! 🚀</p>
+	</div>
+</section>
+
+<!-- Subscribe Modal -->
+<div id="subscribeModal" class="modal">
+	<div class="modal-background" onclick="closeSubscribeModal()"></div>
+	<div class="modal-card">
+		<header class="modal-card-head">
+			<p class="modal-card-title">📩 Subscribe to CodifyMe</p>
+			<button class="delete" aria-label="close" onclick="closeSubscribeModal()"></button>
+		</header>
+		<section class="modal-card-body">
+			<form action="https://your-email-service-provider-url" method="POST" class="subscribe-form">
+				<div class="field">
+					<label class="label">Email Address</label>
+					<div class="control">
+						<input
+							class="input"
+							type="email"
+							name="email"
+							placeholder="Enter your email address"
+							required
+						/>
+					</div>
+				</div>
+				<div class="field">
+					<div class="control">
+						<button class="button is-primary" type="submit">Subscribe</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</div>
+</div>
+<script>
+	// Function to open the Subscribe Modal
+	function openSubscribeModal() {
+		document.getElementById('subscribeModal').classList.add('is-active');
+	}
+
+	// Function to close the Subscribe Modal
+	function closeSubscribeModal() {
+		document.getElementById('subscribeModal').classList.remove('is-active');
+	}
+</script>

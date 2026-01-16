@@ -1,0 +1,38 @@
+<footer class="footer">
+  <div class="container text-center py-3">
+    <p>
+      <style>
+        .custom-tooltip {
+          position: relative;
+          cursor: pointer;
+        }
+        .custom-tooltip .tooltip-box {
+          visibility: hidden;
+          opacity: 0;
+          width: 320px;
+          background: #f8f9fa;
+          color: #333;
+          text-align: left;
+          border-radius: 6px;
+          border: 1px solid #bfc8d1;
+          padding: 10px 14px;
+          position: absolute;
+          z-index: 100;
+          bottom: 125%;
+          left: 50%;
+          transform: translateX(-50%);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          font-size: 0.95em;
+          transition: opacity 0.2s;
+        }
+        .custom-tooltip:hover .tooltip-box {
+          visibility: visible;
+          opacity: 1;
+        }
+      </style>
+      © 2026 Ravi Joshi. <span class="custom-tooltip">Some rights reserved.
+        <span class="tooltip-box">Except where otherwise noted, the blog posts on this site are licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) License.</span>
+      </span>
+    </p>
+  </div>
+</footer>

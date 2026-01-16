@@ -1,0 +1,16 @@
+- type: github-alt
+  icon: "fab fa-github"
+  url: https://github.com/ravijoshi1810
+
+
+- type: x
+  icon: "fab fa-twitter"
+  url: https://twitter.com/ravijoshi1810
+
+- type: linkedin
+  icon: "fab fa-linkedin"
+  url: https://www.linkedin.com/in/ravijoshi1810
+
+- type: envelope
+  icon: "fas fa-envelope"
+  url: mailto:ravijoshi1810@gmail.com
