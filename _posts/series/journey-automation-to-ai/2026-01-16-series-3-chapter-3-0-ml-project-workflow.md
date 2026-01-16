@@ -1,7 +1,7 @@
 ---
 title: "Chapter 3.0 – The ML Project Workflow"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2026-01-16
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 3.0
@@ -10,6 +10,7 @@ tags: [ai, machine-learning, automation, devops]
 description: "The complete end-to-end ML workflow mapped to automation concepts. From problem definition to production deployment."
 permalink: /series/journey-automation-to-ai/chapter-3-0-ml-project-workflow/
 published: false
+mermaid: true
 ---
 ---
 
@@ -131,11 +132,11 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 
 **Why this connects:** Remember [Chapter 1.1](chapter-1-1-what-is-ai-really) where we learned ML = pattern recognition in data? And [Chapter 1.3](chapter-1-3-types-of-machine-learning) where we saw supervised vs unsupervised learning? **This is where you decide which approach fits your problem.**
 
-| Step | What | Why |
-|------|------|-----|
-| **1. Frame the problem** | Define what you're predicting and why ML helps | Is this supervised (predicting labels) or unsupervised (finding patterns)? See [1.3](chapter-1-3-types-of-machine-learning) |
-| **2. Select metrics** | Decide how to measure success (accuracy, precision, recall) | Like defining SLAs for your platform (Will cover in Chapter 3.3) |
-| **3. Check assumptions** | Verify you have data, features are available, problem is solvable | Do you have enough training examples? See [1.2](chapter-1-2-how-machines-learn) on learning from data |
+| Step                     | What                                                              | Why                                                                                                                         |
+| ------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **1. Frame the problem** | Define what you're predicting and why ML helps                    | Is this supervised (predicting labels) or unsupervised (finding patterns)? See [1.3](chapter-1-3-types-of-machine-learning) |
+| **2. Select metrics**    | Decide how to measure success (accuracy, precision, recall)       | Like defining SLAs for your platform (Will cover in Chapter 3.3)                                                            |
+| **3. Check assumptions** | Verify you have data, features are available, problem is solvable | Do you have enough training examples? See [1.2](chapter-1-2-how-machines-learn) on learning from data                       |
 
 **Example:** *Deployment Risk Prediction*
 - Predict: High/Medium/Low risk before deployment
@@ -148,12 +149,12 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 
 **Why this connects:** [Chapter 2.1](chapter-2-1-data-quality-and-preparation) taught us **garbage in = garbage out**. Data quality matters MORE than fancy algorithms. **Here's where you apply that.**
 
-| Step | What | Why |
-|------|------|-----|
-| **4. Create workspace** | Set up project structure (data/, models/, notebooks/) | Like organizing Terraform modules and environments |
-| **5. Download data** | Pull from databases, APIs, logs | Like exporting current state |
-| **6. Quick look** | Check size, types, missing values, balance | Apply [2.1](chapter-2-1-data-quality-and-preparation): completeness, accuracy, consistency |
-| **7. Create test set** | Set aside 20% for final evaluation, LOCK IT AWAY | Simulates future data—see [2.3](chapter-2-3-training-vs-inference) on validation vs test sets |
+| Step                    | What                                                  | Why                                                                                           |
+| ----------------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **4. Create workspace** | Set up project structure (data/, models/, notebooks/) | Like organizing Terraform modules and environments                                            |
+| **5. Download data**    | Pull from databases, APIs, logs                       | Like exporting current state                                                                  |
+| **6. Quick look**       | Check size, types, missing values, balance            | Apply [2.1](chapter-2-1-data-quality-and-preparation): completeness, accuracy, consistency    |
+| **7. Create test set**  | Set aside 20% for final evaluation, LOCK IT AWAY      | Simulates future data—see [2.3](chapter-2-3-training-vs-inference) on validation vs test sets |
 
 **Critical:** Never touch the test set until the very end. It simulates future production data.
 
@@ -163,10 +164,10 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 
 **Why this connects:** [Chapter 2.2](chapter-2-2-features-labels-and-models) explained **features = the inputs ML uses to learn**. Good features → better predictions. **This phase finds those good features.**
 
-| Step | What | Why |
-|------|------|-----|
-| **8. Visualize** | Histograms, scatter plots, time series | Spot patterns and outliers |
-| **9. Correlations** | Which features relate to the outcome? | Find predictive signals—remember [2.2](chapter-2-2-features-labels-and-models) on feature importance |
+| Step                         | What                                           | Why                                                                                                       |
+| ---------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **8. Visualize**             | Histograms, scatter plots, time series         | Spot patterns and outliers                                                                                |
+| **9. Correlations**          | Which features relate to the outcome?          | Find predictive signals—remember [2.2](chapter-2-2-features-labels-and-models) on feature importance      |
 | **10. Feature combinations** | Create new features by combining existing ones | Feature engineering from [2.2](chapter-2-2-features-labels-and-models): `risk_score = failures × changes` |
 
 **Findings shape preparation:** If `previous_failures` correlates 0.78 with risk, keep it. If `team` correlates 0.12, maybe drop it.
@@ -177,13 +178,13 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 
 **Foundation:** [Chapter 2.1 (Data Quality)](chapter-2-1-data-quality-and-preparation), [Chapter 2.2 (Features & Labels)](chapter-2-2-features-labels-and-models)
 
-| Step | What | Why |
-|------|------|-----|
-| **11. Clean data** | Handle missing values (fill, drop, or indicate) | ML algorithms need complete data ([Chapter 2.1](chapter-2-1-data-quality-and-preparation)) |
-| **12. Encode categories** | Convert text to numbers (one-hot, label encoding) | ML needs numeric inputs ([Chapter 2.2](chapter-2-2-features-labels-and-models)) |
-| **13. Custom transformers** | Build reusable transformation components | Ensure same logic in training and production ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
-| **14. Feature scaling** | Normalize ranges (0-1 or mean=0, std=1) | Prevent large values from dominating |
-| **15. Build pipeline** | Chain all transformations together | Reproducible and production-ready |
+| Step                        | What                                              | Why                                                                                             |
+| --------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **11. Clean data**          | Handle missing values (fill, drop, or indicate)   | ML algorithms need complete data ([Chapter 2.1](chapter-2-1-data-quality-and-preparation))      |
+| **12. Encode categories**   | Convert text to numbers (one-hot, label encoding) | ML needs numeric inputs ([Chapter 2.2](chapter-2-2-features-labels-and-models))                 |
+| **13. Custom transformers** | Build reusable transformation components          | Ensure same logic in training and production ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
+| **14. Feature scaling**     | Normalize ranges (0-1 or mean=0, std=1)           | Prevent large values from dominating                                                            |
+| **15. Build pipeline**      | Chain all transformations together                | Reproducible and production-ready                                                               |
 
 **Pipeline example:**
 ```python
@@ -202,12 +203,12 @@ pipeline = Pipeline([
 
 **Why this connects:** [Chapter 1.2](chapter-1-2-how-machines-learn) showed us **machines learn by adjusting parameters to minimize errors**. [Chapter 2.3](chapter-2-3-training-vs-inference) explained **training = build time**. **Now we actually train.**
 
-| Step | What | Why |
-|------|------|-----|
-| **16. Select algorithm** | Decision Tree, Random Forest, etc. | Different algorithms for different problems (Will cover in Chapter 3.1) |
-| **17. Train** | Fit model on training data | The "learning" from [1.2](chapter-1-2-how-machines-learn)—adjust weights to minimize error |
-| **18. Cross-validate** | Test on 5 different splits | The validation strategy from [2.3](chapter-2-3-training-vs-inference)—prevents overfitting |
-| **19. Fine-tune** | Grid/random search for best hyperparameters | Hyperparameter tuning from [2.3](chapter-2-3-training-vs-inference)—optimize learning |
+| Step                     | What                                        | Why                                                                                        |
+| ------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **16. Select algorithm** | Decision Tree, Random Forest, etc.          | Different algorithms for different problems (Will cover in Chapter 3.1)                    |
+| **17. Train**            | Fit model on training data                  | The "learning" from [1.2](chapter-1-2-how-machines-learn)—adjust weights to minimize error |
+| **18. Cross-validate**   | Test on 5 different splits                  | The validation strategy from [2.3](chapter-2-3-training-vs-inference)—prevents overfitting |
+| **19. Fine-tune**        | Grid/random search for best hyperparameters | Hyperparameter tuning from [2.3](chapter-2-3-training-vs-inference)—optimize learning      |
 
 **Quick start:** Begin with Decision Tree or Random Forest. They work well out-of-the-box.
 
@@ -217,9 +218,9 @@ pipeline = Pipeline([
 
 **Foundation:** [Chapter 2.3 (Training vs Inference)](chapter-2-3-training-vs-inference)
 
-| Step | What | Why |
-|------|------|-----|
-| **20. Analyze errors** | Where does the model fail? | Identify improvement opportunities (Will cover in Chapter 3.2) |
+| Step                        | What                                     | Why                                                                                          |
+| --------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **20. Analyze errors**      | Where does the model fail?               | Identify improvement opportunities (Will cover in Chapter 3.2)                               |
 | **21. Test set evaluation** | NOW test on locked-away test set (once!) | Honest estimate of production performance ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
 
 **Expected:** Test score should be within 2-3% of cross-validation score. If much worse, you overfit.
@@ -230,11 +231,11 @@ pipeline = Pipeline([
 
 **Foundation:** [Chapter 2.3 (Inference & Retraining)](chapter-2-3-training-vs-inference)
 
-| Step | What | Why |
-|------|------|-----|
-| **22. Launch** | Save model, version it, deploy to production | Make predictions available ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
-| **23. Monitor** | Track accuracy, latency, prediction distribution | Catch degradation early ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
-| **24. Maintain** | Retrain when accuracy drops or data drifts | Keep model relevant ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
+| Step             | What                                             | Why                                                                           |
+| ---------------- | ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| **22. Launch**   | Save model, version it, deploy to production     | Make predictions available ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
+| **23. Monitor**  | Track accuracy, latency, prediction distribution | Catch degradation early ([Chapter 2.3](chapter-2-3-training-vs-inference))    |
+| **24. Maintain** | Retrain when accuracy drops or data drifts       | Keep model relevant ([Chapter 2.3](chapter-2-3-training-vs-inference))        |
 
 **Monitoring triggers:**
 - Accuracy < 85%? Retrain.

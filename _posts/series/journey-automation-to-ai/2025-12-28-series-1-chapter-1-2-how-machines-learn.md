@@ -10,6 +10,7 @@ tags: [machine-learning, ai, automation, devops, solution-architecture]
 description: "How machines learn: the core mental shift for automation engineers."
 permalink: /series/journey-automation-to-ai/chapter-1-2-how-machines-learn/
 published: true
+mermaid: true
 ---
 ---
 ## The Core Mental Shift: Rules vs Patterns
@@ -383,12 +384,12 @@ Training Data → Model → Prediction → Decision
 ```
 Logic is learned from data. Output is probabilistic.
 
-| Terraform | Machine Learning |
-|-----------|------------------|
-| Variables | Features |
-| Desired state | Labels |
-| Plan | Model |
-| Apply | Prediction |
+| Terraform     | Machine Learning |
+| ------------- | ---------------- |
+| Variables     | Features         |
+| Desired state | Labels           |
+| Plan          | Model            |
+| Apply         | Prediction       |
 
 Same mental model, different execution.
 
@@ -406,13 +407,13 @@ Rules → Decision
 Past Data → Model → Prediction → Decision
 ```
 
-| Aspect | Automation | Machine Learning |
-|--------|------------|------------------|
-| Logic | Explicit rules | Learned patterns |
-| Adaptation | Manual | Data-driven |
-| Output | Yes / No | Probabilities |
-| Explainability | High | Varies |
-| Best for | Known cases | Complex patterns |
+| Aspect         | Automation     | Machine Learning |
+| -------------- | -------------- | ---------------- |
+| Logic          | Explicit rules | Learned patterns |
+| Adaptation     | Manual         | Data-driven      |
+| Output         | Yes / No       | Probabilities    |
+| Explainability | High           | Varies           |
+| Best for       | Known cases    | Complex patterns |
 
 ---
 

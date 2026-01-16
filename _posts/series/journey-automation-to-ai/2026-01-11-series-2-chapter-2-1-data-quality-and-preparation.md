@@ -1,7 +1,7 @@
 ---
 title: "Chapter 2.1 – Data: The New Configuration File"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2026-01-11
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 2.1
@@ -10,6 +10,7 @@ tags: [ai, machine-learning, data-quality]
 description: "Understanding data quality, preparation, and splits from an automation engineer's perspective. Data is the new configuration file."
 permalink: /series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation
 published: true
+mermaid: true
 ---
 ---
 ## When Bad Data Breaks Everything
@@ -113,12 +114,12 @@ These variables **define the inputs** to your automation logic.
 
 In ML, data serves the same purpose:
 
-| Automation Concept | ML Equivalent | Purpose |
-|-------------------|---------------|---------|
-| Configuration file | Training dataset | Defines what the system should learn |
-| Variable validation | Data quality checks | Ensures inputs are valid |
-| State file | Model weights | Captures learned patterns |
-| Outputs | Predictions | What the system produces |
+| Automation Concept  | ML Equivalent       | Purpose                              |
+| ------------------- | ------------------- | ------------------------------------ |
+| Configuration file  | Training dataset    | Defines what the system should learn |
+| Variable validation | Data quality checks | Ensures inputs are valid             |
+| State file          | Model weights       | Captures learned patterns            |
+| Outputs             | Predictions         | What the system produces             |
 
 **Key insight:** Just as you validate Terraform variables, you must validate training data.
 
@@ -159,12 +160,12 @@ Thinking about deployment risk assessment:
 
 **What if the training data has problems?**
 
-| Data Issue | What The Model Learns |
-|-----------|-----------------|
+| Data Issue                                           | What The Model Learns                                    |
+| ---------------------------------------------------- | -------------------------------------------------------- |
 | All "High risk" deployments mislabeled as "Low risk" | Model learns backwards\u2014predicts safe when dangerous |
-| Missing "time of day" for night deployments | Model never learns that 3 AM deployments are riskier |
-| Only includes successful deployments | Model can't recognize failure patterns |
-| Biased toward one team's deployments | Model performs poorly for other teams |
+| Missing "time of day" for night deployments          | Model never learns that 3 AM deployments are riskier     |
+| Only includes successful deployments                 | Model can't recognize failure patterns                   |
+| Biased toward one team's deployments                 | Model performs poorly for other teams                    |
 
 Each issue creates a model that **appears to work in training** but makes **dangerous predictions in production.**
 
@@ -214,11 +215,11 @@ Deployment labeled "High risk" but actually succeeded → model learns wrong pat
 
 Is the data formatted uniformly?
 
-| Inconsistent Data | Problem |
-|------------------|---------|
+| Inconsistent Data                         | Problem                           |
+| ----------------------------------------- | --------------------------------- |
 | Team names: "DevOps", "devops", "Dev-Ops" | Model treats as 3 different teams |
-| Timestamps: UTC vs local time | Time-based patterns break |
-| Risk levels: "HIGH" vs "high" vs "H" | Labels don't match |
+| Timestamps: UTC vs local time             | Time-based patterns break         |
+| Risk levels: "HIGH" vs "high" vs "H"      | Labels don't match                |
 
 **Solution:** Normalize before training (like normalizing Terraform variable names)
 
@@ -261,12 +262,12 @@ Training deployment risk model only on small deployments (< 50 files)
 
 **For deployment risk:**
 
-| Training Data | Real World | Problem |
-|--------------|------------|---------|
-| Only weekday deployments | Weekend deployments happen | Model has never seen weekend patterns |
-| Only one cloud region | Multi-region deployments | Different regions have different behaviors |
-| Only successful deployments | Need to predict failures | Model can't recognize failure patterns |
-| Only Team A's deployments | All teams deploy | Model biased toward Team A's practices |
+| Training Data               | Real World                 | Problem                                    |
+| --------------------------- | -------------------------- | ------------------------------------------ |
+| Only weekday deployments    | Weekend deployments happen | Model has never seen weekend patterns      |
+| Only one cloud region       | Multi-region deployments   | Different regions have different behaviors |
+| Only successful deployments | Need to predict failures   | Model can't recognize failure patterns     |
+| Only Team A's deployments   | All teams deploy           | Model biased toward Team A's practices     |
 
 **Solution:** Ensure training data covers:
 - All time periods (weekday, weekend, day, night)
@@ -403,12 +404,12 @@ The engineered features make patterns easier for the model to learn.
 
 ### For Deployment Risk Assessment
 
-| Raw Data | Engineered Feature | Why It Helps |
-|----------|-------------------|--------------|
-| `files_changed: 200` | `is_large_deployment: True` | Simplifies threshold learning |
-| `timestamp: 2026-01-07 03:00` | `is_late_night: True` | Captures risk pattern directly |
-| `previous_failures: [3, 0, 1, 2]` | `failure_rate: 0.25` | Aggregates history |
-| `team: "Platform"` | `team_experience_score: 0.9` | Incorporates team reliability |
+| Raw Data                          | Engineered Feature           | Why It Helps                   |
+| --------------------------------- | ---------------------------- | ------------------------------ |
+| `files_changed: 200`              | `is_large_deployment: True`  | Simplifies threshold learning  |
+| `timestamp: 2026-01-07 03:00`     | `is_late_night: True`        | Captures risk pattern directly |
+| `previous_failures: [3, 0, 1, 2]` | `failure_rate: 0.25`         | Aggregates history             |
+| `team: "Platform"`                | `team_experience_score: 0.9` | Incorporates team reliability  |
 
 **Key principle:** Help the model by giving it features that directly relate to the problem.
 
@@ -682,13 +683,13 @@ def monitor_data_drift(current_data, reference_data):
 
 ## Connecting to Automation
 
-| Automation Practice | ML Equivalent |
-|---------------------|---------------|
-| Variable validation | Data quality checks |
-| Terraform locals | Feature engineering |
-| State file versioning | Data versioning |
-| Dev/Staging/Prod | Train/Val/Test splits |
-| Monitoring drift | Data drift detection |
+| Automation Practice   | ML Equivalent         |
+| --------------------- | --------------------- |
+| Variable validation   | Data quality checks   |
+| Terraform locals      | Feature engineering   |
+| State file versioning | Data versioning       |
+| Dev/Staging/Prod      | Train/Val/Test splits |
+| Monitoring drift      | Data drift detection  |
 | Configuration as code | Data pipeline as code |
 
 ---

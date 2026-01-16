@@ -1,7 +1,7 @@
 ---
 title: "2. Getting Started with Terraform Import"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2025-03-15 00:00:00 +0530
 series: "Terraform Import and Refactoring"
 series_order: 2

@@ -2,7 +2,7 @@
 layout: post
 title: "Managing AWS EC2 Lifecycle with Terraform and Ansible"
 date: 2025-04-10
-author: "Ravi Joshi"
+author: "ravijoshi1810"
 description: "Learn how to manage EC2 lifecycle using Terraform and Ansible."
 seo_description: "A comprehensive guide on managing AWS EC2 instances using Terraform and Ansible for provisioning and lifecycle management."
 categories: [terraform, ansible, aws]

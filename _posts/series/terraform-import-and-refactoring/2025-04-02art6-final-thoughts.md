@@ -1,7 +1,7 @@
 ---
 title: "6. Final Thoughts"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2025-04-02 00:00:00 +0530
 series: "Terraform Import and Refactoring"
 series_order: 6

@@ -1,7 +1,7 @@
 ---
 title: "Chapter 2.3 – Model Training vs Execution"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2026-01-11
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 2.3
@@ -10,6 +10,7 @@ tags: [ai, machine-learning, automation, devops, mlops]
 description: "Understanding the difference between training and inference, mapped to build time vs runtime concepts from automation."
 permalink: /series/journey-automation-to-ai/chapter-2-3-training-vs-inference
 published: true
+mermaid: true
 ---
 ---
 
@@ -644,12 +645,12 @@ Week 12: Accuracy 78% ❌ Time to retrain
 
 ### Retraining Schedule
 
-| Approach | When to Use | Example |
-|----------|-------------|---------|
-| **Time-based** | Regular cadence | Retrain every Monday |
-| **Performance-based** | When metrics degrade | Retrain if accuracy < 85% |
-| **Data-based** | When enough new data collected | Retrain after 1000 new examples |
-| **Event-based** | On significant changes | Retrain after major platform update |
+| Approach              | When to Use                    | Example                             |
+| --------------------- | ------------------------------ | ----------------------------------- |
+| **Time-based**        | Regular cadence                | Retrain every Monday                |
+| **Performance-based** | When metrics degrade           | Retrain if accuracy < 85%           |
+| **Data-based**        | When enough new data collected | Retrain after 1000 new examples     |
+| **Event-based**       | On significant changes         | Retrain after major platform update |
 
 **Recommendation:** Start with time-based (weekly or monthly) and add performance monitoring.
 
@@ -657,19 +658,19 @@ Week 12: Accuracy 78% ❌ Time to retrain
 
 ## 7. Terraform Analogy Summary
 
-| ML Concept | Terraform Equivalent | Description |
-|------------|---------------------|-------------|
-| **Training data** | Requirements docs + past incidents | What you learn from |
-| **Training** | Writing and testing config | Build phase |
-| **Trained model** | `main.tf` (final config) | Artifact with logic |
-| **Model artifact** | `terraform.tfstate` | Versioned file |
-| **Inference** | `terraform apply` | Execution phase |
-| **Features** | Input variables | What you provide |
-| **Prediction** | Outputs | What you get back |
-| **Retraining** | Updating config for new requirements | Keeping logic current |
-| **Data drift** | Requirements changed | Need to update config |
-| **Batch inference** | `terraform apply` once | One prediction at a time |
-| **Real-time inference** | GitOps auto-apply on commit | Continuous predictions |
+| ML Concept              | Terraform Equivalent                 | Description              |
+| ----------------------- | ------------------------------------ | ------------------------ |
+| **Training data**       | Requirements docs + past incidents   | What you learn from      |
+| **Training**            | Writing and testing config           | Build phase              |
+| **Trained model**       | `main.tf` (final config)             | Artifact with logic      |
+| **Model artifact**      | `terraform.tfstate`                  | Versioned file           |
+| **Inference**           | `terraform apply`                    | Execution phase          |
+| **Features**            | Input variables                      | What you provide         |
+| **Prediction**          | Outputs                              | What you get back        |
+| **Retraining**          | Updating config for new requirements | Keeping logic current    |
+| **Data drift**          | Requirements changed                 | Need to update config    |
+| **Batch inference**     | `terraform apply` once               | One prediction at a time |
+| **Real-time inference** | GitOps auto-apply on commit          | Continuous predictions   |
 
 ---
 
@@ -845,14 +846,14 @@ Inference = Production application servers (steady, efficient)
 
 ## Connecting to Automation
 
-| Question | Automation | Machine Learning |
-|----------|-----------|------------------|
-| **When do you define logic?** | Build time (write config) | Training (learn from data) |
-| **When do you execute logic?** | Runtime (apply config) | Inference (make predictions) |
-| **What triggers updates?** | Requirements change | Data/performance drift |
-| **How often do you update?** | When needed | Scheduled or performance-based |
-| **What do you version?** | Config files | Model artifacts |
-| **What do you monitor?** | Resource state, pipeline success | Model accuracy, latency |
+| Question                       | Automation                       | Machine Learning               |
+| ------------------------------ | -------------------------------- | ------------------------------ |
+| **When do you define logic?**  | Build time (write config)        | Training (learn from data)     |
+| **When do you execute logic?** | Runtime (apply config)           | Inference (make predictions)   |
+| **What triggers updates?**     | Requirements change              | Data/performance drift         |
+| **How often do you update?**   | When needed                      | Scheduled or performance-based |
+| **What do you version?**       | Config files                     | Model artifacts                |
+| **What do you monitor?**       | Resource state, pipeline success | Model accuracy, latency        |
 
 ---
 

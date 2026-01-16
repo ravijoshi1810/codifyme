@@ -1,7 +1,7 @@
 ---
 title: "Chapter 3.1 – Common ML Algorithms (Intuition Only)"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2026-01-20
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 3.1
@@ -10,6 +10,7 @@ tags: [ai, machine-learning, algorithms, decision-trees, random-forest, linear-r
 description: "Understanding common ML algorithms through intuition and automation analogies, no heavy math."
 permalink: /series/journey-automation-to-ai/chapter-3-1-common-ml-algorithms
 published: false
+mermaid: true
 ---
 ---
 ## Understanding the Tools in the Toolbox
@@ -503,13 +504,13 @@ flowchart TD
 
 **Quick reference table:**
 
-| Algorithm | Best For | Avoid When |
-|-----------|----------|------------|
-| **Linear Regression** | Simple numeric predictions, linear relationships | Predicting categories, complex patterns |
-| **Decision Trees** | Explainability, mixed data types | Need high accuracy, prone to overfitting |
-| **Random Forest** | High accuracy, production systems | Need interpretability, real-time predictions |
-| **SVM** | Clear boundaries, high-dimensional data | Very large datasets, need interpretability |
-| **KNN** | Small datasets, similarity-based problems | Large datasets, high-dimensional data |
+| Algorithm             | Best For                                         | Avoid When                                   |
+| --------------------- | ------------------------------------------------ | -------------------------------------------- |
+| **Linear Regression** | Simple numeric predictions, linear relationships | Predicting categories, complex patterns      |
+| **Decision Trees**    | Explainability, mixed data types                 | Need high accuracy, prone to overfitting     |
+| **Random Forest**     | High accuracy, production systems                | Need interpretability, real-time predictions |
+| **SVM**               | Clear boundaries, high-dimensional data          | Very large datasets, need interpretability   |
+| **KNN**               | Small datasets, similarity-based problems        | Large datasets, high-dimensional data        |
 
 ---
 

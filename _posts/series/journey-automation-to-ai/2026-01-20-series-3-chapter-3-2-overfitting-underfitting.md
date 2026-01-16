@@ -2,7 +2,7 @@
 layout: post
 title: "Chapter 3.2 – Overfitting & Underfitting: When Models Break in Production"
 date: 2026-01-20 00:00:00 +0530
-author: Ravi Joshi
+author: ravijoshi1810
 categories: [ai, ml]
 tags: [ai, machine-learning, overfitting, underfitting]
 description: "Understanding overfitting and underfitting through the 'works in dev, fails in prod' problem automation engineers know well. Part of the 'From Automation to AI' series."
@@ -175,11 +175,11 @@ In automation, we test scripts in staging before production. In ML, we use a **t
 
 **The diagnostic pattern:**
 
-| Scenario | Training Accuracy | Test Accuracy | Diagnosis |
-|----------|-------------------|---------------|-----------|
-| **Underfitting** | 65% | 63% | Model too simple—can't learn patterns |
-| **Good Fit** | 88% | 85% | Model generalizes well |
-| **Overfitting** | 98% | 67% | Model memorized training data |
+| Scenario         | Training Accuracy | Test Accuracy | Diagnosis                             |
+| ---------------- | ----------------- | ------------- | ------------------------------------- |
+| **Underfitting** | 65%               | 63%           | Model too simple—can't learn patterns |
+| **Good Fit**     | 88%               | 85%           | Model generalizes well                |
+| **Overfitting**  | 98%               | 67%           | Model memorized training data         |
 
 ### Automation Analogy
 

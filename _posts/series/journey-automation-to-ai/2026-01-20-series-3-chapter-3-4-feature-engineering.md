@@ -2,7 +2,7 @@
 layout: post
 title: "Chapter 3.4 – Feature Engineering: The Real Work Behind ML"
 date: 2026-01-20 00:00:00 +0530
-author: Ravi Joshi
+author: ravijoshi1810
 categories: [ai, machine-learning, automation]
 tags: [ai, machine-learning, feature-engineering, data-transformation]
 description: "Feature engineering techniques explained for automation engineers. Where 80% of ML work actually happens. Part of the 'From Automation to AI' series."
@@ -115,11 +115,11 @@ locals {
 
 **ML implementation:**
 
-| Original | → | is_dev | is_staging | is_prod |
-|----------|---|--------|------------|---------|
-| dev      | → | 1      | 0          | 0       |
-| staging  | → | 0      | 1          | 0       |
-| prod     | → | 0      | 0          | 1       |
+| Original | →   | is_dev | is_staging | is_prod |
+| -------- | --- | ------ | ---------- | ------- |
+| dev      | →   | 1      | 0          | 0       |
+| staging  | →   | 0      | 1          | 0       |
+| prod     | →   | 0      | 0          | 1       |
 
 ### When to Use
 
@@ -156,7 +156,7 @@ Without encoding, "hotfix" is just a string (meaningless to the algorithm)
 Features with different scales can dominate the model:
 
 | Deployment | files_changed | duration_minutes | team_size |
-|------------|---------------|------------------|-----------|
+| ---------- | ------------- | ---------------- | --------- |
 | 1          | 500           | 15               | 8         |
 | 2          | 50            | 120              | 12        |
 
@@ -226,11 +226,11 @@ else:
 
 **ML application:**
 
-| files_changed | → | change_size_category |
-|---------------|---|---------------------|
-| 5             | → | small               |
-| 50            | → | medium              |
-| 500           | → | large               |
+| files_changed | →   | change_size_category |
+| ------------- | --- | -------------------- |
+| 5             | →   | small                |
+| 50            | →   | medium               |
+| 500           | →   | large                |
 
 ### Binning Strategies
 
@@ -374,14 +374,14 @@ is_end_of_month = dt.day > 25
 
 From timestamp `2026-01-07 14:32:15`:
 
-| Extracted Feature | Value | Why It Matters |
-|-------------------|-------|----------------|
-| `hour` | 14 | Deployment time affects risk |
-| `day_of_week` | 2 (Tuesday) | Weekday patterns |
-| `is_weekend` | 0 | Weekend deployments riskier |
-| `is_business_hours` | 1 | Business hours = more users affected |
-| `week_of_month` | 1 | End of month rush? |
-| `is_end_of_sprint` | 1 | Sprint deadlines = rushed deploys |
+| Extracted Feature   | Value       | Why It Matters                       |
+| ------------------- | ----------- | ------------------------------------ |
+| `hour`              | 14          | Deployment time affects risk         |
+| `day_of_week`       | 2 (Tuesday) | Weekday patterns                     |
+| `is_weekend`        | 0           | Weekend deployments riskier          |
+| `is_business_hours` | 1           | Business hours = more users affected |
+| `week_of_month`     | 1           | End of month rush?                   |
+| `is_end_of_sprint`  | 1           | Sprint deadlines = rushed deploys    |
 
 ### Advanced: Lag and Rolling Features
 
@@ -401,12 +401,12 @@ These show context, not just snapshot
 
 **ML application:**
 
-| Feature | Description | Example |
-|---------|-------------|---------|
-| `deployments_last_7_days` | Recent activity | 12 |
-| `failure_rate_last_30_days` | Historical success | 0.15 |
-| `time_since_last_failure` | Recency of issues | 5 days |
-| `avg_duration_last_10` | Typical duration | 22 min |
+| Feature                     | Description        | Example |
+| --------------------------- | ------------------ | ------- |
+| `deployments_last_7_days`   | Recent activity    | 12      |
+| `failure_rate_last_30_days` | Historical success | 0.15    |
+| `time_since_last_failure`   | Recency of issues  | 5 days  |
+| `avg_duration_last_10`      | Typical duration   | 22 min  |
 
 ### When to Use
 
@@ -449,14 +449,14 @@ From `[15, 22, 18, 30, 12]` create:
 
 ### Common Aggregations
 
-| Metric | What It Captures |
-|--------|------------------|
-| **Mean** | Typical value |
-| **Median** | Central value (robust to outliers) |
-| **Max/Min** | Extremes |
-| **Std Dev** | Variability/consistency |
-| **Count** | Frequency |
-| **Sum** | Total |
+| Metric      | What It Captures                   |
+| ----------- | ---------------------------------- |
+| **Mean**    | Typical value                      |
+| **Median**  | Central value (robust to outliers) |
+| **Max/Min** | Extremes                           |
+| **Std Dev** | Variability/consistency            |
+| **Count**   | Frequency                          |
+| **Sum**     | Total                              |
 
 ### When to Use
 

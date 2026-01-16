@@ -1,7 +1,7 @@
 ---
 title: "Chapter 2.2 – Features, Labels, and Models"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2026-01-11
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 2.2
@@ -10,6 +10,7 @@ tags: [ai, machine-learning, features]
 description: "Understanding features, labels, and models through the lens of automation. Mapping ML concepts to familiar inputs, logic, and outputs."
 permalink: /series/journey-automation-to-ai/chapter-2-2-features-labels-and-models
 published: true
+mermaid: true
 ---
 ---
 
@@ -125,15 +126,15 @@ If you've ever declared Terraform variables, you already understand features. Th
 
 For our **deployment risk assessment** example:
 
-| Feature Name | Type | Example Value | What It Represents |
-|-------------|------|---------------|-------------------|
-| `files_changed` | Numeric | 150 | Size of deployment |
-| `environment` | Categorical | "prod" | Where deploying |
-| `time_of_day` | Numeric | 14 (2 PM) | When deploying |
-| `day_of_week` | Numeric | 2 (Tuesday) | Day of deployment |
-| `team` | Categorical | "Platform" | Who is deploying |
-| `previous_failures` | Numeric | 3 | Historical failures |
-| `deployment_duration_avg` | Numeric | 12.5 (minutes) | Team's avg speed |
+| Feature Name              | Type        | Example Value  | What It Represents  |
+| ------------------------- | ----------- | -------------- | ------------------- |
+| `files_changed`           | Numeric     | 150            | Size of deployment  |
+| `environment`             | Categorical | "prod"         | Where deploying     |
+| `time_of_day`             | Numeric     | 14 (2 PM)      | When deploying      |
+| `day_of_week`             | Numeric     | 2 (Tuesday)    | Day of deployment   |
+| `team`                    | Categorical | "Platform"     | Who is deploying    |
+| `previous_failures`       | Numeric     | 3              | Historical failures |
+| `deployment_duration_avg` | Numeric     | 12.5 (minutes) | Team's avg speed    |
 
 Each feature represents something the model can use to make predictions.
 
@@ -169,13 +170,13 @@ Not all features are equally useful. This took me a while to figure out—I init
 
 Good features have **predictive power**. They actually correlate with what you're trying to predict:
 
-| Feature | Predictive Power | Why |
-|---------|-----------------|-----|
-| `files_changed` | ✅ High | Large deployments are riskier |
-| `environment` | ✅ High | Prod deployments require more care |
-| `previous_failures` | ✅ High | History predicts future risk |
-| `developer_shirt_color` | ❌ None | No relationship to deployment risk |
-| `commit_message_length` | ❌ Low | Doesn't indicate actual risk |
+| Feature                 | Predictive Power | Why                                |
+| ----------------------- | ---------------- | ---------------------------------- |
+| `files_changed`         | ✅ High           | Large deployments are riskier      |
+| `environment`           | ✅ High           | Prod deployments require more care |
+| `previous_failures`     | ✅ High           | History predicts future risk       |
+| `developer_shirt_color` | ❌ None           | No relationship to deployment risk |
+| `commit_message_length` | ❌ Low            | Doesn't indicate actual risk       |
 
 (Yes, I've seen people include commit message length. It doesn't help.)
 
@@ -222,12 +223,12 @@ In automation terms, it's like your Terraform outputs—the desired result of yo
 
 For **supervised learning** (remember from Chapter 1.3?), every training example needs a label. You're basically showing the model: "When you see these inputs, this is the right answer."
 
-| Scenario | Features (Inputs) | Label (Output) |
-|----------|------------------|----------------|
-| Email spam detection | Email text, sender, links | "Spam" / "Not Spam" |
-| Image classification | Pixel values | "Cat" / "Dog" / "Bird" |
-| Deployment risk | Files changed, time, team | "High" / "Medium" / "Low" |
-| Server failure prediction | CPU, memory, disk usage | "Will fail" / "Won't fail" |
+| Scenario                  | Features (Inputs)         | Label (Output)             |
+| ------------------------- | ------------------------- | -------------------------- |
+| Email spam detection      | Email text, sender, links | "Spam" / "Not Spam"        |
+| Image classification      | Pixel values              | "Cat" / "Dog" / "Bird"     |
+| Deployment risk           | Files changed, time, team | "High" / "Medium" / "Low"  |
+| Server failure prediction | CPU, memory, disk usage   | "Will fail" / "Won't fail" |
 
 The model learns patterns like:
 - "If features look like X, then label is Y"
@@ -390,12 +391,12 @@ model_logic {
 
 Different ML algorithms create different internal representations. Don't worry too much about this right now—we'll dive into specific algorithms in Series 3. For now, here's the quick version:
 
-| Model Type | Internal Logic | Automation Analogy |
-|-----------|---------------|-------------------|
-| Decision Tree | Series of if-then rules | Nested Terraform conditionals |
-| Linear Model | Weighted sum of features | Terraform locals with arithmetic |
-| Neural Network | Layers of transformations | Pipeline of processing steps |
-| Random Forest | Multiple decision trees voting | Multiple validation checks |
+| Model Type     | Internal Logic                 | Automation Analogy               |
+| -------------- | ------------------------------ | -------------------------------- |
+| Decision Tree  | Series of if-then rules        | Nested Terraform conditionals    |
+| Linear Model   | Weighted sum of features       | Terraform locals with arithmetic |
+| Neural Network | Layers of transformations      | Pipeline of processing steps     |
+| Random Forest  | Multiple decision trees voting | Multiple validation checks       |
 
 For now, think of a model as a **black box that learned logic**. You don't need to understand the internals to use it effectively (just like you don't need to understand V8 internals to write JavaScript).
 
@@ -430,13 +431,13 @@ Let's trace a full example with our deployment risk assessment:
 
 Historical deployments with features AND labels:
 
-| files_changed | environment | time_of_day | team | previous_failures | **risk_level** (label) |
-|--------------|-------------|-------------|------|------------------|---------------------|
-| 150 | prod | 14 | Platform | 3 | **High** |
-| 25 | dev | 10 | Frontend | 0 | **Low** |
-| 200 | prod | 3 | Backend | 1 | **High** |
-| 50 | staging | 16 | Platform | 1 | **Medium** |
-| 5 | dev | 11 | Frontend | 0 | **Low** |
+| files_changed | environment | time_of_day | team     | previous_failures | **risk_level** (label) |
+| ------------- | ----------- | ----------- | -------- | ----------------- | ---------------------- |
+| 150           | prod        | 14          | Platform | 3                 | **High**               |
+| 25            | dev         | 10          | Frontend | 0                 | **Low**                |
+| 200           | prod        | 3           | Backend  | 1                 | **High**               |
+| 50            | staging     | 16          | Platform | 1                 | **Medium**             |
+| 5             | dev         | 11          | Frontend | 0                 | **Low**                |
 
 ### Step 2: Train the Model
 
@@ -561,14 +562,14 @@ You create derived values to make decisions easier.
 
 ### Common Feature Engineering Techniques
 
-| Technique | Example | Purpose |
-|-----------|---------|---------|
-| **Binning** | files_changed → "Small"/"Medium"/"Large" | Simplify continuous values |
-| **Encoding** | environment → {dev:0, staging:1, prod:2} | Convert categories to numbers |
-| **Scaling** | Normalize files_changed to 0-1 range | Ensure consistent scales |
-| **Interaction** | files_changed * is_prod | Combine related features |
-| **Aggregation** | Average of last 10 deployments | Summarize history |
-| **Time-based** | Extract hour, day, month from timestamp | Capture temporal patterns |
+| Technique       | Example                                  | Purpose                       |
+| --------------- | ---------------------------------------- | ----------------------------- |
+| **Binning**     | files_changed → "Small"/"Medium"/"Large" | Simplify continuous values    |
+| **Encoding**    | environment → {dev:0, staging:1, prod:2} | Convert categories to numbers |
+| **Scaling**     | Normalize files_changed to 0-1 range     | Ensure consistent scales      |
+| **Interaction** | files_changed * is_prod                  | Combine related features      |
+| **Aggregation** | Average of last 10 deployments           | Summarize history             |
+| **Time-based**  | Extract hour, day, month from timestamp  | Capture temporal patterns     |
 
 ---
 
@@ -834,15 +835,15 @@ If you remember nothing else from this chapter, remember this:
 
 ## Connecting to Automation
 
-| Automation Concept | ML Equivalent | Example |
-|-------------------|---------------|---------|
-| Variables | Features | `instance_type`, `files_changed` |
-| Outputs | Labels | `server_id`, `risk_level` |
-| Configuration logic | Model | Resource definitions, learned patterns |
-| Terraform locals | Engineered features | Derived values, composite features |
-| Variable validation | Feature validation | Type checks, range checks |
-| State file | Model artifact | `terraform.tfstate`, `model.pkl` |
-| Conditional logic | Model decision boundaries | `var.env == "prod" ? ...` |
+| Automation Concept  | ML Equivalent             | Example                                |
+| ------------------- | ------------------------- | -------------------------------------- |
+| Variables           | Features                  | `instance_type`, `files_changed`       |
+| Outputs             | Labels                    | `server_id`, `risk_level`              |
+| Configuration logic | Model                     | Resource definitions, learned patterns |
+| Terraform locals    | Engineered features       | Derived values, composite features     |
+| Variable validation | Feature validation        | Type checks, range checks              |
+| State file          | Model artifact            | `terraform.tfstate`, `model.pkl`       |
+| Conditional logic   | Model decision boundaries | `var.env == "prod" ? ...`              |
 
 ---
 

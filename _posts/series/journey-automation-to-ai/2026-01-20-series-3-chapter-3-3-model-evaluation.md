@@ -2,7 +2,7 @@
 layout: post
 title: "Chapter 3.3 – Model Evaluation: The Metric That Fooled Me"
 date: 2026-01-20 00:00:00 +0530
-author: Ravi Joshi
+author: ravijoshi1810
 categories: [ai, ml]
 tags: [ai, machine-learning, model-evaluation, metrics]
 description: "How misleading metrics can hide real problems, and how to evaluate ML models honestly. Part of the 'From Automation to AI' series."
@@ -203,12 +203,12 @@ Same principle applies to ML models.
 
 Instead of just looking at overall accuracy, I track:
 
-| **What Happened** | **Count** | **What This Means** |
-|-------------------|-----------|---------------------|
-| Model: "High risk" → **Actually failed** | 42 | ✅ Caught real problem |
-| Model: "High risk" → Actually succeeded | 18 | ⚠️ False alarm |
-| Model: "Low risk" → Actually succeeded | 897 | ✅ Correct |
-| Model: "Low risk" → **Actually failed** | 43 | ❌ Missed problem |
+| **What Happened**                        | **Count** | **What This Means**   |
+| ---------------------------------------- | --------- | --------------------- |
+| Model: "High risk" → **Actually failed** | 42        | ✅ Caught real problem |
+| Model: "High risk" → Actually succeeded  | 18        | ⚠️ False alarm         |
+| Model: "Low risk" → Actually succeeded   | 897       | ✅ Correct             |
+| Model: "Low risk" → **Actually failed**  | 43        | ❌ Missed problem      |
 
 From this table, I calculate:
 - **Catch rate:** 42 out of 85 total failures (49%)
@@ -271,11 +271,11 @@ Let me walk through what I actually did to fix that 92% accurate disaster.
 Ran it on 1,000 test deployments:
 
 | **Predicted** | **Actual** | **Count** |
-|--------------|-----------|----------|
-| High risk | Failed | 35 |
-| High risk | Succeeded | 15 |
-| Low risk | Succeeded | 905 |
-| Low risk | Failed | 45 |
+| ------------- | ---------- | --------- |
+| High risk     | Failed     | 35        |
+| High risk     | Succeeded  | 15        |
+| Low risk      | Succeeded  | 905       |
+| Low risk      | Failed     | 45        |
 
 **Results:**
 - Catch rate: 35/80 failures = 44%  
@@ -287,11 +287,11 @@ Ran it on 1,000 test deployments:
 ### Iteration 1: Lower Threshold to 0.3 (More Sensitive)
 
 | **Predicted** | **Actual** | **Count** |
-|--------------|-----------|----------|
-| High risk | Failed | 62 |
-| High risk | Succeeded | 48 |
-| Low risk | Succeeded | 872 |
-| Low risk | Failed | 18 |
+| ------------- | ---------- | --------- |
+| High risk     | Failed     | 62        |
+| High risk     | Succeeded  | 48        |
+| Low risk      | Succeeded  | 872       |
+| Low risk      | Failed     | 18        |
 
 **Results:**
 - Catch rate: 62/80 = 78% ✅ Much better!
@@ -303,11 +303,11 @@ Ran it on 1,000 test deployments:
 ### Iteration 2: Try 0.4 (Middle Ground)
 
 | **Predicted** | **Actual** | **Count** |
-|--------------|-----------|----------|
-| High risk | Failed | 54 |
-| High risk | Succeeded | 28 |
-| Low risk | Succeeded | 892 |
-| Low risk | Failed | 26 |
+| ------------- | ---------- | --------- |
+| High risk     | Failed     | 54        |
+| High risk     | Succeeded  | 28        |
+| Low risk      | Succeeded  | 892       |
+| Low risk      | Failed     | 26        |
 
 **Results:**
 - Catch rate: 54/80 = 68%
@@ -330,12 +330,12 @@ When you try different models or features, don't just pick the highest accuracy.
 
 ### Use a Scorecard
 
-| **Model** | **Catches Failures** | **False Alarms** | **Overall Accuracy** | **Decision** |
-|-----------|---------------------|-----------------|---------------------|-------------|
-| Baseline | 10% | 5% | 93% | Misses too much |
-| Model A | 55% | 25% | 89% | Good balance |
-| Model B | 75% | 45% | 82% | Too many alarms |
-| Model C | 60% | 20% | 91% | **Best** ✅ |
+| **Model** | **Catches Failures** | **False Alarms** | **Overall Accuracy** | **Decision**    |
+| --------- | -------------------- | ---------------- | -------------------- | --------------- |
+| Baseline  | 10%                  | 5%               | 93%                  | Misses too much |
+| Model A   | 55%                  | 25%              | 89%                  | Good balance    |
+| Model B   | 75%                  | 45%              | 82%                  | Too many alarms |
+| Model C   | 60%                  | 20%              | 91%                  | **Best** ✅      |
 
 Pick the model that best fits **your context**, not the highest single number.
 

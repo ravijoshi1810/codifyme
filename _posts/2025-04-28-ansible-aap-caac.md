@@ -2,7 +2,7 @@
 layout: post
 title: "Configuration as Code (CaaC) for Ansible Automation Platform"
 date: 2025-04-28 10:00:00 +0530
-author: "Ravi Joshi"
+author: "ravijoshi1810"
 description: "Configuration as Code (CaaC) for Ansible Automation Platform."
 categories: [ansible]
 tags: [ansible, configuration-as-code, automation]

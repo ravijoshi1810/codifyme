@@ -1,7 +1,7 @@
 ---
 title: "Chapter 1.3 – Types of Machine Learning"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2026-01-03
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 1.3
@@ -423,12 +423,12 @@ Use reinforcement learning when:
 
 ## 7. Comparison: Supervised vs Unsupervised vs Semi-Supervised vs Reinforcement
 
-| Aspect | Supervised | Unsupervised | Semi-Supervised | Reinforcement |
-|--------|-----------|-------------|-----------------|---------------|
-| **Training Data** | All labeled | All unlabeled | Small labeled + Large unlabeled | Environment feedback |
-| **Goal** | Predict specific output | Discover patterns | Predict with limited labels | Maximize reward |
-| **Deployment Example** | Predict risk from labeled history | Cluster deployment patterns | Label 100, learn from 50k | Learn optimal deployment strategy |
-| **Automation Analogy** | IaC (known state) | Discovery tools | Auto-tagging resources | Self-tuning systems |
+| Aspect                 | Supervised                        | Unsupervised                | Semi-Supervised                 | Reinforcement                     |
+| ---------------------- | --------------------------------- | --------------------------- | ------------------------------- | --------------------------------- |
+| **Training Data**      | All labeled                       | All unlabeled               | Small labeled + Large unlabeled | Environment feedback              |
+| **Goal**               | Predict specific output           | Discover patterns           | Predict with limited labels     | Maximize reward                   |
+| **Deployment Example** | Predict risk from labeled history | Cluster deployment patterns | Label 100, learn from 50k       | Learn optimal deployment strategy |
+| **Automation Analogy** | IaC (known state)                 | Discovery tools             | Auto-tagging resources          | Self-tuning systems               |
 
 ---
 

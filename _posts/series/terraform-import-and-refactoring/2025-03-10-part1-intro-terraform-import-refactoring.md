@@ -1,7 +1,7 @@
 ---
 title: "1. Introduction to Terraform Import and Refactoring - Why It Matters"
 layout: post
-author: Ravi Joshi
+author: ravijoshi1810
 date: 2025-03-10 00:00:00 +0530
 series: "Terraform Import and Refactoring"
 series_order: 1
@@ -179,11 +179,11 @@ A production environment contains critical resources, but the Terraform codebase
 
 ### 📊 Summary of Import Methods
 
-| **Method** | **Use Case** |
-|--------------------------|-----------------------------------------------------------------------------|
-| `terraform import`         | Manual and straightforward for individual resources.                         |
-| Config-Driven Import     | Simplifies imports and allows automated plan and apply directly in HCL.     |
-| Terraformer              | Ideal for bulk imports and generating HCL configurations for multiple resources.|
+| **Method**           | **Use Case**                                                                     |
+| -------------------- | -------------------------------------------------------------------------------- |
+| `terraform import`   | Manual and straightforward for individual resources.                             |
+| Config-Driven Import | Simplifies imports and allows automated plan and apply directly in HCL.          |
+| Terraformer          | Ideal for bulk imports and generating HCL configurations for multiple resources. |
 
 
 ---
