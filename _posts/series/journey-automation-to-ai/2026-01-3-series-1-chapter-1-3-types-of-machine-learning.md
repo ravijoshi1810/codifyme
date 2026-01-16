@@ -8,6 +8,7 @@ series_order: 1.3
 categories: [ai, ml]
 tags: [supervised-learning, unsupervised-learning, reinforcement-learning, ml-types]
 permalink: /series/journey-automation-to-ai/chapter-1-3-types-of-machine-learning/
+mermaid: true
 ---
 ---
 ## Picking the Right Tool for Your Data

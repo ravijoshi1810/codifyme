@@ -341,8 +341,8 @@ flowchart LR
     style E fill:#ffebee,stroke:#d32f2f,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    ← [Previous: Chapter 1.1 - What Is AI, Really?](/codifyme/series/journey-automation-to-ai/chapter-1-1-what-is-ai-really/) | [Series Index](/codifyme/series/journey-automation-to-ai/) | [Next: Chapter 1.3 - Types of Machine Learning](/codifyme/series/journey-automation-to-ai/chapter-1-3-types-of-machine-learning/) →
-    ---
+```
+
 ### 8.2 Formal Definitions (For Reference)
 
 While the explanations above focus on practical understanding, here are three foundational definitions from the field:
