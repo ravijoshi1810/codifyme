@@ -135,14 +135,14 @@ pwa:
 # Archives (Categories & Tags)
 # =====================================================
 #
-# jekyll-archives:
-#   enabled: [categories, tags]
-#   layouts:
-#     category: category
-#     tag: tag
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 # =====================================================
 # Build Optimizations
