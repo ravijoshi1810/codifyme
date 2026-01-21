@@ -1,11 +1,15 @@
 ---
-layout: post
 title: "Chapter 3.2 – Overfitting & Underfitting: When Models Break in Production"
-date: 2026-01-20 00:00:00 +0530
+layout: post
 author: ravijoshi1810
+date: 2026-01-21
+series: "From Automation to AI – A Practitioner's Journey"
+series_order: 3.2
 categories: [ai, ml]
 tags: [ai, machine-learning, overfitting, underfitting]
 description: "Understanding overfitting and underfitting through the 'works in dev, fails in prod' problem automation engineers know well. Part of the 'From Automation to AI' series."
+permalink: /series/journey-automation-to-ai/chapter-3-2-overfitting-underfitting/
+published: true
 mermaid: true
 ---
 ---
@@ -40,7 +44,8 @@ elif server == "api-prod-01":
     port = 9090
 ```
 
-**This script is overfitted.** It perfectly handles your three test cases, but the moment you add `web-prod-03` or `api-prod-02`, it breaks. You've memorized the training data instead of learning the underlying pattern.
+> **This script is overfitted.** It perfectly handles your three test cases, but the moment you add `web-prod-03` or `api-prod-02`, it breaks. You've memorized the training data instead of learning the underlying pattern.
+{: .prompt-warning }
 
 A better approach would be:
 
@@ -55,7 +60,8 @@ This generalizes the pattern rather than memorizing specific cases.
 
 ### In Machine Learning Terms
 
-**Overfitting occurs when a model learns the training data too well**—including noise, outliers, and random fluctuations that won't appear in new data.
+> **Overfitting occurs when a model learns the training data too well**—including noise, outliers, and random fluctuations that won't appear in new data.
+{: .prompt-info }
 
 **The symptoms:**
 - **Excellent training performance** (e.g., 99% accuracy on training data)
@@ -94,9 +100,10 @@ graph TD
 - Learns that Server B fails when memory reaches exactly 12.7GB at midnight
 - Memorizes the specific noise patterns in the training week's data
 
-**Result:**
-- Training accuracy: 98%
-- Production accuracy: 62%
+> **Result:**
+> - Training accuracy: 98%
+> - Production accuracy: 62%
+{: .prompt-info }
 - **The model can't generalize to new servers, new times, or new patterns**
 
 ---
@@ -111,7 +118,8 @@ Now imagine the opposite: a deployment script so generic that it does almost not
 port = 8080  # Just use 8080 for everything
 ```
 
-**This script is underfitted.** It's too simple to capture the real pattern. It might work for some web servers by chance, but it completely ignores the difference between web and API servers.
+> **This script is underfitted.** It's too simple to capture the real pattern. It might work for some web servers by chance, but it completely ignores the difference between web and API servers.
+{: .prompt-warning }
 
 ### In Machine Learning Terms
 
@@ -160,7 +168,8 @@ graph LR
     style C1 fill:#ffcccc
 ```
 
-**The goal:** Find the sweet spot where the model is complex enough to learn patterns but simple enough to generalize to new data.
+> **The goal:** Find the sweet spot where the model is complex enough to learn patterns but simple enough to generalize to new data.
+{: .prompt-tip }
 
 ---
 
@@ -173,7 +182,9 @@ In automation, we test scripts in staging before production. In ML, we use a **t
 1. **Training Set (70-80%):** Used to train the model
 2. **Test Set (20-30%):** Used to evaluate performance on unseen data
 
-**The diagnostic pattern:**
+
+> **The diagnostic pattern:**
+{: .prompt-info }
 
 | Scenario         | Training Accuracy | Test Accuracy | Diagnosis                             |
 | ---------------- | ----------------- | ------------- | ------------------------------------- |
@@ -384,31 +395,40 @@ xychart-beta
 ---
 
 ## Key Takeaways
-
-**Overfitting:**
-- Model is too complex
-- Memorizes training data including noise
-- High training performance, poor production performance
-- **Fix:** More data, regularization, cross-validation, simpler model
-
-**Underfitting:**
-- Model is too simple
-- Can't learn the underlying patterns
-- Poor training and production performance
-- **Fix:** More complex model, more features, longer training
-
-**The Balance:**
-- **Like automation:** Find the sweet spot between simplicity (maintainability) and complexity (capability)
-- **Use train-test splits** to diagnose the problem
-- **Use cross-validation** for reliable performance estimates
-- **Monitor both training and test performance**—the gap between them tells the story
+> - **Overfitting:**
+>   - Model is too complex
+>   - Memorizes training data including noise
+>   - High training performance, poor production performance
+>   - **Fix:** More data, regularization, cross-validation, simpler model
+> - **Underfitting:**
+>   - Model is too simple
+>   - Can't learn the underlying patterns
+>   - Poor training and production performance
+>   - **Fix:** More complex model, more features, longer training
+> - **The Balance:**
+>   - **Like automation:** Find the sweet spot between simplicity (maintainability) and complexity (capability)
+>   - **Use train-test splits** to diagnose the problem
+>   - **Use cross-validation** for reliable performance estimates
+>   - **Monitor both training and test performance**—the gap between them tells the story
+{: .prompt-tip }
 
 ---
 
+
 ## What's Next?
 
-Now that we understand why models fail (overfitting/underfitting), the next question is: **How do we measure if a model is actually good?**
+➡ **Series 2 – Chapter 3.3: Model Evaluation Metrics**
 
-Accuracy alone is misleading. In Chapter 3.3, we'll explore model evaluation metrics—precision, recall, F1-score—and learn when to use which metric based on the problem we're solving.
+In the next chapter, we’ll explore:
+
+- Why accuracy alone is misleading
+- Precision, recall, and F1-score explained
+- How to choose the right metric for your problem
+- Practical examples of metric selection in automation and AI
+
+> **Architectural Question:** When is accuracy the wrong metric, and how do you decide which evaluation metric best reflects real-world success for your ML model?
+{: .prompt-info }
+
+_Now that we know why models fail, let's learn how to measure if they're truly good._
 
 ---

@@ -11,19 +11,19 @@ description: "How a solution architect approaches learning AI, and why the tradi
 mermaid: true
 ---
 ---
+
 ## My Background and Learning Strategy  
 *(Why I’m Learning AI the Way I Am)*
 
-
 ---
-
->AI is automation's natural evolution, not its replacement.
 
 Before diving into ML concepts, here's the context for how I'm approaching this learning:
 - Where I’m coming from professionally
 - Why I’m not following the traditional “data scientist” learning path 
 - How this series aligns with real-world platform design
 
+> AI is automation's natural evolution, not its replacement.
+{: .prompt-info }
 
 ---
 
@@ -40,7 +40,8 @@ I started where most ops engineers do: writing scripts to avoid repetitive work.
 - Rule-based workflows
 - Anything to reduce manual toil
 
-The mindset was simple: **If humans repeat it, automate it.**
+> **Engineer Insight:** The mindset was simple: If humans repeat it, automate it.
+{: .prompt-info }
 
 ---
 
@@ -109,7 +110,8 @@ Self-Service Platforms (CMPs)
 Intelligent Decision-Making
 ```
 
-**Key insight:** AI is not a disruption in this flow—it is the next logical architectural capability.
+> **Key insight:** AI is not a disruption in this flow—it is the next logical architectural capability.
+{: .prompt-info }
 
 ---
 
@@ -184,10 +186,11 @@ Specifically:
 
 ## 8. Key Takeaways
 
-- AI is the next step in the automation-to-architecture evolution
-- Focus: architectural understanding, not academic depth
-- Approach: concepts → intuition → examples
-- Goal: design AI-enabled systems, not build ML algorithms
+> - AI is the next step in the automation-to-architecture evolution
+> - Focus: architectural understanding, not academic depth
+> - Approach: concepts → intuition → examples
+> - Goal: design AI-enabled systems, not build ML algorithms
+{: .prompt-info }
 
 ## What's Next?
 

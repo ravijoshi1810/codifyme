@@ -25,7 +25,8 @@ Then someone asked: "Which kind of AI?" I had no answer.
 
 Before we go deeper into ML, deep learning, or LLMs, let's fix this:
 
-> **What do we actually mean when we say "AI"?**
+> **Architect's Question:** What do we actually mean when we say "AI"?
+{: .prompt-info }
 
 Precision matters in architecture. Vague terms lead to bad decisions.
 
@@ -37,7 +38,8 @@ AI is **not one technology**, tool, or model.
 
 At a high level, AI refers to:
 
-> **Systems that perform tasks which normally require human intelligence.**
+> **Definition:** Systems that perform tasks which normally require human intelligence.
+{: .prompt-info }
 
 Examples include:
 - Recognizing patterns
@@ -54,6 +56,7 @@ This definition is intentionally broad—and that’s where confusion starts.
 A common misconception is:
 
 > “If a system makes decisions, it must be AI.”
+{: .prompt-warning }
 
 That is not true.
 
@@ -96,7 +99,8 @@ Automation → Executes known logic
 AI          → Learns unknown patterns
 ```
 
-**Automation is deterministic. AI is adaptive.**
+> **Key Difference:** Automation is deterministic. AI is adaptive.
+{: .prompt-info }
 
 Visually, the workflows look like this:
 
@@ -284,23 +288,31 @@ The simplest effective solution usually wins.
 
 ---
 
-## 7. Key Takeaways
+## 7. What I Wish I Knew Earlier
 
-- AI is an umbrella term, not one technology
-- Automation ≠ AI (different fundamentals)
-- ML is a subset of AI; DL is a subset of ML
-- Generative AI builds on deep learning
-- Precise definitions lead to better designs
+> **Summary Takeaways:**
+> - AI is an umbrella term, not one technology
+> - Automation ≠ AI (different fundamentals)
+> - ML is a subset of AI; DL is a subset of ML
+> - Generative AI builds on deep learning
+> - Precise definitions lead to better designs
+{: .prompt-info }
 
 ---
 
 ## What's Next?
 
-**→ Series 1 – Chapter 1.2: How Machines Learn**
+➡ **Series 1 – Chapter 1.2: How Machines Learn**
 
-Next up:
+In the next chapter, we’ll explore:
+
 - What "learning" actually means
 - How it differs from programming
 - Why data is central to everything
+
+> **Architectural Question:** How does the concept of "learning" in ML differ from traditional programming, and why is data so critical?
+{: .prompt-info }
+
+_We've defined what AI is and clarified its differences from automation. Next, we'll dive into the mechanics of how machines actually learn._
 
 ---

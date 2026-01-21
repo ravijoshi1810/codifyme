@@ -28,9 +28,8 @@ In automation, I've learned this the hard way:
 
 With ML, I realized the problem is actually worse. Bad data doesn't just break the system—**it teaches the model to confidently make wrong predictions.**
 
-> **Bad data = bad model**
-
-This stuck with me: No matter how sophisticated the algorithm, if the training data is garbage, the predictions will be garbage.
+> **Warning:** Bad data = bad model. No matter how sophisticated the algorithm, if the training data is garbage, the predictions will be garbage.
+{: .prompt-warning }
 
 **What I'm documenting here:** My understanding of data quality, why it matters more than I initially thought, and how to think about preparing data for ML.
 
@@ -49,7 +48,8 @@ Reading about ML projects that failed, I noticed a pattern. The data issues that
 - **Balance:** Is it biased toward one outcome (e.g., 95% successful deployments)?
 - **Relevance:** Do the features actually predict what matters?
 
-**My realization:** Having data ≠ having the right data.
+> **My realization:** Having data ≠ having the right data.
+{: .prompt-info }
 
 **The parallel I drew:**
 
@@ -65,9 +65,9 @@ This is why data quality kept coming up in everything I read about ML failures.
 
 One paper that changed my thinking: In 2009, Google researchers (including Peter Norvig) published findings showing that **for many complex problems, more data with simpler algorithms often beats less data with sophisticated algorithms.**
 
-Their key insight:
-
+> Their key insight:
 > "Choose a representation that can use unsupervised learning on unlabeled data, which is so much more plentiful than labeled data."
+{: .prompt-info }
 
 **What this meant for me:**
 
@@ -76,13 +76,9 @@ Instead of obsessing over finding the "perfect algorithm," I should focus on:
 - Cleaning and preparing it properly
 - Understanding what it actually represents
 
-**Automation parallel I drew:**
 
-It's like infrastructure scaling:
-- 1,000 well-configured servers > 100 over-optimized servers
-- 10,000 quality deployment examples > 1,000 examples with fancy analysis
-
-**My takeaway:** Data is leverage. Get it right first, then worry about algorithms.
+> **Automation Parallel:** It's like infrastructure scaling—1,000 well-configured servers are better than 100 over-optimized servers. 10,000 quality deployment examples beat 1,000 examples with fancy analysis. Data is leverage. Get it right first, then worry about algorithms.
+{: .prompt-info }
 
 ---
 
@@ -121,7 +117,9 @@ In ML, data serves the same purpose:
 | State file          | Model weights       | Captures learned patterns            |
 | Outputs             | Predictions         | What the system produces             |
 
-**Key insight:** Just as you validate Terraform variables, you must validate training data.
+
+> **Tip:** Just as you validate Terraform variables, you must validate training data.
+{: .prompt-tip }
 
 ---
 
@@ -169,7 +167,9 @@ Thinking about deployment risk assessment:
 
 Each issue creates a model that **appears to work in training** but makes **dangerous predictions in production.**
 
-**That's the silent failure I need to watch for.**
+
+> **Warning:** The silent failure one need to watch for — bad data can make your model appear to work in training but make dangerous predictions in production.
+{: .prompt-warning }
 
 ---
 
@@ -221,7 +221,9 @@ Is the data formatted uniformly?
 | Timestamps: UTC vs local time             | Time-based patterns break         |
 | Risk levels: "HIGH" vs "high" vs "H"      | Labels don't match                |
 
-**Solution:** Normalize before training (like normalizing Terraform variable names)
+
+> **Best Practice:** Normalize your data before training, just like normalizing Terraform variable names.
+{: .prompt-tip }
 
 ### 4. **Relevance**
 
@@ -244,7 +246,9 @@ Is the data recent and representative?
 **Problem:** Training on 2-year-old deployment data  
 **Reality:** Your infrastructure, processes, and teams have changed
 
-**Solution:** Use recent data and retrain periodically (we'll cover this in MLOps series)
+
+> **Best Practice:** Use recent data and retrain periodically (we'll cover this in the MLOps series).
+{: .prompt-tip }
 
 ### 6. **Representativeness**
 
@@ -276,7 +280,9 @@ Training deployment risk model only on small deployments (< 50 files)
 - Both successes AND failures
 - Full range of deployment sizes
 
-**Warning:** This is different from bias. Representativeness is about **coverage** of real-world scenarios. Even unbiased data can be non-representative if it doesn't cover the variety of cases you'll see in production.
+
+> **Tip:** Representativeness is about coverage of real-world scenarios. Even unbiased data can be non-representative if it doesn't cover the variety of cases you'll see in production.
+{: .prompt-tip }
 
 ---
 
@@ -315,7 +321,9 @@ df['deployment_size'].fillna(df['deployment_size'].median(), inplace=True)
 df = df[df['files_changed'] < 10000]
 ```
 
-**Automation parallel:** Removing invalid configuration entries
+
+> **Automation Parallel:** Removing invalid configuration entries is like cleaning your ML data.
+{: .prompt-info }
 
 ### Step 2: Validation
 
@@ -332,7 +340,9 @@ assert (df['risk_level'].isin(['High', 'Medium', 'Low'])).all()
 print(df['risk_level'].value_counts())
 ```
 
-**Automation parallel:** `terraform validate` before apply
+
+> **Automation Parallel:** `terraform validate` before apply is like validating your ML data before training.
+{: .prompt-info }
 
 ### Step 3: Transformation
 
@@ -350,7 +360,9 @@ df['environment_encoded'] = df['environment'].map({
 })
 ```
 
-**Automation parallel:** Converting YAML to JSON for API consumption
+
+> **Automation Parallel:** Converting YAML to JSON for API consumption is like transforming your ML data into usable formats.
+{: .prompt-info }
 
 ### Step 4: Feature Engineering
 
@@ -362,7 +374,9 @@ df['deployment_velocity'] = df['files_changed'] / df['deployment_duration']
 df['risk_score'] = df['files_changed'] * df['is_prod'] * df['is_weekend']
 ```
 
-**Automation parallel:** Creating derived Terraform locals from variables
+
+> **Automation Parallel:** Creating derived Terraform locals from variables is like feature engineering in ML.
+{: .prompt-info }
 
 ---
 
@@ -411,7 +425,9 @@ The engineered features make patterns easier for the model to learn.
 | `previous_failures: [3, 0, 1, 2]` | `failure_rate: 0.25`         | Aggregates history             |
 | `team: "Platform"`                | `team_experience_score: 0.9` | Incorporates team reliability  |
 
-**Key principle:** Help the model by giving it features that directly relate to the problem.
+
+> **Engineering Insight:** Help the model by giving it features that directly relate to the problem.
+{: .prompt-info }
 
 ---
 
@@ -479,7 +495,9 @@ Use 15% of deployments to validate the model isn't overfitting (we'll cover this
 **For deployment risk:**  
 Use 15% of deployments as a final check before deploying the model
 
-**Critical rule:** Never look at test data during development. Only use it once at the very end.
+
+> **Best Practice:** Never look at test data during development. Only use it once at the very end.
+{: .prompt-tip }
 
 ### Why This Matters
 
@@ -492,8 +510,9 @@ model.fit(all_data)
 accuracy = model.score(all_data)  # 99% accurate! 🎉
 ```
 
-**Problem:** The model memorized the data, not learned patterns  
-**Result:** Fails on new deployments
+
+> **Warning:** If you train and test on the same data, the model memorizes instead of learning patterns—leading to failure on new deployments.
+{: .prompt-warning }
 
 **Good practice:**
 ```python
@@ -538,7 +557,9 @@ Training deployment risk model only on Platform team's deployments
 - Reason: Team X was new and had early failures
 - Model learns: "Team X = High Risk" even though team improved
 
-**Solution:** Use recent data, weight recent examples more heavily
+
+> **Best Practice:** Use recent data and weight recent examples more heavily to avoid historical bias.
+{: .prompt-tip }
 
 #### 3. **Measurement Bias**
 
@@ -549,7 +570,9 @@ Training deployment risk model only on Platform team's deployments
 - Different people have different risk tolerance
 - Model learns inconsistent labels
 
-**Solution:** Standardize labeling process, use objective criteria
+
+> **Best Practice:** Standardize your labeling process and use objective criteria to avoid measurement bias.
+{: .prompt-tip }
 
 ### Detecting Bias
 
@@ -564,7 +587,9 @@ print(df.groupby('team')['risk_level'].value_counts())
 # Team B: 30% Low Risk, 30% Medium, 40% High  ← Biased!
 ```
 
-If one group is disproportionately labeled as risky, investigate why.
+
+> **Tip:** If one group is disproportionately labeled as risky, investigate why—this may reveal hidden bias in your data.
+{: .prompt-tip }
 
 ---
 
@@ -608,13 +633,18 @@ data/
       └── deployment_history.csv  # Changed labeling criteria
 ```
 
-Track what changed between versions (we'll cover this more in MLOps series)
+
+> **Best Practice:** Track what changed between data versions (we'll cover this more in the MLOps series).
+{: .prompt-tip }
 
 ### 3. **Document Data Provenance**
 
-Create a data README:
+
+> **Best Practice:** Create a data README to document data provenance and known issues.
+{: .prompt-tip }
 
 ```markdown
+
 # Deployment Risk Dataset v2.0
 
 ## Source
@@ -635,6 +665,7 @@ Create a data README:
 ## Last Updated
 2026-01-07
 ```
+
 
 ### 4. **Monitor Data Quality Over Time**
 
@@ -658,26 +689,15 @@ def monitor_data_drift(current_data, reference_data):
 
 ## Key Takeaways
 
-1. **Data is configuration for ML**  
-   Bad data = bad model, just like bad variables = broken infrastructure
-
-2. **Quality matters more than quantity**  
-   1,000 high-quality labeled deployments > 10,000 messy ones
-
-3. **Data preparation is not optional**  
-   It's the foundation—skip it and your model will fail
-
-4. **Use train/validation/test splits**  
-   Like dev/staging/prod environments for code
-
-5. **Feature engineering amplifies signal**  
-   Help your model by creating meaningful features
-
-6. **Watch for bias**  
-   Biased data leads to biased models
-
-7. **Automate and version everything**  
-   Treat data pipeline like infrastructure code
+> **Takeaway:**
+> - **Data is configuration for ML:** Bad data = bad model, just like bad variables = broken infrastructure.
+> - **Quality matters more than quantity:** 1,000 high-quality labeled deployments > 10,000 messy ones.
+> - **Data preparation is not optional:** It's the foundation—skip it and your model will fail.
+> - **Use train/validation/test splits:** Like dev/staging/prod environments for code.
+> - **Feature engineering amplifies signal:** Help your model by creating meaningful features.
+> - **Watch for bias:** Biased data leads to biased models.
+> - **Automate and version everything:** Treat data pipeline like infrastructure code.
+{: .prompt-tip }
 
 ---
 
@@ -694,14 +714,20 @@ def monitor_data_drift(current_data, reference_data):
 
 ---
 
-## What's Next
+## What's Next?
 
-In **Chapter 2.2**, we'll explore:
+➡ **Series 2 – Chapter 2.2: Features, Labels, and Models**
+
+In the next chapter, we’ll explore:
+
 - Features, labels, and models in detail
 - How to choose the right features
 - The relationship between inputs, logic, and outputs
 - Building our first conceptual model for deployment risk
 
-We've prepared the data—now we'll use it to build something that learns.
+> **Architectural Question:** How do you decide which features and labels are most important for building a reliable machine learning model in automation scenarios?
+{: .prompt-info }
+
+_We've prepared the data—now we'll use it to build something that learns._
 
 ---

@@ -1,12 +1,17 @@
 ---
-layout: post
 title: "Chapter 3.3 – Model Evaluation: The Metric That Fooled Me"
-date: 2026-01-20 00:00:00 +0530
+layout: post
 author: ravijoshi1810
+date: 2026-01-21
+series: "From Automation to AI – A Practitioner's Journey"
+series_order: 3.3
 categories: [ai, ml]
 tags: [ai, machine-learning, model-evaluation, metrics]
 description: "How misleading metrics can hide real problems, and how to evaluate ML models honestly. Part of the 'From Automation to AI' series."
+permalink: /series/journey-automation-to-ai/chapter-3-3-model-evaluation/
+published: true
 mermaid: true
+---
 ---
 --- 
 ## The Dashboard That Lied
@@ -314,13 +319,15 @@ Ran it on 1,000 test deployments:
 - False alarm rate: 28/82 = 34%
 - Accuracy: 946/1000 = 94.6%
 
-**Decision:** I went with threshold 0.3 (Iteration 1). Yes, it has more false alarms, but for production deployments, catching 78% of failures is worth the extra noise. The team can handle reviewing a few extra deployments.
+> **Decision:** I went with threshold 0.3 (Iteration 1). Yes, it has more false alarms, but for production deployments, catching 78% of failures is worth the extra noise. The team can handle reviewing a few extra deployments.
+{: .prompt-info }
 
 ### The Key Lesson
 
-**Accuracy went down (94% → 93.4%), but the model got way better.**
-
-This is the fundamental insight: optimize for what matters, not what looks good on a dashboard.
+> **Accuracy went down (94% → 93.4%), but the model got way better.**
+> 
+> This is the fundamental insight: optimize for what matters, not what looks good on a dashboard.
+{: .prompt-tip }
 
 ---
 
@@ -337,70 +344,79 @@ When you try different models or features, don't just pick the highest accuracy.
 | Model B   | 75%                  | 45%              | 82%                  | Too many alarms |
 | Model C   | 60%                  | 20%              | 91%                  | **Best** ✅      |
 
-Pick the model that best fits **your context**, not the highest single number.
+> Pick the model that best fits **your context**, not the highest single number.
+{: .prompt-tip }
 
 ---
 
 ## Key Takeaways
 
-- ✅ **Accuracy is misleading** when outcomes are imbalanced (95% safe, 5% risky)
-- ✅ **Two types of mistakes:** false alarms (noise) and missed problems (real cost)
-- ✅ **Always a tradeoff:** more sensitivity = more alarms, more strictness = more misses
-- ✅ **Context decides:** which mistake is more expensive in your situation?
-- ✅ **Tune the cutoff:** adjust the confidence threshold to match your needs
-- ✅ **This is enough for now:** more advanced metrics exist, but learn them when you need rigorous model comparison
+> - ✅ **Accuracy is misleading** when outcomes are imbalanced (95% safe, 5% risky)
+> - ✅ **Two types of mistakes:** false alarms (noise) and missed problems (real cost)
+> - ✅ **Always a tradeoff:** more sensitivity = more alarms, more strictness = more misses
+> - ✅ **Context decides:** which mistake is more expensive in your situation?
+> - ✅ **Tune the cutoff:** adjust the confidence threshold to match your needs
+> - ✅ **This is enough for now:** more advanced metrics exist, but learn them when you need rigorous model comparison
+{: .prompt-tip }
 
-**Automation Mindset:**
-Model evaluation is like tuning monitoring alerts - find the balance between catching real problems and avoiding alert fatigue. Same tradeoff, different domain.
+> **Automation Mindset:** Model evaluation is like tuning monitoring alerts—find the balance between catching real problems and avoiding alert fatigue. Same tradeoff, different domain.
+{: .prompt-info }
 
 ---
 
 ## When to Learn More
 
-This chapter covers the **minimum** to evaluate models honestly. If you later work on ML professionally or make high-stakes model decisions, explore:
+> This chapter covers the **minimum** to evaluate models honestly. If you later work on ML professionally or make high-stakes model decisions, explore:
+> - **Precision and Recall:** Formal metrics for false alarm rate and catch rate
+> - **F1 Score:** Single number that balances both
+> - **ROC Curves:** Visual comparison of models across all cutoffs
+> - **Confusion Matrix:** Formal table for tracking all outcomes
+> 
+> **Resources:**
+> - [Google's ML Crash Course - Classification](https://developers.google.com/machine-learning/crash-course/classification)
+> - [Scikit-learn Evaluation Guide](https://scikit-learn.org/stable/modules/model_evaluation.html)
+{: .prompt-tip }
 
-- **Precision and Recall:** Formal metrics for false alarm rate and catch rate
-- **F1 Score:** Single number that balances both
-- **ROC Curves:** Visual comparison of models across all cutoffs
-- **Confusion Matrix:** Formal table for tracking all outcomes
-
-**Resources:**
-- [Google's ML Crash Course - Classification](https://developers.google.com/machine-learning/crash-course/classification)
-- [Scikit-learn Evaluation Guide](https://scikit-learn.org/stable/modules/model_evaluation.html)
-
-For integrating ML into your systems, the concepts here are enough to avoid common pitfalls.
+> For integrating ML into your systems, the concepts here are enough to avoid common pitfalls.
+{: .prompt-info }
 
 ---
 
 ## What I Learned (and What's Next)
 
-Model evaluation was one of those topics I thought I understood—until I got burned in production. Here's what really stuck with me:
+> Model evaluation was one of those topics I thought I understood—until I got burned in production. Here's what really stuck with me:
+> 
+> **The big lesson:** Don't trust a single metric. Ever. Just like you wouldn't judge infrastructure health purely on "uptime percentage," you can't judge ML models purely on "accuracy."
+{: .prompt-warning }
 
-**The big lesson:** Don't trust a single metric. Ever. Just like you wouldn't judge infrastructure health purely on "uptime percentage," you can't judge ML models purely on "accuracy."
+> **What actually matters:**
+> 1. Understanding the **cost** of different mistake types
+> 2. Counting **both** types of errors, not just overall accuracy
+> 3. Tuning thresholds to match **your specific context**
+> 4. Being honest about what "good enough" means
+{: .prompt-tip }
 
-**What actually matters:**
-1. Understanding the **cost** of different mistake types
-2. Counting **both** types of errors, not just overall accuracy
-3. Tuning thresholds to match **your specific context**
-4. Being honest about what "good enough" means
-
-**The automation connection:** Everything I learned about tuning monitoring alerts, balancing false positives and false negatives, thinking about incident costs—all of that directly applies to ML evaluation. It's the same engineering tradeoffs, just in a different domain.
+> **The automation connection:** Everything I learned about tuning monitoring alerts, balancing false positives and false negatives, thinking about incident costs—all of that directly applies to ML evaluation. It's the same engineering tradeoffs, just in a different domain.
+{: .prompt-info }
 
 ---
 
 ## Where We Are in the Journey
 
-We've covered the core ML concepts needed to actually build something:
+> We've covered the core ML concepts needed to actually build something:
+> - ✅ [Chapter 3.0](/series/journey-automation-to-ai/chapter-3-0-ml-project-workflow): The end-to-end ML workflow
+> - ✅ [Chapter 3.1](/series/journey-automation-to-ai/chapter-3-1-ml-models-training): How models learn from data
+> - ✅ [Chapter 3.2](/series/journey-automation-to-ai/chapter-3-2-overfitting-underfitting): Why models fail in production (overfitting/underfitting)
+> - ✅ **Chapter 3.3** (this one): How to evaluate models honestly
+{: .prompt-info }
 
-- ✅ [Chapter 3.0](/series/journey-automation-to-ai/chapter-3-0-ml-project-workflow): The end-to-end ML workflow
-- ✅ [Chapter 3.1](/series/journey-automation-to-ai/chapter-3-1-ml-models-training): How models learn from data
-- ✅ [Chapter 3.2](/series/journey-automation-to-ai/chapter-3-2-overfitting-underfitting): Why models fail in production (overfitting/underfitting)
-- ✅ **Chapter 3.3** (this one): How to evaluate models honestly
+> **Coming next:** [Chapter 3.4 – Feature Engineering](/series/journey-automation-to-ai/chapter-3-4-feature-engineering)
+{: .prompt-tip }
 
-**Coming next:** [Chapter 3.4 – Feature Engineering](/series/journey-automation-to-ai/chapter-3-4-feature-engineering)
+> This is where we get into the real work—taking raw deployment data (commit messages, timestamps, file changes) and transforming it into features your model can actually use. Spoiler: this is where 80% of ML work happens in practice.
+{: .prompt-info }
 
-This is where we get into the real work—taking raw deployment data (commit messages, timestamps, file changes) and transforming it into features your model can actually use. Spoiler: this is where 80% of ML work happens in practice.
-
-If evaluation is like tuning monitoring alerts, feature engineering is like designing your metrics collection strategy. It's where you decide **what** to measure in the first place.
+> If evaluation is like tuning monitoring alerts, feature engineering is like designing your metrics collection strategy. It's where you decide **what** to measure in the first place.
+{: .prompt-info }
 
 ---

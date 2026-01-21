@@ -28,7 +28,8 @@ ML has a similar split, but the terminology threw me off initially:
 - **Training:** When the model learns patterns from data (build time)
 - **Inference:** When the trained model makes predictions on new data (runtime)
 
-**Why this matters:** I kept reading about ML projects that "worked in training but failed in production." That confused me until I realized: **these are two completely different activities** with different inputs, outputs, and resource requirements.
+> **Engineer Insight:** I kept reading about ML projects that "worked in training but failed in production." That confused me until I realized: **these are two completely different activities** with different inputs, outputs, and resource requirements.
+{: .prompt-tip }
 
 Once I mapped training/inference to build/runtime, it clicked.
 
@@ -149,13 +150,14 @@ You learned from experience (historical deployments) what works and what doesn't
 - **Validation data:** Separate dataset to check if model generalizes (like testing on staging before prod)
 - **Hyperparameters:** Settings that control how the model learns (learning rate, number of layers, etc.)
 
-**Automation analogy:**
+> **Automation Analogy:**
+> Just as you monitor and update automation pipelines when requirements or performance change, ML models also need retraining when their environment shifts. For example:
+{: .prompt-info }
 
-```text
-Training data     = Your documented requirements and past incidents
-Validation data   = Testing in staging environment
-Hyperparameters   = Your coding standards and best practices
-```
+> Training data     = Your documented requirements and past incidents  
+> Validation data   = Testing in staging environment  
+> Hyperparameters   = Your coding standards and best practices  
+
 
 ### Training Outputs
 
@@ -222,6 +224,8 @@ graph TB
 ```
 
 **Automation analogy:**
+> Like automation: build in dev, test in staging, verify once in prod. ML: train, validate, test.
+{: .prompt-info }
 
 ```text
 Training set   = Development environment (build and iterate)
@@ -355,17 +359,8 @@ Same with cross-validation: Test on 5 different subsets.
 - Critical applications (worth the extra time)
 - Initial model selection (figure out which algorithm works best)
 
->**No free lunch: There's no universal best model**
-
-Here's a fundamental truth that took me a while to accept:
-
-**There is no one model that works best for all problems.**
-
-- For some datasets, Decision Trees work best
-- For others, Neural Networks are better
-- For simple patterns, Linear Regression is enough
-
-You can't know in advance which will work best. The only way is to try several and compare on validation data.
+> **Warning:** There is no one model that works best for all problems. For some datasets, Decision Trees work best; for others, Neural Networks are better; for simple patterns, Linear Regression is enough. You can't know in advance which will work best. The only way is to try several and compare on validation data.
+{: .prompt-warning }
 
 **Automation analogy:**
 
@@ -386,7 +381,8 @@ Same with ML: Different algorithms for different problems.
 3. Use validation set to compare fairly
 4. Pick the simplest model that meets your accuracy requirements
 
-**Rule of thumb:** Simpler models are easier to understand, debug, and maintain. Only go complex if you need to.
+> **Best Practice:** Simpler models are easier to understand, debug, and maintain. Only go complex if you need to.
+{: .prompt-tip }
 
 ---
 
@@ -484,8 +480,8 @@ Next Monday: Retrain on updated data (new week added)
 ```
 
 **Automation analogy:**
-
-You write your Terraform config once, then use it repeatedly:
+> You write your Terraform config once, then use it repeatedly:
+{: .prompt-info }
 
 ```bash
 # Write config once (training)
@@ -517,9 +513,9 @@ Every hour:
 - Real-time recommendation engines
 - Stock price prediction
 
-**Automation analogy:**
-
-Like GitOps where every commit triggers a new deployment:
+> **Automation Analogy:**
+> Like GitOps where every commit triggers a new deployment:
+{: .prompt-info }
 
 ```text
 Code change → CI/CD pipeline → Auto-deploy
@@ -585,7 +581,8 @@ New reality (2026):
 
 The model was trained on old patterns. It won't predict well on new patterns.
 
-**Automation analogy:** Requirements changed, so you update your Terraform config.
+> **Automation analogy:** Requirements changed, so you update your Terraform config.
+{: .prompt-info } 
 
 #### 2. Concept Drift
 
@@ -603,8 +600,8 @@ The model was trained on old patterns. It won't predict well on new patterns.
 
 The meaning of "night deployment" changed. The model needs to relearn.
 
-**Automation analogy:** Business logic changed, so you rewrite your validation rules.
-
+> **Automation analogy:** Business logic changed, so you rewrite your validation rules.
+{: .prompt-info } 
 #### 3. New Features Available
 
 **What it is:** You have new data sources that could improve predictions.
@@ -626,7 +623,8 @@ New features available:
 
 Retraining with these new features might improve accuracy.
 
-**Automation analogy:** New monitoring tools available, so you add health checks to your config.
+> **Automation analogy:** New monitoring tools available, so you add health checks to your config.
+{: .prompt-info } 
 
 #### 4. Poor Performance in Production
 
@@ -641,7 +639,8 @@ Week 8: Accuracy 85% ⚠️
 Week 12: Accuracy 78% ❌ Time to retrain
 ```
 
-**Automation analogy:** Your pipeline success rate drops, so you investigate and fix issues.
+> **Automation analogy:** Your pipeline success rate drops, so you investigate and fix issues.
+{: .prompt-info } 
 
 ### Retraining Schedule
 
@@ -782,7 +781,9 @@ Action:
 └─ Monitoring and alerting
 ```
 
-**Automation analogy:**
+> **Automation Analogy:**
+> The difference between training and inference environments in ML is just like the distinction between CI/CD build agents and production servers in automation
+{: .prompt-info }
 
 ```text
 Training = CI/CD build agents (bursty, powerful)
@@ -821,26 +822,15 @@ Inference = Production application servers (steady, efficient)
 
 ## 11. Key Takeaways
 
-1. **Training ≠ Inference**  
-   Training learns patterns from historical data. Inference applies learned patterns to new data.
-
-2. **Training is build time, inference is runtime**  
-   Like writing Terraform config vs running `terraform apply`
-
-3. **Training is expensive, inference is cheap**  
-   Train once (or periodically), predict millions of times
-
-4. **Models are artifacts**  
-   Trained models are files that need versioning, deployment, and monitoring
-
-5. **Retraining is necessary**  
-   Data drift, concept drift, and new features require periodic retraining
-
-6. **Monitor model performance in production**  
-   Track accuracy, latency, and prediction distribution to know when to retrain
-
-7. **Batch vs online learning**  
-   Most systems use batch (periodic) training. Online learning is complex and rarely needed.
+> **Takeaway:**
+> - **Training ≠ Inference:** Training learns patterns from historical data. Inference applies learned patterns to new data.
+> - **Training is build time, inference is runtime:** Like writing Terraform config vs running `terraform apply`.
+> - **Training is expensive, inference is cheap:** Train once (or periodically), predict millions of times.
+> - **Models are artifacts:** Trained models are files that need versioning, deployment, and monitoring.
+> - **Retraining is necessary:** Data drift, concept drift, and new features require periodic retraining.
+> - **Monitor model performance in production:** Track accuracy, latency, and prediction distribution to know when to retrain.
+> - **Batch vs online learning:** Most systems use batch (periodic) training. Online learning is complex and rarely needed.
+{: .prompt-tip }
 
 ---
 
@@ -857,14 +847,20 @@ Inference = Production application servers (steady, efficient)
 
 ---
 
-## What's Next
+## What's Next?
 
-In **Chapter 3.0**, we'll explore:
+➡ **Series 3 – Chapter 3.0: ML Project Workflow**
+
+In the next chapter, we’ll explore:
+
 - The complete ML project workflow from problem to production
 - The seven phases of ML projects
 - How all the concepts we've learned fit together
 - End-to-end example mapping to automation workflows
 
-We've covered the fundamentals—data, features, labels, training, and inference. Now we'll see how to orchestrate these pieces into a real ML project.
+> **Architectural Question:** How do the phases of an ML project map to automation workflows, and what are the key checkpoints for success?
+{: .prompt-info }
+
+_We've covered the fundamentals—data, features, labels, training, and inference. Now we'll see how to orchestrate these pieces into a real ML project._
 
 ---

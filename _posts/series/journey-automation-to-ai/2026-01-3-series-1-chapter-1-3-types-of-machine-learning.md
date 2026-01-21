@@ -31,6 +31,8 @@ It reminded me of learning automation tools:
 - Terraform to restart a service? Technically possible, completely wrong tool.
 
 **Same with ML types—pick based on your data and problem, not what sounds interesting.**
+> **Takeaway:** The type of machine learning you use depends on your data, not personal preference.
+{: .prompt-tip }
 
 ---
 
@@ -47,9 +49,9 @@ Let me walk through what each one actually means in practice.
 
 ---
 
-## 2. Supervised Learning: When You Know the Right Answers
+### Supervised Learning: When You Know the Right Answers
 
-### How I Understood It
+#### How I Understood It
 
 This was the easiest type for me to grasp because it maps directly to Terraform/Ansible thinking:
 
@@ -64,8 +66,10 @@ This was the easiest type for me to grasp because it maps directly to Terraform/
 - Applies that pattern to new data
 
 Basically: **If you have historical data with known outcomes, supervised learning is your starting point.**
+> **Engineering Insight:** Supervised learning is ideal when you have historical data with known outcomes.
+{: .prompt-info }
 
-### How It Works
+#### How It Works
 
 ```text
 Training Phase:
@@ -111,7 +115,7 @@ flowchart LR
     style prediction fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
 ```
 
-### Common Supervised Learning Tasks
+#### Common Supervised Learning Tasks
 
 **Classification:**
 - Predict a category or class
@@ -121,7 +125,7 @@ flowchart LR
 - Predict a numeric value
 - Examples: Cost prediction, resource usage forecasting, time-to-failure estimation
 
-### Real Use Cases
+#### Real Use Cases
 
 **Our Running Example: Deployment Risk Assessment**
 
@@ -144,20 +148,21 @@ New deployment: {infra, prod, 8 resources, peak hours} → Predicted: High Risk 
 - Email spam filtering (text → spam/not spam)
 - Incident classification (metrics → P1/P2/P3 severity)
 
-### When to Use It
+#### When to Use It
 
 Use supervised learning when:
 - You have labeled historical data
 - You know the correct answers for past examples
 - You want to predict specific outcomes
 
-**Automation parallel:** Like defining infrastructure as code—you know the desired end state.
+> **Automation Analogy:** Like defining infrastructure as code—you know the desired end state.
+{: .prompt-info }
 
 ---
 
-## 4. Unsupervised Learning: When You Don't Have Labels
+### Unsupervised Learning: When You Don't Have Labels
 
-### What Clicked for Me
+#### What Clicked for Me
 
 When I first read about unsupervised learning, I thought: **"Why would I use this? It doesn't even predict things."**
 
@@ -169,8 +174,10 @@ Then I thought about log analysis tools that automatically cluster errors:
 **That's when it clicked:** Sometimes the most valuable insights come from patterns you didn't know existed.
 
 If I'm exploring deployment data and don't know what "risky patterns" look like yet, unsupervised learning could discover them for me.
+> **Tip:** Use unsupervised learning to discover patterns you didn’t know existed in your data.
+{: .prompt-tip }
 
-### How It Works
+#### How It Works
 
 ```text
 Input: Unlabeled data (no correct answers provided)
@@ -198,7 +205,7 @@ flowchart TB
     style U7 fill:#ffebee,stroke:#d32f2f,stroke-width:2px
 ```
 
-### Common Unsupervised Learning Tasks
+#### Common Unsupervised Learning Tasks
 
 **Clustering:**
 - Group similar data points together
@@ -216,7 +223,7 @@ flowchart TB
 - Discover relationships between data
 - Examples: "Users who deploy microservices also use Kubernetes," resource co-occurrence patterns
 
-### Real Use Cases
+#### Real Use Cases
 
 **Our Running Example: Deployment Risk Assessment**
 
@@ -234,20 +241,21 @@ flowchart TB
 - Log clustering (group similar error patterns without pre-defining categories)
 - User behavior segmentation (discover "power users" vs "occasional users")
 
-### When to Use It
+#### When to Use It
 
 Use unsupervised learning when:
 - You don't have labeled data
 - You want to discover hidden patterns
 - You're exploring data for insights
 
-**Automation parallel:** Like monitoring tools that auto-discover patterns vs. ones where you predefine all alerts.
+> **Automation Analogy:** Like monitoring tools that auto-discover patterns vs. ones where you predefine all alerts.
+{: .prompt-info }
 
 ---
 
-## 5. Semi-Supervised Learning: The Practical Compromise
+### Semi-Supervised Learning: The Practical Compromise
 
-### The Scenario That Made This Click
+#### The Scenario That Made This Click
 
 When learning about this, I thought through a realistic scenario: **What if I had 50,000 deployment records and needed to classify them?**
 
@@ -262,8 +270,10 @@ Semi-supervised suddenly made perfect sense. It's like infrastructure discovery 
 - You correct mistakes as needed
 
 **Translation: Get supervised learning predictions without the labeling nightmare.**
+> **Takeaway:** Semi-supervised learning lets you leverage a small labeled set and a large unlabeled set for practical accuracy.
+{: .prompt-info }
 
-### How It Works
+#### How It Works
 
 ```text
 Input: Small amount of labeled data + Large amount of unlabeled data
@@ -292,22 +302,21 @@ flowchart TB
     style S4 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style S5 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style S6 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    
     style input fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
-```
+  ```
 
-### Why It Matters
+  ### Why It Matters
 
-Labeling data is expensive and time-consuming:
-- Manually classifying thousands of incidents? Weeks of work.
-- Labeling 100 examples? A few hours.
+  Labeling data is expensive and time-consuming:
+  - Manually classifying thousands of incidents? Weeks of work.
+  - Labeling 100 examples? A few hours.
 
-Semi-supervised learning lets you:
+  Semi-supervised learning lets you:
 - Label a small subset manually
 - Train on millions of unlabeled examples
 - Get accuracy close to fully supervised approaches
 
-### Real Use Cases
+#### Real Use Cases
 
 **Our Running Example: Deployment Risk Assessment**
 
@@ -329,22 +338,25 @@ Unlabeled: 50,000 deployments (raw data)
 - Incident categorization (label 50 incidents, learn from 10,000)
 - Security threat detection (label known attacks, learn from massive traffic volume)
 
-### When to Use It
+#### When to Use It
 
 Use semi-supervised learning when:
 - Labeling all data is too expensive or slow
 - You have some labeled examples
 - You have lots of unlabeled data available
 
-**Automation parallel:** Like tagging resources—manually tag a few, auto-tag the rest based on patterns.
+> **Automation Analogy:** Like tagging resources—manually tag a few, auto-tag the rest based on patterns.
+{: .prompt-info }
 
 ---
 
-## 6. Reinforcement Learning: Still Wrapping My Head Around This
+### Reinforcement Learning: Still Wrapping My Head Around This
 
-### Why This One Is Different
+#### Why This One Is Different
 
 Full transparency: This is the one I understand least. It's more complex and the use cases feel more specialized.
+> **Warning:** Reinforcement learning is complex and best suited for dynamic optimization problems with clear feedback.
+{: .prompt-warning }
 
 The concept makes sense when I think of auto-scaling:
 - System tries scaling up/down
@@ -355,7 +367,7 @@ Reinforcement learning works through **trial, error, and feedback**—the system
 
 **My understanding so far:** This is for dynamic optimization problems where the system can safely experiment. Not where I'd start learning.
 
-### How It Works
+#### How It Works
 
 ```text
 1. Agent takes action in environment
@@ -384,7 +396,7 @@ flowchart LR
     style R6 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
 ```
 
-### Real Use Cases
+#### Real Use Cases
 
 **Our Running Example: Deployment Risk Assessment**
 
@@ -411,18 +423,19 @@ Week 50: Optimized strategy → 92% success rate
 - Auto-scaling optimization (try strategies, measure cost+performance)
 - Traffic routing (experiment with routes, minimize latency)
 
-### When to Use It
+#### When to Use It
 
 Use reinforcement learning when:
 - Decisions happen sequentially over time
 - There's clear feedback (reward/penalty)
 - The system can learn from experimentation
 
-**Automation parallel:** Like chaos engineering—system learns resilience through controlled failure.
+> **Automation Analogy:** Like chaos engineering—system learns resilience through controlled failure.
+{: .prompt-info }
 
 ---
 
-## 7. Comparison: Supervised vs Unsupervised vs Semi-Supervised vs Reinforcement
+## 2. Comparison: Supervised vs Unsupervised vs Semi-Supervised vs Reinforcement
 
 | Aspect                 | Supervised                        | Unsupervised                | Semi-Supervised                 | Reinforcement                     |
 | ---------------------- | --------------------------------- | --------------------------- | ------------------------------- | --------------------------------- |
@@ -433,7 +446,7 @@ Use reinforcement learning when:
 
 ---
 
-## 7. Other Ways to Categorize ML
+## 3. Other Ways to Categorize ML
 
 Beyond supervision type, ML systems are also categorized by:
 
@@ -463,7 +476,10 @@ Beyond supervision type, ML systems are also categorized by:
 
 ---
 
-## 9. How I Think About Choosing Now
+## 4. How I Think About Choosing Now
+
+> **Best Practice:** Match your ML approach to the data and problem at hand—start simple, validate, and only add complexity when needed.
+{: .prompt-tip }
 
 **For deployment risk assessment, here's how I'd approach the decision:**
 
@@ -488,16 +504,19 @@ Beyond supervision type, ML systems are also categorized by:
 - Goal: Optimize over time through learning
 - **Reality check:** This seems advanced. Would start with simpler approaches first.
 
-**My current understanding:** Start with supervised if you have labels. Use unsupervised for exploration. Semi-supervised when labeling is expensive. Save RL for later.
+> **Engineer Insight:** Start with supervised learning if you have labels, use unsupervised for exploration, and save reinforcement learning for advanced scenarios.
+{: .prompt-tip }
 
 ---
 
-## 10. Pitfalls I'm Watching Out For
+## 5. Pitfalls I'm Watching Out For
 
 **Pitfall 1: Using ML when a simple rule would work**
 - **The trap:** Building a supervised learning model to flag deployments with >100 resources
 - **Better approach:** Just write: `if resources > 100: flag = True`
 - **Lesson I'm learning:** If you can write a rule, write a rule. Don't overcomplicate.
+> **Warning:** Don’t use machine learning when a simple rule will do the job.
+{: .prompt-warning }
 
 **Pitfall 2: Expecting unsupervised learning to predict specific outcomes**
 - **The confusion:** Thinking clustering will classify incident severity
@@ -511,19 +530,35 @@ Beyond supervision type, ML systems are also categorized by:
 
 ---
 
-## 11. What I Wish I Knew Earlier
+## 6. What I Wish I Knew Earlier
 
-- **Supervised:** If you have labeled data, start here. Predict outcomes from examples.
-- **Unsupervised:** If you don't have labels, use this. Discover patterns you didn't know existed.
-- **Semi-Supervised:** If you have some labels but not enough, this saves massive time.
-- **Reinforcement:** Complex, experimental, requires feedback loops. Save for later.
-- **The choice isn't about what sounds cool—it's about what data you have.**
-- **Don't use ML when a simple rule works.** I learned this the hard way.
+> **Takeaway:**
+> - **Supervised:** If you have labeled data, start here. Predict outcomes from examples.
+> - **Unsupervised:** If you don't have labels, use this. Discover patterns you didn't know existed.
+> - **Semi-Supervised:** If you have some labels but not enough, this saves massive time.
+> - **Reinforcement:** Complex, experimental, requires feedback loops. Save for later.
+> - The choice isn't about what sounds cool—it's about what data you have.
+> - Don't use ML when a simple rule works. I learned this the hard way.
 
 ---
 
 ## What's Next?
 
-We'll demystify what happens during training, how models learn, and what "parameters" and "hyperparameters" actually mean—using automation analogies.
+➡ **Series 2 – Chapter 2.1: Data Quality and Preparation**
+
+In the next chapter, we’ll explore:
+
+- Data as input, output, and state
+- Bad data = bad model (garbage variables = broken infra)
+- Data quality checklist: completeness, accuracy, consistency
+- Training vs validation vs test sets
+- Feature engineering basics
+- Data bias and how to detect it
+- Practical automation-inspired guidelines
+
+> **Architectural Question:** How does data quality impact both automation and AI systems, and what steps can you take to ensure your data is reliable from the start?
+{: .prompt-info }
+
+_We've covered the fundamentals—data, features, labels, training, and inference. Now we'll see how to orchestrate these pieces into a real ML project._
 
 ---

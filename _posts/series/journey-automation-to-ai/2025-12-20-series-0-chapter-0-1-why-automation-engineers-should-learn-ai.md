@@ -11,19 +11,14 @@ description: "Why automation engineers should learn AI, and what to avoid when s
 mermaid: true
 ---
 ---
-
 ## Why Automation Engineers Should Learn AI  
 *(And What NOT to Learn First)*
 
 ---
-
-
----
-
-
 If you work in automation, you're good at one thing: 
 
->**turning human decisions into repeatable systems.**
+> **Turning human decisions into repeatable systems.**
+{: .prompt-info }
 
 For years, that meant:
 - Eliminating manual work
@@ -39,11 +34,13 @@ Modern systems are:
 
 I'd write increasingly elaborate conditionals that still couldn't handle edge cases. At some point, 
 
->**more rules just meant more maintenance.**
+
+> **More rules = more maintenance.**
+{: .prompt-tip }
+
 
 That's when AI stopped being hype and started feeling necessary—not as a replacement, but as the next step in automation's evolution.
 
----
 
 ## 1. Automation vs AI – The Real Difference
 
@@ -69,9 +66,10 @@ Based on past traffic patterns,
 predict load and scale before the spike happens
 ```
 
-**Mental model:**
+> **Mental model:**
 - Automation: "Do exactly what I tell you"
 - AI: "Learn what usually works"
+{: .prompt-info }
 
 Automation executes known logic. AI handles unknown patterns.
 
@@ -112,6 +110,9 @@ AI makes sense when:
 - **Catalogs:** Recommend resources based on usage history
 
 AI augments decision-making. It doesn't replace your IaC, CI/CD, or pipelines.
+
+> **Tip:** Start by looking for places where rules break down—AI is most valuable where automation hits its limits.
+{: .prompt-tip }
 
 ## 4. IaC/CI/CD vs AI – A Familiar Analogy
 
@@ -194,18 +195,18 @@ Automation Foundations → ML Concepts → Deep Learning (Intuition)
 - A reference for practitioners who build systems
 
 ## 8. Key Takeaways
-
-- AI is automation's evolution, not its replacement
-- AI starts where rules become unmaintainable
-- You don't need heavy math—you need architectural intuition
-- Your automation background is an advantage
+ 
+> - AI is automation's evolution, not its replacement
+> - AI starts where rules become unmaintainable
+> - You don't need heavy math—you need architectural intuition
+> - Your automation background is an advantage
+{: .prompt-info }
 
 ---
-
 ## What's Next?
 
-How I'm approaching AI learning as an automation architect, what I'll skip intentionally, and how I plan to connect AI back to real-world automation use cases.
+*How I'm approaching AI learning as an automation architect, what I'll skip intentionally, and how I plan to connect AI back to real-world automation use cases.*
 
-This blog is both a learning journal and a practical reference—written for my future self and for anyone walking a similar path.
+*This blog is both a learning journal and a practical reference—written for my future self and for anyone walking a similar path.*
 
 ---

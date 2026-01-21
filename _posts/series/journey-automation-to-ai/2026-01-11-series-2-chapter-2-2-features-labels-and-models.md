@@ -50,7 +50,9 @@ Once I understood this breakdown, ML problems became easier to think about:
 - Choosing relevant inputs: Focus on features that actually correlate with the outcome
 - Defining success: Clear labels = clear success criteria
 
-**Automation parallel:** Like understanding variables, logic, and outputs in code. Can't build good infrastructure without knowing what inputs drive what outputs.
+
+> **Automation Analogy:** Like understanding variables, logic, and outputs in code. Can't build good infrastructure without knowing what inputs drive what outputs.
+{: .prompt-info }
 
 ---
 
@@ -110,7 +112,9 @@ prediction = model.predict(features)
 - Model: Learned patterns from training data
 - Label: `High Risk` / `Medium Risk` / `Low Risk`
 
-**Key difference:** In automation, you write the logic. In ML, the model learns the logic from examples.
+
+> **Engineering Insight:** In automation, you write the logic. In ML, the model learns the logic from examples.
+{: .prompt-info }
 
 ---
 
@@ -180,12 +184,9 @@ Good features have **predictive power**. They actually correlate with what you'r
 
 (Yes, I've seen people include commit message length. It doesn't help.)
 
-**Automation parallel:**
 
-When writing Terraform, you include variables that affect infrastructure:
-- ✅ `instance_type` (affects performance)
-- ✅ `region` (affects latency, cost)
-- ❌ `developer_name` (doesn't affect infrastructure behavior)
+> **Automation Analogy:** When writing Terraform, you include variables that affect infrastructure—focus on features that actually impact outcomes.
+{: .prompt-info }
 
 ### Choosing Features: The Practitioner's Checklist
 
@@ -207,7 +208,9 @@ When selecting features, I run through these questions (usually after making mis
    - ❌ "post_deployment_error_count" (we won't know this until after deployment)
    - ✅ "historical_error_rate" (based on past deployments)
 
-**Data leakage** is when you accidentally include information that wouldn't be available in production. It's like using `terraform state` as an input to `terraform plan`—you're basically cheating by looking at the answer. Your model will look amazing in testing and fail miserably in production. Ask me how I know.
+
+> **Warning:** Data leakage is when you accidentally include information that wouldn't be available in production. It's like using `terraform state` as an input to `terraform plan`—you're basically cheating by looking at the answer. Your model will look amazing in testing and fail miserably in production.
+{: .prompt-warning }
 
 ---
 
@@ -256,7 +259,9 @@ labels = ["High Risk", "Medium Risk", "Low Risk"]
 - Deployment: High / Medium / Low Risk
 - Server: Healthy / Degraded / Failed
 
-**Automation parallel:** Like Terraform conditional outputs:
+
+> **Automation Analogy:** Like Terraform conditional outputs—classification labels in ML are like conditional outputs in automation.
+{: .prompt-info }
 ```hcl
 output "environment_tier" {
   value = var.environment == "prod" ? "critical" : "non-critical"
@@ -279,7 +284,9 @@ predicted_cpu_usage = 67.3        # percent
 - Predict infrastructure cost in dollars
 - Predict CPU usage percentage
 
-**Automation parallel:** Like Terraform numeric outputs:
+
+> **Automation Analogy:** Like Terraform numeric outputs—regression labels in ML are like numeric outputs in automation.
+{: .prompt-info }
 ```hcl
 output "total_instances" {
   value = length(aws_instance.server)
@@ -306,7 +313,9 @@ Here's where a lot of ML projects fall apart (including my early attempts). Your
    - ✅ 40% Low, 35% Medium, 25% High (reasonable spread)
    - ❌ 95% Low, 4% Medium, 1% High (your model will just predict "Low" for everything)
 
-Remember from Chapter 2.1: Bad labels = bad model, just like bad configuration = broken infrastructure.
+
+> **Warning:** Bad labels = bad model, just like bad configuration = broken infrastructure.
+{: .prompt-warning }
 
 ---
 
@@ -350,7 +359,9 @@ IF time_of_day BETWEEN 0 AND 6 (late night)
 THEN increase risk by one level
 ```
 
-**Important:** You don't write these rules. The model discovers them by analyzing training data.
+
+> **Engineering Insight:** You don't write these rules. The model discovers them by analyzing training data.
+{: .prompt-info }
 
 ### Models as Functions
 
@@ -398,7 +409,9 @@ Different ML algorithms create different internal representations. Don't worry t
 | Neural Network | Layers of transformations      | Pipeline of processing steps     |
 | Random Forest  | Multiple decision trees voting | Multiple validation checks       |
 
-For now, think of a model as a **black box that learned logic**. You don't need to understand the internals to use it effectively (just like you don't need to understand V8 internals to write JavaScript).
+
+> **Tip:** For now, think of a model as a black box that learned logic. You don't need to understand the internals to use it effectively.
+{: .prompt-tip }
 
 ### Model Artifacts
 
@@ -412,14 +425,16 @@ deployment-risk-model/
 └── metadata.json             # Version, training date, etc.
 ```
 
-**Automation parallel:** Like Terraform state files, models capture learned state:
+**Automation Analogy:** Like Terraform state files, models capture learned state:
 
 ```hcl
 terraform.tfstate    # Current infrastructure state
 model.pkl            # Current learned patterns
 ```
 
-Both need to be versioned, backed up, and managed carefully.
+
+> **Best Practice:** Both models and Terraform state files need to be versioned, backed up, and managed carefully.
+{: .prompt-tip }
 
 ---
 
@@ -535,7 +550,9 @@ engineered_features = {
 
 ### Why Engineer Features?
 
-**Help the model learn faster** by making patterns obvious:
+
+> **Best Practice:** Help the model learn faster by making patterns obvious through feature engineering.
+{: .prompt-tip }
 
 Instead of the model learning:
 > "When `hour` is less than 6 OR greater than 20, risk increases"
@@ -543,7 +560,7 @@ Instead of the model learning:
 You explicitly create:
 > `is_late_night: True` when `hour < 6 OR hour > 20`
 
-**Automation parallel:**
+**Automation Analogy:**
 
 ```hcl
 # Raw inputs
@@ -558,7 +575,9 @@ locals {
 }
 ```
 
-You create derived values to make decisions easier.
+
+> **Automation Analogy:** You create derived values to make decisions easier—feature engineering in ML is like creating Terraform locals.
+{: .prompt-info }
 
 ### Common Feature Engineering Techniques
 
@@ -629,7 +648,9 @@ prediction = model.predict(features)
 2. Model contains learned logic (training discovered patterns)
 3. You get outputs (predicted labels)
 
-**Key insight:** Same pattern, different source of logic.
+
+> **Engineering Insight:** Same pattern, different source of logic—automation logic is written, ML logic is learned.
+{: .prompt-info }
 
 ---
 
@@ -668,7 +689,9 @@ features = {
 }
 ```
 
-**Impact:** Noise confuses the model, slows training, reduces accuracy
+
+> **Warning:** Noise confuses the model, slows training, and reduces accuracy—avoid irrelevant features.
+{: .prompt-warning }
 
 **Automation equivalent:** Including unnecessary variables that don't affect infrastructure
 
@@ -683,7 +706,9 @@ features_train = {'environment': 'prod'}
 features_prod = {'environment': 'PRODUCTION'}  # ← Different format!
 ```
 
-**Result:** Model doesn't recognize the feature value
+
+> **Warning:** Model doesn't recognize the feature value—ensure consistent feature formats.
+{: .prompt-warning }
 
 **Automation equivalent:** Inconsistent variable naming breaks your configurations
 
@@ -698,11 +723,9 @@ features = {
 }
 ```
 
-**Solution:** Handle missing values (from Chapter 2.1):
-- Use defaults
-- Fill with median/mean
-- Create "is_missing" boolean feature
-- Remove samples with missing critical features
+
+> **Best Practice:** Handle missing values by using defaults, filling with median/mean, creating "is_missing" boolean features, or removing samples with missing critical features.
+{: .prompt-tip }
 
 ---
 
@@ -791,45 +814,24 @@ if current_avg_files_changed > historical_avg_files_changed * 2:
     alert("Feature distribution drift detected!")
 ```
 
-**Automation parallel:** Monitoring infrastructure drift from desired state
+
+> **Automation Analogy:** Monitoring infrastructure drift from desired state is like monitoring feature distribution drift in ML.
+{: .prompt-info }
 
 ---
 
 ## Key Takeaways
 
-If you remember nothing else from this chapter, remember this:
 
-1. **Features = Inputs**  
-   The measurable stuff you feed into your model  
-   (Like Terraform variables driving infrastructure decisions)
-
-2. **Labels = Outputs**  
-   What you're trying to predict  
-   (Like Terraform outputs, but predicted instead of computed)
-
-3. **Models = Learned Logic**  
-   The patterns the model discovered during training  
-   (Like your Terraform config, except you didn't write it—the model figured it out from examples)
-
-4. **Feature engineering amplifies signal**  
-   Creating meaningful features helps models learn better  
-   Like creating Terraform locals to simplify complex logic
-
-5. **Good features are:**
-   - Available at prediction time
-   - Correlated with the outcome
-   - Reliable and consistent
-   - Free from data leakage
-
-6. **Good labels are:**
-   - Clear and unambiguous
-   - Consistently defined
-   - Verifiable
-   - Reasonably balanced
-
-7. **Models are artifacts**  
-   Trained models are files that need versioning, deployment, and monitoring  
-   Like Terraform state or Docker images
+> **Takeaway:**
+> - **Features = Inputs:** The measurable stuff you feed into your model (like Terraform variables driving infrastructure decisions).
+> - **Labels = Outputs:** What you're trying to predict (like Terraform outputs, but predicted instead of computed).
+> - **Models = Learned Logic:** The patterns the model discovered during training (like your Terraform config, except you didn't write it—the model figured it out from examples).
+> - **Feature engineering amplifies signal:** Creating meaningful features helps models learn better, like creating Terraform locals to simplify complex logic.
+> - **Good features are:** Available at prediction time, correlated with the outcome, reliable and consistent, free from data leakage.
+> - **Good labels are:** Clear and unambiguous, consistently defined, verifiable, reasonably balanced.
+> - **Models are artifacts:** Trained models are files that need versioning, deployment, and monitoring—like Terraform state or Docker images.
+{: .prompt-tip }
 
 ---
 
@@ -849,13 +851,22 @@ If you remember nothing else from this chapter, remember this:
 
 ## What's Next
 
-In **Chapter 2.3**, we'll explore:
+
+## What's Next?
+
+➡ **Series 2 – Chapter 2.3: Training vs Inference**
+
+In the next chapter, we’ll explore:
+
 - The difference between training and inference (execution)
 - How model training works (learning phase)
 - How model inference works (prediction phase)
 - Comparing to `terraform apply` vs runtime behavior
 - When and why models need retraining
 
-We understand the building blocks—now we'll see how they come to life.
+> **Architectural Question:** What are the practical differences between model training and inference, and how do they impact automation workflows?
+{: .prompt-info }
+
+_We understand the building blocks—now we'll see how they come to life._
 
 ---

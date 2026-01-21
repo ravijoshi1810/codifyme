@@ -2,14 +2,14 @@
 title: "Chapter 3.0 – The ML Project Workflow"
 layout: post
 author: ravijoshi1810
-date: 2026-01-16
+date: 2026-01-21
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 3.0
 categories: [ai, ml]
 tags: [ai, machine-learning, automation, devops]
 description: "The complete end-to-end ML workflow mapped to automation concepts. From problem definition to production deployment."
-permalink: /series/journey-automation-to-ai/chapter-3-0-ml-project-workflow/
-published: false
+permalink: /series/journey-automation-to-ai/chapter-3-0-ml-project-workflow
+published: true
 mermaid: true
 ---
 ---
@@ -27,15 +27,16 @@ But those chapters felt like **learning individual Terraform resources**—impor
 
 This chapter is that workflow. It's my attempt to document the **end-to-end ML journey** I wish I had when starting. Each phase maps back to what we already learned, so you can see WHY we covered those topics.
 
-**Automation analogy:**
 
-```text
-Series 0-2 = Learning what aws_instance, aws_vpc, variables, state files mean
-Chapter 3.0 = Your first complete project: VPC → Subnet → EC2 → Deploy → Monitor
-Series 3+ = Advanced patterns, modules, remote state, team workflows
-```
+> **Automation analogy:**
+> - Series 0-2 = Learning what aws_instance, aws_vpc, variables, state files mean. 
+> - Chapter 3.0 = Your first complete project: VPC → Subnet → EC2 → Deploy → Monitor. 
+> - Series 3+ = Advanced patterns, modules, remote state, team workflows.
+{: .prompt-info }
 
-**Confidence check:** The phase mappings below connect to previous chapters. If something doesn't make sense, it means either (a) I'm still learning that part, or (b) the reference is wrong—let me know!
+
+> **Confidence check:** The phase mappings below connect to previous chapters. If something doesn't make sense, it means either (a) I'm still learning that part, or (b) the reference is wrong—let me know!
+{: .prompt-info }
 
 ---
 
@@ -120,7 +121,10 @@ flowchart TD
     style Phase7 fill:#FFD700,stroke:#B8860B,stroke-width:3px
 ```
 
-**Automation analogy:** It's like your IaC workflow: Requirements → Design → Code → Test → Deploy → Monitor → Maintain.
+
+> **Automation analogy:** It's like your IaC workflow: 
+> - Requirements → Design → Code → Test → Deploy → Monitor → Maintain.
+{: .prompt-info }
 
 ---
 
@@ -156,7 +160,9 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 | **6. Quick look**       | Check size, types, missing values, balance            | Apply [2.1](chapter-2-1-data-quality-and-preparation): completeness, accuracy, consistency    |
 | **7. Create test set**  | Set aside 20% for final evaluation, LOCK IT AWAY      | Simulates future data—see [2.3](chapter-2-3-training-vs-inference) on validation vs test sets |
 
-**Critical:** Never touch the test set until the very end. It simulates future production data.
+
+> **Critical:** Never touch the test set until the very end. It simulates future production data.
+{: .prompt-warning }
 
 ---
 
@@ -170,7 +176,11 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 | **9. Correlations**          | Which features relate to the outcome?          | Find predictive signals—remember [2.2](chapter-2-2-features-labels-and-models) on feature importance      |
 | **10. Feature combinations** | Create new features by combining existing ones | Feature engineering from [2.2](chapter-2-2-features-labels-and-models): `risk_score = failures × changes` |
 
-**Findings shape preparation:** If `previous_failures` correlates 0.78 with risk, keep it. If `team` correlates 0.12, maybe drop it.
+
+> **Findings shape preparation:** 
+> - If `previous_failures` correlates 0.78 with risk, keep it. 
+> - If `team` correlates 0.12, maybe drop it.
+{: .prompt-info }
 
 ---
 
@@ -195,7 +205,9 @@ pipeline = Pipeline([
 ])
 ```
 
-**Automation analogy:** Like a CI/CD pipeline—same steps, same order, every time.
+
+> **Automation analogy:** Like a CI/CD pipeline— same steps, same order, every time.
+{: .prompt-info }
 
 ---
 
@@ -210,7 +222,9 @@ pipeline = Pipeline([
 | **18. Cross-validate**   | Test on 5 different splits                  | The validation strategy from [2.3](chapter-2-3-training-vs-inference)—prevents overfitting |
 | **19. Fine-tune**        | Grid/random search for best hyperparameters | Hyperparameter tuning from [2.3](chapter-2-3-training-vs-inference)—optimize learning      |
 
-**Quick start:** Begin with Decision Tree or Random Forest. They work well out-of-the-box.
+
+> **Quick start:** Begin with Decision Tree or Random Forest. They work well out-of-the-box.
+{: .prompt-tip }
 
 ---
 
@@ -223,7 +237,9 @@ pipeline = Pipeline([
 | **20. Analyze errors**      | Where does the model fail?               | Identify improvement opportunities (Will cover in Chapter 3.2)                               |
 | **21. Test set evaluation** | NOW test on locked-away test set (once!) | Honest estimate of production performance ([Chapter 2.3](chapter-2-3-training-vs-inference)) |
 
-**Expected:** Test score should be within 2-3% of cross-validation score. If much worse, you overfit.
+
+> **Expected:** Test score should be within 2-3% of cross-validation score. If much worse, you overfit.
+{: .prompt-info }
 
 ---
 
@@ -246,7 +262,15 @@ pipeline = Pipeline([
 
 ---
 
+
 ## 3. Quick Reference Checklist
+
+> **Key Takeaways:**
+> - ML projects follow a repeatable workflow, just like automation projects.
+> - Data quality and preparation matter more than fancy algorithms.
+> - Never touch your test set until the very end.
+> - Monitor and retrain models as you would update and monitor infrastructure.
+{: .prompt-tip }
 
 Print this and check off as you go:
 
@@ -289,7 +313,11 @@ Print this and check off as you go:
 
 ---
 
+
 ## 4. What's Next
+
+> **Architectural Question:** How do the phases of an ML project map to automation workflows, and what are the key checkpoints for success?
+{: .prompt-info }
 
 The chapters ahead dive into specific steps:
 

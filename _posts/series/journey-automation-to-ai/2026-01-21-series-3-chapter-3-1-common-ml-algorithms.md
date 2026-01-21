@@ -2,14 +2,14 @@
 title: "Chapter 3.1 – Common ML Algorithms (Intuition Only)"
 layout: post
 author: ravijoshi1810
-date: 2026-01-20
+date: 2026-01-21
 series: "From Automation to AI – A Practitioner's Journey"
 series_order: 3.1
 categories: [ai, ml]
 tags: [ai, machine-learning, algorithms, decision-trees, random-forest, linear-regression]
 description: "Understanding common ML algorithms through intuition and automation analogies, no heavy math."
 permalink: /series/journey-automation-to-ai/chapter-3-1-common-ml-algorithms
-published: false
+published: true
 mermaid: true
 ---
 ---
@@ -54,10 +54,12 @@ When I was learning automation tools, I learned to think:
 
 Linear regression is the simplest algorithm. It assumes a **straight-line relationship** between input and output.
 
-**Automation analogy:**
-Like predicting server CPU usage based on number of requests:
-- More requests → Higher CPU (straight-line relationship)
-- The algorithm finds the best-fit line through your data
+
+> **Automation analogy:**
+> Like predicting server CPU usage based on number of requests: 
+> - more requests → higher CPU (straight-line relationship).
+> - The algorithm finds the best-fit line through your data.
+{: .prompt-info }
 
 ### Visual Representation
 
@@ -101,19 +103,12 @@ Problem: Severity doesn't increase linearly
 Linear regression would give weird answers like "P2.7"
 ```
 
-### Key Takeaways
 
-**✅ Use linear regression when:**
-- You're predicting a number (not a category)
-- The relationship is roughly linear
-- You need fast, simple predictions
-
-**❌ Don't use it when:**
-- Predicting categories (high/medium/low)
-- The relationship is curved or complex
-- You have many interacting factors
-
-**Real-world use:** Cost estimation, capacity planning, simple forecasting
+> **Key Takeaways:**
+> - Use linear regression for simple, numeric predictions with linear relationships.
+> - Avoid for categories or complex, non-linear patterns.
+> - Real-world use: cost estimation, capacity planning, simple forecasting.
+{: .prompt-tip }
 
 ---
 
@@ -138,7 +133,9 @@ else:
     risk = "LOW"
 ```
 
-**Automation analogy:** Like approval workflows—each decision point leads to another question until you reach a conclusion.
+
+> **Automation analogy:** Like approval workflows — each decision point leads to another question until you reach a conclusion.
+{: .prompt-info }
 
 ### How It Works
 
@@ -174,18 +171,19 @@ flowchart TD
     style R3 fill:#ffebee,stroke:#d32f2f,stroke-width:2px
 ```
 
-### Strengths
 
-- ✅ **Easy to understand:** You can literally draw it out
-- ✅ **Handles categories and numbers:** Works for both
-- ✅ **Finds interactions:** Discovers that "peak hours + production + many resources = high risk"
-- ✅ **No assumptions:** Doesn't assume linear relationships
+> **Strengths:**
+> - Easy to understand (can draw it out)
+> - Handles categories and numbers
+> - Finds interactions (e.g., peak hours + production = high risk)
+> - No assumptions about data shape
+{: .prompt-tip }
 
-### Weaknesses
-
-- ❌ **Overfitting:** Can memorize training data too well
-- ❌ **Unstable:** Small data changes can create very different trees
-- ❌ **Greedy:** Makes decisions one node at a time (doesn't look ahead)
+> **Weaknesses:**
+> - Can overfit (memorize training data)
+> - Unstable (small data changes = different trees)
+> - Greedy (makes decisions one node at a time)
+{: .prompt-warning }
 
 ### When to Use
 
@@ -206,11 +204,10 @@ If one decision tree can overfit or be unstable, what if we **create many trees 
 
 That's Random Forest: Multiple decision trees, each trained on slightly different data, voting on the final answer.
 
-**Automation analogy:**
-Like having multiple engineers review a deployment:
-- Each engineer has slightly different experience
-- Each makes a recommendation
-- Final decision: Majority vote
+
+> **Automation analogy:**
+> Like having multiple engineers review a deployment: each has different experience, each makes a recommendation, final decision is by majority vote.
+{: .prompt-info }
 
 ### How It Works
 
@@ -271,18 +268,19 @@ flowchart TD
 Final Prediction: HIGH RISK (3 out of 4 trees voted for it)
 ```
 
-### Why It's Better Than Single Trees
 
-- ✅ **More accurate:** Combines multiple perspectives
-- ✅ **Less overfitting:** Individual tree mistakes get outvoted
-- ✅ **More stable:** Small data changes don't break everything
-- ✅ **Feature importance:** Can tell you which features matter most
+> **Why It's Better Than Single Trees:**
+> - More accurate (combines perspectives)
+> - Less overfitting (mistakes get outvoted)
+> - More stable (small data changes don't break everything)
+> - Can show feature importance
+{: .prompt-tip }
 
-### Trade-offs
-
-- ❌ **Slower:** Training and prediction take longer
-- ❌ **Less interpretable:** Can't easily draw out the logic
-- ❌ **More complex:** Harder to debug or explain
+> **Trade-offs:**
+> - Slower to train and predict
+> - Less interpretable (hard to explain logic)
+> - More complex to debug
+{: .prompt-warning }
 
 ### When to Use
 
@@ -301,14 +299,16 @@ Final Prediction: HIGH RISK (3 out of 4 trees voted for it)
 
 SVM tries to find the **best line (or boundary) that separates categories**.
 
-**Automation analogy:**
-Imagine plotting deployments on a graph:
-- X-axis: Resource count
-- Y-axis: Deployment time
-- Red dots: Failed deployments
-- Green dots: Successful deployments
 
-SVM finds the line that separates red from green **with the widest margin**.
+> **Automation analogy:**
+> Imagine plotting deployments on a graph: 
+> - X-axis = resource count
+> - Y-axis = deployment time
+> - red dots = failed 
+> - green dots = successful.
+> 
+>  SVM finds the line that separates red from green with the widest margin.
+{: .prompt-info }
 
 ### Visual Representation
 
@@ -333,31 +333,24 @@ quadrantChart
 
 **What you see:** The algorithm finds a boundary (the diagonal line) that maximizes the distance (margin) between successful and failed deployments.
 
-### The Key Idea
 
-```text
-Good separation:
-    ✓ ✓ ✓ ✓ ✓     |     ✗ ✗ ✗ ✗ ✗
-    (success)      |     (failure)
-                   ^
-              Wide margin
-              
-Bad separation:
-    ✓ ✓ ✗ ✓ ✓     |     ✗ ✓ ✗ ✗ ✗
-         Narrow margin - not confident!
-```
+> **Key Idea:**
+> - Good separation = wide margin between categories (confident predictions). 
+> - Bad separation = narrow margin (less confident).
+{: .prompt-info }
 
-### Strengths
 
-- ✅ **Good with clear boundaries:** Works well when categories are separable
-- ✅ **Works in high dimensions:** Can handle many features
-- ✅ **Memory efficient:** Only stores "support vectors" (boundary points)
+> **Strengths:**
+> - Good with clear boundaries
+> - Works in high dimensions
+> - Memory efficient (stores only boundary points)
+{: .prompt-tip }
 
-### Weaknesses
-
-- ❌ **Slow with large datasets:** Training can take a long time
-- ❌ **Hard to interpret:** Can't easily explain why something was classified
-- ❌ **Requires tuning:** Needs careful parameter selection
+> **Weaknesses:**
+> - Slow with large datasets
+> - Hard to interpret
+> - Requires careful tuning
+{: .prompt-warning }
 
 ### When to Use
 
@@ -376,11 +369,14 @@ Bad separation:
 
 KNN is beautifully simple: **To predict something, look at the K nearest similar examples**.
 
-**Automation analogy:**
-Predicting deployment risk:
-- Find the 5 most similar past deployments
-- See how many succeeded vs failed
-- Majority vote wins
+
+> **Automation analogy:**
+> Predicting deployment risk:
+> - find the 5 most similar past deployments.
+> - see how many.
+> - succeeded vs failed. 
+> - majority vote wins.
+{: .prompt-info }
 
 ### Visual Representation
 
@@ -438,17 +434,18 @@ Find 5 most similar past deployments:
 Prediction: HIGH RISK (4 out of 5 failed)
 ```
 
-### Strengths
 
-- ✅ **Simple:** No training needed! Just store the data
-- ✅ **Flexible:** Works for classification and regression
-- ✅ **Adapts:** Automatically handles new patterns in data
+> **Strengths:**
+> - Simple (no training needed)
+> - Flexible (classification and regression)
+> - Adapts to new patterns
+{: .prompt-tip }
 
-### Weaknesses
-
-- ❌ **Slow at prediction time:** Must compare to all stored examples
-- ❌ **Sensitive to scale:** Features with large ranges dominate
-- ❌ **Struggles with high dimensions:** "Curse of dimensionality"
+> **Weaknesses:**
+> - Slow at prediction time (must compare to all examples)
+> - Sensitive to feature scale
+> - Struggles with high-dimensional data
+{: .prompt-warning }
 
 ### When to Use
 
@@ -502,7 +499,9 @@ flowchart TD
     style A5 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
 ```
 
-**Quick reference table:**
+
+> **Quick reference table:**
+{: .prompt-tip }
 
 | Algorithm             | Best For                                         | Avoid When                                   |
 | --------------------- | ------------------------------------------------ | -------------------------------------------- |
@@ -525,52 +524,58 @@ For the deployment risk assessment problem I've been using:
 - Label: Success/Failure (or Risk level)
 - Size: ~10,000 historical deployments
 
-**My choice: Random Forest**
 
-**Why?**
-- ✅ Handles mixed features (categorical + numeric)
-- ✅ Can find complex interactions (peak hours + production + many resources)
-- ✅ High accuracy (important for production use)
-- ✅ Can show feature importance (which factors matter most)
-- ❌ Less interpretable (but I can use feature importance + SHAP for explanations)
+> **My choice: Random Forest**
+> - Handles mixed features (categorical + numeric)
+> - Finds complex interactions (peak hours + production + many resources)
+> - High accuracy (important for production use)
+> - Can show feature importance (which factors matter most)
+> - Less interpretable (but can use feature importance + SHAP for explanations)
+{: .prompt-info }
 
-**Alternative: Decision Tree**
-- If I absolutely need explainability
-- If the model needs to be audited
-- Trade-off: Lower accuracy
 
-**Not Linear Regression**
-- Can't predict categories (high/medium/low risk)
-- Too simple for complex interactions
+> **Alternative: Decision Tree**
+> - If I absolutely need explainability
+> - If the model needs to be audited
+> - Trade-off: Lower accuracy
+{: .prompt-info }
+
+> **Not Linear Regression**
+> - Can't predict categories (high/medium/low risk)
+> - Too simple for complex interactions
+{: .prompt-warning }
 
 ---
 
 ## 9. What I Wish I Knew Earlier
 
-1. **Start simple:** Try Linear Regression or Decision Trees first. Only go complex if needed.
 
-2. **No "best" algorithm:** It always depends on your data and problem.
-
-3. **Ensemble methods (Random Forest) often win:** Combining multiple models beats single models.
-
-4. **Interpretability vs accuracy trade-off:** 
-   - Decision Trees: Easy to explain, moderate accuracy
-   - Random Forest: Hard to explain, high accuracy
-
-5. **Try multiple algorithms:** In practice, test 3-4 algorithms and compare.
-
-6. **Feature engineering matters more:** Good features + simple algorithm > bad features + complex algorithm.
+> **Key Takeaways:**
+> - Start simple: Try Linear Regression or Decision Trees first.
+> - No "best" algorithm: It always depends on your data and problem.
+> - Ensemble methods (Random Forest) often win.
+> - Interpretability vs accuracy trade-off: Decision Trees = explainable, Random Forest = accurate.
+> - Try multiple algorithms and compare.
+> - Feature engineering matters more than algorithm choice.
+{: .prompt-tip }
 
 ---
 
+
 ## What's Next?
 
-In **Chapter 3.2**, we'll explore:
+➡ **Series 2 – Chapter 3.2: Overfitting & Underfitting**
+
+In the next chapter, we’ll explore:
+
 - Overfitting and underfitting (why models fail in production)
 - The bias-variance trade-off
 - How to detect and fix these issues
-- Validation strategies
+- Validation strategies for reliable ML
 
-We've learned which algorithms to use. Next, we'll learn how to make sure they work reliably.
+> **Architectural Question:** What steps can you take to ensure your chosen algorithm works reliably in production, and what are the most common pitfalls to avoid?
+{: .prompt-info }
+
+_We've learned which algorithms to use—next, we'll learn how to make sure they work reliably._
 
 ---
