@@ -9,7 +9,7 @@ categories: [ai, deep-learning, ml]
 tags: [deep-learning, neural-networks, automation, devops, engineering]
 description: "How deep learning builds on nature’s blueprint and why it matters for engineers."
 permalink: /series/journey-automation-to-ai/chapter-1-what-makes-deep-learning-different/
-published: true
+published: false
 mermaid: true
 ---
 
