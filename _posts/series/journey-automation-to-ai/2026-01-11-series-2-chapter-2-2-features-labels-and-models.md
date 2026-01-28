@@ -18,47 +18,50 @@ mermaid: true
 
 ---
 
-After learning about data quality, the next question I had: **What exactly does the model look at, and what is it trying to predict?**
+After learning about data quality, I wondered: **What does a model actually look at, and what is it trying to predict?**
 
-This is where features, labels, and models come in. When I first saw these terms, they felt overcomplicated and academic.
+Turns out, ML uses the same pattern as automation—**Inputs → Logic → Outputs**.
 
-Then I mapped them to automation patterns I already knew:
+- **Features** = Inputs (data the model sees)
+- **Model** = Logic (learned, not hand-coded)
+- **Labels** = Outputs (what you want to predict)
 
-**Inputs → Logic → Outputs**
-
-In ML terms:
-- **Features** = Inputs (the data the model sees)
-- **Model** = Logic (learned rules, not hand-coded)
-- **Labels** = Outputs (what you're predicting)
-
-**That's it.** Same pattern I use in Terraform or Ansible. The only difference? ML learns the logic from examples instead of me writing it explicitly.
-
-**What clicked:** Understanding features/labels/models isn't about learning new concepts. It's about recognizing a familiar pattern with new terminology.
+> **Key insight:** These aren’t new concepts—just new names for a familiar pattern. In ML, the model learns the logic from examples, instead of you writing it.
+{: .prompt-info }
 
 ---
 
 ## 1. Why Understanding This Helps
 
-Every ML system—from spam filters to ChatGPT—breaks down into these three pieces:
+Every ML system—spam filter or ChatGPT—breaks down into:
 
-- **Features:** What information does the system have?
+- **Features:** What info does the system have?
 - **Labels:** What is it trying to predict?
 - **Model:** What logic connects them?
 
-Once I understood this breakdown, ML problems became easier to think about:
-- Designing solutions: Start with "What am I predicting?" (labels), then "What inputs help predict it?" (features)
-- Choosing relevant inputs: Focus on features that actually correlate with the outcome
-- Defining success: Clear labels = clear success criteria
+Once you see this, ML problems become easier:
 
+- Start with “What am I predicting?” (labels)
+- Then, “What inputs help predict it?” (features)
+- Clear labels = clear success criteria
 
-> **Automation Analogy:** Like understanding variables, logic, and outputs in code. Can't build good infrastructure without knowing what inputs drive what outputs.
+> **Automation analogy:** Like knowing variables, logic, and outputs in code. You can’t build good infrastructure without knowing what inputs drive what outputs.
 {: .prompt-info }
 
 ---
 
 ## 2. The Fundamental Pattern: Inputs → Logic → Outputs
 
-### In Terraform
+Here’s how the `Inputs → Logic → Outputs pattern` looks in both automation and machine learning:
+
+### Automation (Terraform)
+
+- **Inputs:** variables (`instance_type`, `environment`, `instance_count`)
+- **Logic:** your code (resource definitions, rules)
+- **Outputs:** what gets created (infrastructure, computed values)
+
+<details markdown="1">
+<summary><b>See Automation Example (Terraform)</b></summary>
 
 ```hcl
 # Inputs (variables)
@@ -70,7 +73,6 @@ variable "instance_count" { default = 3 }
 resource "aws_instance" "server" {
   count         = var.instance_count
   instance_type = var.instance_type
-  
   tags = {
     Environment = var.environment
     CostCenter  = var.environment == "prod" ? "production" : "development"
@@ -82,21 +84,24 @@ output "server_ips" {
   value = aws_instance.server[*].private_ip
 }
 ```
+</details>
 
-**Pattern:**
-- Inputs: `instance_type`, `environment`, `instance_count`
-- Logic: Your explicit rules and resource definitions
-- Outputs: Created infrastructure and computed values
+### Machine Learning
 
-### In Machine Learning
+- **Features:** inputs (`files_changed`, `environment`, `time_of_day`, `team`)
+- **Model:** learned logic (patterns from data)
+- **Label:** output (e.g., "High Risk")
+
+<details markdown="1">
+<summary><b>See Machine Learning Example</b></summary>
 
 ```python
 # Features (inputs)
 features = {
-    'files_changed': 150,
-    'environment': 'prod',
-    'time_of_day': 14,
-    'team': 'Platform'
+  'files_changed': 150,
+  'environment': 'prod',
+  'time_of_day': 14,
+  'team': 'Platform'
 }
 
 # Model (learned logic)
@@ -104,31 +109,33 @@ model = trained_deployment_risk_model
 
 # Label (predicted output)
 prediction = model.predict(features)
-# Output: "High Risk"
+# Output: **"High Risk"**
 ```
+</details>
 
-**Pattern:**
-- Features: `files_changed`, `environment`, `time_of_day`, `team`
-- Model: Learned patterns from training data
-- Label: `High Risk` / `Medium Risk` / `Low Risk`
-
-
-> **Engineering Insight:** In automation, you write the logic. In ML, the model learns the logic from examples.
+> **Engineering insight:** In automation, you write the logic. In ML, the model learns the logic from examples.
 {: .prompt-info }
+
+
+No matter the domain, the core pattern is the same: you start with inputs, apply logic (written or learned), and get outputs.
 
 ---
 
 ## 3. Features: The Inputs to Your Model
 
-### What Is a Feature?
+### What is a Feature?
 
-A **feature** is just a measurable property or characteristic you feed into a model. That's it.
+A **feature** is a measurable property you feed into a model—think Terraform variables, but for ML.
 
-If you've ever declared Terraform variables, you already understand features. They're the inputs that drive your decisions. The only difference is that in ML, you're feeding these inputs to a model instead of your own if-statements.
 
-### Examples of Features
+#### Feature Types
 
-For our **deployment risk assessment** example:
+- ***Numeric***: quantifiable values (e.g., file count, time)
+- ***Categorical***: categories (e.g., environment, team)
+- ***Boolean:*** true/false flags (e.g., is_weekend)
+
+<details markdown="1">
+<summary><b>See deployment risk feature examples</b></summary>
 
 | Feature Name              | Type        | Example Value  | What It Represents  |
 | ------------------------- | ----------- | -------------- | ------------------- |
@@ -140,74 +147,51 @@ For our **deployment risk assessment** example:
 | `previous_failures`       | Numeric     | 3              | Historical failures |
 | `deployment_duration_avg` | Numeric     | 12.5 (minutes) | Team's avg speed    |
 
-Each feature represents something the model can use to make predictions.
+</details>
 
-### Feature Types
 
-Just like Terraform variables have types, features have types:
+Each feature is something the model can use to make predictions.
 
-```hcl
-# Terraform variable types
-variable "instance_count" { type = number }
-variable "environment" { type = string }
-variable "enable_monitoring" { type = bool }
-variable "tags" { type = map(string) }
-```
 
-```python
-# ML feature types
-features = {
-    'files_changed': 150,           # Numeric (continuous)
-    'environment': 'prod',          # Categorical (discrete)
-    'is_weekend': False,            # Boolean
-    'time_of_day': 14               # Numeric (discrete)
-}
-```
 
-**Numeric features:** Quantifiable values (file count, time, duration)  
-**Categorical features:** Discrete categories (environment, team, risk level)  
-**Boolean features:** True/False flags (is_weekend, is_prod, is_after_hours)
 
 ### Good Features vs Bad Features
 
-Not all features are equally useful. This took me a while to figure out—I initially threw in every piece of data I had, thinking "more is better." Wrong.
+The best features are measurable, available before prediction, and make logical sense for the outcome.
 
-Good features have **predictive power**. They actually correlate with what you're trying to predict:
+<details markdown="1">
+<summary><b>See table: Good Features vs Bad Features</b></summary>
 
-| Feature                 | Predictive Power | Why                                |
-| ----------------------- | ---------------- | ---------------------------------- |
-| `files_changed`         | ✅ High           | Large deployments are riskier      |
-| `environment`           | ✅ High           | Prod deployments require more care |
-| `previous_failures`     | ✅ High           | History predicts future risk       |
-| `developer_shirt_color` | ❌ None           | No relationship to deployment risk |
-| `commit_message_length` | ❌ Low            | Doesn't indicate actual risk       |
+| Feature                 | Type        | Predictive Power | Why/Why Not?                       |
+| ----------------------- | ----------- | ---------------- | ---------------------------------- |
+| `files_changed`         | Numeric     | ✅ High           | Large deployments are riskier      |
+| `environment`           | Categorical | ✅ High           | Prod deployments need more care    |
+| `previous_failures`     | Numeric     | ✅ High           | History predicts future risk       |
+| `developer_shirt_color` | Categorical | ❌ None           | No relationship to deployment risk |
+| `commit_message_length` | Numeric     | ❌ Low            | Doesn't indicate actual risk       |
 
-(Yes, I've seen people include commit message length. It doesn't help.)
+</details>
 
+_Focus on features that are relevant, reliable, and available before prediction._
 
-> **Automation Analogy:** When writing Terraform, you include variables that affect infrastructure—focus on features that actually impact outcomes.
+> **Automation Analogy:** Just as you only use variables in Terraform that actually affect your infrastructure, in ML you want features that truly impact the outcome—not just any data you can collect.
 {: .prompt-info }
 
-### Choosing Features: The Practitioner's Checklist
 
-When selecting features, I run through these questions (usually after making mistakes first, but you can skip that part):
 
-1. **Is it available at prediction time?**
-   - ❌ "deployment_outcome" (this is literally what we're predicting!)
-   - ✅ "files_changed" (we know this before deploying)
+<details>
+<summary><strong>See Quick Checklist: Picking the Right Features</strong></summary>
 
-2. **Does it correlate with the outcome?**
-   - ✅ "time_of_day" (night deployments are riskier)
-   - ❌ "developer_coffee_preference" (tempting, but no)
+| Principle                     | Good Example                                    | Bad Example                                                 |
+| ----------------------------- | ----------------------------------------------- | ----------------------------------------------------------- |
+| Available at prediction time? | `files_changed` (known before deploying)        | `deployment_outcome` (this is what we're predicting!)       |
+| Correlated with the outcome?  | `time_of_day` (night deployments are riskier)   | `developer_coffee_preference` (tempting, but no)            |
+| Reliable and consistent?      | `environment` (always known)                    | `server_mood` (doesn't exist)                               |
+| Avoids leakage?               | `historical_error_rate` (from past deployments) | `post_deployment_error_count` (only known after deployment) |
 
-3. **Is it reliable and consistent?**
-   - ✅ "environment" (always known)
-   - ❌ "server_mood" (doesn't exist, though sometimes it feels like it should)
+</details>
 
-4. **Does it avoid leakage?**
-   - ❌ "post_deployment_error_count" (we won't know this until after deployment)
-   - ✅ "historical_error_rate" (based on past deployments)
-
+If your features pass these checks, you’re on the right track.
 
 > **Warning:** Data leakage is when you accidentally include information that wouldn't be available in production. It's like using `terraform state` as an input to `terraform plan`—you're basically cheating by looking at the answer. Your model will look amazing in testing and fail miserably in production.
 {: .prompt-warning }
@@ -216,15 +200,15 @@ When selecting features, I run through these questions (usually after making mis
 
 ## 4. Labels: The Outputs You're Predicting
 
-### What Is a Label?
+Your model is only as good as your labels. Labels are the answers you want your model to predict.
 
-A **label** is the thing you're trying to predict. The output. The answer.
+### What is a Label?
 
-In automation terms, it's like your Terraform outputs—the desired result of your logic. Except here, the model is learning to produce that output based on the inputs (features) you give it.
+- The value you want to predict (e.g., "High Risk").
+- In automation, this is like a Terraform output.
 
-### Examples of Labels
-
-For **supervised learning** (remember from Chapter 1.3?), every training example needs a label. You're basically showing the model: "When you see these inputs, this is the right answer."
+<details markdown="1">
+<summary><b>See real-world label examples</b></summary>
 
 | Scenario                  | Features (Inputs)         | Label (Output)             |
 | ------------------------- | ------------------------- | -------------------------- |
@@ -233,135 +217,81 @@ For **supervised learning** (remember from Chapter 1.3?), every training example
 | Deployment risk           | Files changed, time, team | "High" / "Medium" / "Low"  |
 | Server failure prediction | CPU, memory, disk usage   | "Will fail" / "Won't fail" |
 
-The model learns patterns like:
-- "If features look like X, then label is Y"
-- "Emails with features A, B, C tend to be Spam"
-- "Deployments with features P, Q, R tend to be High Risk"
+</details>
 
-### Label Types: Classification vs Regression
+### Label Types (Classification vs Regression)
 
-Just like Terraform outputs can be strings or numbers, labels come in types:
+This section and table compare the two main types of labels in machine learning: classification (categories) and regression (numeric values).
 
-#### Classification Labels (Discrete Categories)
+| Label Type     | What it Predicts | Example Label(s)        | Example Use Case    |
+| -------------- | ---------------- | ----------------------- | ------------------- |
+| Classification | Category/class   | "High Risk", "Low Risk" | Deployment risk     |
+| Regression     | Numeric value    | 23.5 (minutes)          | Deployment duration |
 
-**Definition:** Predicting a category or class
-
-```python
-# Binary classification (2 options)
-labels = ["Success", "Failure"]
-
-# Multi-class classification (3+ options)
-labels = ["High Risk", "Medium Risk", "Low Risk"]
-```
-
-**Examples:**
-- Email: Spam / Not Spam
-- Deployment: High / Medium / Low Risk
-- Server: Healthy / Degraded / Failed
-
-
-> **Automation Analogy:** Like Terraform conditional outputs—classification labels in ML are like conditional outputs in automation.
+> **Automation Analogy:** Labels are like Terraform outputs—classification is like conditional outputs, regression is like numeric outputs.
 {: .prompt-info }
-```hcl
-output "environment_tier" {
-  value = var.environment == "prod" ? "critical" : "non-critical"
-}
-```
-
-#### Regression Labels (Continuous Numbers)
-
-**Definition:** Predicting a numeric value
-
-```python
-# Predicting exact numbers
-predicted_deployment_time = 23.5  # minutes
-predicted_cost = 1247.89          # dollars
-predicted_cpu_usage = 67.3        # percent
-```
-
-**Examples:**
-- Predict deployment duration in minutes
-- Predict infrastructure cost in dollars
-- Predict CPU usage percentage
 
 
-> **Automation Analogy:** Like Terraform numeric outputs—regression labels in ML are like numeric outputs in automation.
-{: .prompt-info }
-```hcl
-output "total_instances" {
-  value = length(aws_instance.server)
-}
-```
 
-### Good Labels vs Bad Labels
+<details>
+<summary><strong>Good vs Bad Labels: Quick Checklist</strong></summary>
 
-Here's where a lot of ML projects fall apart (including my early attempts). Your labels need to be:
+| Principle             | Good Example                                   | Bad Example                                    |
+| --------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| Clear & Unambiguous   | deployment_succeeded: True/False               | deployment_quality: Good/Bad                   |
+| Consistently Defined  | All "High Risk" deployments meet same criteria | Different people label "High Risk" differently |
+| Verifiable            | deployment_failed: True (check the logs)       | deployment_felt_risky: True (opinion)          |
+| Balanced Distribution | 40% Low, 35% Medium, 25% High                  | 95% Low, 4% Medium, 1% High                    |
 
-1. **Clear and unambiguous**
-   - ✅ "deployment_succeeded: True/False" (objective, can't argue with it)
-   - ❌ "deployment_quality: Good/Bad" (ask 5 people, get 5 definitions)
-
-2. **Consistently defined**
-   - ✅ All "High Risk" deployments meet the same criteria
-   - ❌ Different people label "High Risk" differently (this killed my first model)
-
-3. **Verifiable**
-   - ✅ "deployment_failed: True" (check the logs, it's there)
-   - ❌ "deployment_felt_risky: True" (that's an opinion, not data)
-
-4. **Balanced in distribution**
-   - ✅ 40% Low, 35% Medium, 25% High (reasonable spread)
-   - ❌ 95% Low, 4% Medium, 1% High (your model will just predict "Low" for everything)
-
+</details>
+<br>
 
 > **Warning:** Bad labels = bad model, just like bad configuration = broken infrastructure.
 {: .prompt-warning }
 
 ---
 
+
 ## 5. Models: The Learned Logic
 
 ### What Is a Model?
 
-Okay, so you've got features (inputs) and labels (outputs). The **model** is the thing that connects them—the learned logic.
+A **model** is the learned logic that connects features (inputs) to labels (outputs). Instead of you writing the rules, the model discovers patterns by analyzing examples.
 
-Think of it like a Terraform configuration file. Your config defines how inputs (variables) transform into outputs (resources). A model does the same thing, except instead of you writing the rules, the model figures them out by looking at examples.
+> **Automation Analogy:** Like a Terraform config that transforms variables into outputs, but the logic is learned from data, not hand-coded.
+{: .prompt-info }
 
-This was the hardest part for me to wrap my head around initially. You're not coding the logic. You're providing examples, and the model discovers the patterns.
 
 ### The Mental Model
 
+```mermaid
+flowchart LR
+  subgraph INPUTS["Features (Inputs)"]
+    F1["files_changed = 150"]
+    F2["environment = prod"]
+    F3["team = platform"]
+    F4["time_of_day = 14"]
+    style F1 fill:#e1f5ff,stroke:#007acc,stroke-width:2px
+    style F2 fill:#e1f5ff,stroke:#007acc,stroke-width:2px
+    style F3 fill:#e1f5ff,stroke:#007acc,stroke-width:2px
+    style F4 fill:#e1f5ff,stroke:#007acc,stroke-width:2px
+  end
+
+  INPUTS --> M["ML Model\n(Learned patterns from history)"]
+  style M fill:#fff4e1,stroke:#ff9900,stroke-width:2px
+  M --> L["Prediction\nHigh Risk Deployment"]
+  style L fill:#d4f7d4,stroke:#228B22,stroke-width:2px
+```
+
+The model learns rules like:
+
 ```text
-┌─────────────────────────────────────────────────┐
-│              Machine Learning Model              │
-│                                                  │
-│  Features (Inputs)         →      Label (Output) │
-│                                                  │
-│  files_changed: 150               "High Risk"   │
-│  environment: "prod"                             │
-│  time_of_day: 14           Model                │
-│  team: "Platform"          (Learned Logic)       │
-│  previous_failures: 3                            │
-│                                                  │
-└─────────────────────────────────────────────────┘
+IF files_changed > 100 AND environment == "prod" THEN risk = "High"
+IF files_changed < 50 AND environment == "dev" THEN risk = "Low"
+IF time_of_day BETWEEN 0 AND 6 THEN increase risk by one level
 ```
 
-The model learns patterns like:
-
-```
-IF files_changed > 100 AND environment == "prod" AND previous_failures > 2
-THEN risk = "High"
-
-IF files_changed < 50 AND environment == "dev"
-THEN risk = "Low"
-
-IF time_of_day BETWEEN 0 AND 6 (late night)
-THEN increase risk by one level
-```
-
-
-> **Engineering Insight:** You don't write these rules. The model discovers them by analyzing training data.
-{: .prompt-info }
+You don't write these rules—the model finds them from data.
 
 ### Models as Functions
 
@@ -373,11 +303,12 @@ def calculate_cost(instance_count, instance_type, hours):
     hourly_rate = get_rate(instance_type)
     return instance_count * hourly_rate * hours
 
-# Machine Learning: The model IS the function (learned from data)
+# ML: The model IS the function (learned from data)
 def predict_risk(features):
     # Complex learned logic inside
     return risk_level  # "High" / "Medium" / "Low"
 ```
+
 
 **Terraform analogy:**
 
@@ -388,19 +319,23 @@ locals {
   requires_approval = local.is_production && var.change_size > 100
 }
 
-# ML learned logic (conceptually)
+# ML learned logic (conceptual)
 model_logic {
-  learned_pattern_1 = features.environment == "prod" AND features.files_changed > 100
+  learned_pattern_1 = features.environment == "prod" && features.files_changed > 100
   learned_pattern_2 = features.previous_failures > 3
-  learned_pattern_3 = features.time_of_day < 6 OR features.time_of_day > 22
-  
+  learned_pattern_3 = features.time_of_day < 6 || features.time_of_day > 22
   risk = combine(learned_pattern_1, learned_pattern_2, learned_pattern_3)
 }
 ```
 
+
 ### What's Inside a Model?
 
-Different ML algorithms create different internal representations. Don't worry too much about this right now—we'll dive into specific algorithms in Series 3. For now, here's the quick version:
+Every model type represents learned logic differently. Here’s how some common models work under the hood:
+
+
+<details markdown="1">
+<summary><b>See table: Common Model Types & Automation Analogies</b></summary>
 
 | Model Type     | Internal Logic                 | Automation Analogy               |
 | -------------- | ------------------------------ | -------------------------------- |
@@ -409,13 +344,17 @@ Different ML algorithms create different internal representations. Don't worry t
 | Neural Network | Layers of transformations      | Pipeline of processing steps     |
 | Random Forest  | Multiple decision trees voting | Multiple validation checks       |
 
+</details>
 
-> **Tip:** For now, think of a model as a black box that learned logic. You don't need to understand the internals to use it effectively.
+> **Tip:** For most use cases, treat the model as a black box that learned logic from data. You don't need to understand the internals to use it effectively.
 {: .prompt-tip }
 
 ### Model Artifacts
 
-After training, a model becomes a file you can deploy:
+After training, a model becomes a set of files you can deploy:
+
+<details markdown="1">
+<summary><b>See example: Model Artifacts</b></summary>
 
 ```bash
 deployment-risk-model/
@@ -432,13 +371,14 @@ terraform.tfstate    # Current infrastructure state
 model.pkl            # Current learned patterns
 ```
 
+</details>
 
 > **Best Practice:** Both models and Terraform state files need to be versioned, backed up, and managed carefully.
 {: .prompt-tip }
 
 ---
 
-## Putting It All Together: The Complete Picture
+## 6. Putting It All Together: The Complete Picture
 
 Let's trace a full example with our deployment risk assessment:
 
@@ -466,9 +406,10 @@ model = DecisionTreeClassifier()
 model.fit(features, labels)
 ```
 
-**What happens:** The model analyzes the training data and discovers patterns:
-- Large `files_changed` + `prod` environment → often labeled "High"
-- Small `files_changed` + `dev` environment → often labeled "Low"
+
+**What happens:** The model analyzes the training data and discovers patterns, e.g.:
+- Large `files_changed` + `prod` environment → "High"
+- Small `files_changed` + `dev` environment → "Low"
 - `time_of_day` < 6 → increased risk
 - High `previous_failures` → increased risk
 
@@ -488,17 +429,20 @@ new_deployment = {
 
 # Model predicts the label
 prediction = model.predict(new_deployment)
-print(prediction)  # Output: "High Risk"
+print(prediction)  # Output: **"High Risk"**
 ```
 
+
 **The model applied its learned logic:**
-- Large deployment (175 files) ✓
-- Production environment ✓
-- Late evening (22:00) ✓
-- Some previous failures ✓
+- Large deployment (175 files)
+- Production environment
+- Late evening (22:00)
+- Some previous failures
 → Prediction: **High Risk**
 
 ### The Complete Flow
+
+Here’s how the full ML workflow fits together:
 
 ```mermaid
 flowchart TB
@@ -519,7 +463,7 @@ flowchart TB
 
 ---
 
-## Feature Engineering Revisited
+## 7. Feature Engineering Revisited
 
 Now that we understand features, labels, and models, let's circle back to **feature engineering** from Chapter 2.1. This is where you can really help your model out (or shoot yourself in the foot—I've done both).
 
@@ -553,6 +497,7 @@ engineered_features = {
 
 > **Best Practice:** Help the model learn faster by making patterns obvious through feature engineering.
 {: .prompt-tip }
+
 
 Instead of the model learning:
 > "When `hour` is less than 6 OR greater than 20, risk increases"
@@ -590,71 +535,15 @@ locals {
 | **Aggregation** | Average of last 10 deployments           | Summarize history             |
 | **Time-based**  | Extract hour, day, month from timestamp  | Capture temporal patterns     |
 
----
+> **Want to go deeper?**
+> See [Chapter 3.4 – Feature Engineering: The Real Work Behind ML](/series/journey-automation-to-ai/feature-engineering/) for hands-on techniques, practical checklists, and real-world examples.
+{: .prompt-tip }
 
-## The Inputs → Logic → Outputs Mapping
-
-Let's formalize the complete mapping:
-
-### Automation (Terraform)
-
-```hcl
-# Inputs
-variable "instance_type" {}
-variable "environment" {}
-
-# Logic (you write this)
-resource "aws_instance" "server" {
-  instance_type = var.instance_type
-  
-  monitoring = var.environment == "prod" ? true : false
-  
-  tags = {
-    CostCenter = var.environment == "prod" ? "production" : "dev"
-  }
-}
-
-# Outputs
-output "server_id" {
-  value = aws_instance.server.id
-}
-```
-
-**Pattern:**
-1. You define inputs (variables)
-2. You write explicit logic (resource configuration)
-3. You get outputs (resource attributes)
-
-### Machine Learning
-
-```python
-# Inputs (features)
-features = {
-    'files_changed': 150,
-    'environment': 'prod'
-}
-
-# Logic (model learned this)
-model = trained_risk_model
-# Internally: Learned that files_changed > 100 + prod → High Risk
-
-# Outputs (labels/predictions)
-prediction = model.predict(features)
-# Output: "High Risk"
-```
-
-**Pattern:**
-1. You define inputs (features)
-2. Model contains learned logic (training discovered patterns)
-3. You get outputs (predicted labels)
-
-
-> **Engineering Insight:** Same pattern, different source of logic—automation logic is written, ML logic is learned.
-{: .prompt-info }
 
 ---
 
-## Common Pitfalls and How to Avoid Them
+## 8. Common Pitfalls and How to Avoid Them
+
 
 Let me save you some pain by sharing the mistakes I made (so you don't have to):
 
@@ -662,7 +551,9 @@ Let me save you some pain by sharing the mistakes I made (so you don't have to):
 
 This is embarrassingly easy to do, especially when your dataset has the label right next to the features.
 
-**Wrong:**
+<details markdown="1">
+<summary><b>See Example: Data Leakage (Using Labels as Features)</b></summary>
+
 ```python
 features = {
     'files_changed': 150,
@@ -670,24 +561,29 @@ features = {
 }
 ```
 
-**Automation equivalent:** Using Terraform output as an input
+**Automation equivalent:**
 ```hcl
 # Wrong: Can't use output to compute the output
 output "cost" {
   value = aws_instance.server.cost  # This doesn't exist yet
 }
 ```
+</details>
 
 ### 2. Including Irrelevant Features
 
-**Wrong:**
+
+<details markdown="1">
+<summary><b>See Example: Irrelevant Features</b></summary>
+
 ```python
 features = {
-    'files_changed': 150,
-    'developer_shoe_size': 10,      # ← Irrelevant
-    'commit_hash_length': 40        # ← No predictive power
+  'files_changed': 150,
+  'developer_shoe_size': 10,      # ← Irrelevant
+  'commit_hash_length': 40        # ← No predictive power
 }
 ```
+</details>
 
 
 > **Warning:** Noise confuses the model, slows training, and reduces accuracy—avoid irrelevant features.
@@ -697,7 +593,10 @@ features = {
 
 ### 3. Inconsistent Feature Formats
 
-**Wrong:**
+
+<details markdown="1">
+<summary><b>See Example: Inconsistent Feature Formats</b></summary>
+
 ```python
 # Training data
 features_train = {'environment': 'prod'}
@@ -705,6 +604,7 @@ features_train = {'environment': 'prod'}
 # Production data
 features_prod = {'environment': 'PRODUCTION'}  # ← Different format!
 ```
+</details>
 
 
 > **Warning:** Model doesn't recognize the feature value—ensure consistent feature formats.
@@ -714,14 +614,18 @@ features_prod = {'environment': 'PRODUCTION'}  # ← Different format!
 
 ### 4. Missing Feature Values
 
-**Wrong:**
+
+<details markdown="1">
+<summary><b>See Example: Missing Feature Values</b></summary>
+
 ```python
 features = {
-    'files_changed': 150,
-    'environment': None,    # ← Missing value
-    'team': ''              # ← Empty string
+  'files_changed': 150,
+  'environment': None,    # ← Missing value
+  'team': ''              # ← Empty string
 }
 ```
+</details>
 
 
 > **Best Practice:** Handle missing values by using defaults, filling with median/mean, creating "is_missing" boolean features, or removing samples with missing critical features.
@@ -729,13 +633,15 @@ features = {
 
 ---
 
-## Practical Guidelines
+## 9. Practical Guidelines
 
 Based on automation engineering principles:
 
 ### 1. Document Your Features
 
 Create a feature dictionary (like variable documentation):
+
+<details markdown="1"><summary><b>See Example: Feature Dictionary</b></summary>
 
 ```markdown
 # Deployment Risk Features
@@ -758,8 +664,11 @@ Create a feature dictionary (like variable documentation):
 - Description: Deployment risk assessment
 - Source: Post-deployment SRE review
 ```
+</details>
 
 ### 2. Version Features with Models
+
+<details markdown="1"><summary><b>See Example: Versioned Features</b></summary>
 
 ```bash
 model-v1.0/
@@ -771,37 +680,38 @@ model-v2.0/
 └── features.json       # Added new features, model retrained
 ```
 
-Just like Terraform version constraints:
 ```hcl
 terraform {
   required_version = ">= 1.0"
 }
 ```
+</details>
 
 ### 3. Validate Features at Runtime
 
+<details markdown="1"><summary><b>See Example: Feature Validation</b></summary>
+
 ```python
 def validate_features(features, expected_schema):
-    """
-    Validate features before prediction
-    Like validating Terraform variables
-    """
-    required_features = ['files_changed', 'environment', 'team']
-    
-    for feature in required_features:
-        if feature not in features:
-            raise ValueError(f"Missing required feature: {feature}")
-    
-    if features['files_changed'] < 0:
-        raise ValueError("files_changed must be positive")
-    
-    if features['environment'] not in ['dev', 'staging', 'prod']:
-        raise ValueError(f"Invalid environment: {features['environment']}")
-    
-    return True
+  """
+  Validate features before prediction
+  Like validating Terraform variables
+  """
+  required_features = ['files_changed', 'environment', 'team']
+  for feature in required_features:
+    if feature not in features:
+      raise ValueError(f"Missing required feature: {feature}")
+  if features['files_changed'] < 0:
+    raise ValueError("files_changed must be positive")
+  if features['environment'] not in ['dev', 'staging', 'prod']:
+    raise ValueError(f"Invalid environment: {features['environment']}")
+  return True
 ```
+</details>
 
 ### 4. Monitor Feature Distributions
+
+<details markdown="1"><summary><b>See Example: Feature Drift Monitoring</b></summary>
 
 ```python
 # Track feature distributions over time
@@ -811,8 +721,9 @@ current_avg_files_changed = 150
 historical_avg_files_changed = 75
 
 if current_avg_files_changed > historical_avg_files_changed * 2:
-    alert("Feature distribution drift detected!")
+  alert("Feature distribution drift detected!")
 ```
+</details>
 
 
 > **Automation Analogy:** Monitoring infrastructure drift from desired state is like monitoring feature distribution drift in ML.
@@ -820,37 +731,19 @@ if current_avg_files_changed > historical_avg_files_changed * 2:
 
 ---
 
-## Key Takeaways
+## What I Wish I Knew Earlier
 
-
-> **Takeaway:**
-> - **Features = Inputs:** The measurable stuff you feed into your model (like Terraform variables driving infrastructure decisions).
-> - **Labels = Outputs:** What you're trying to predict (like Terraform outputs, but predicted instead of computed).
-> - **Models = Learned Logic:** The patterns the model discovered during training (like your Terraform config, except you didn't write it—the model figured it out from examples).
-> - **Feature engineering amplifies signal:** Creating meaningful features helps models learn better, like creating Terraform locals to simplify complex logic.
-> - **Good features are:** Available at prediction time, correlated with the outcome, reliable and consistent, free from data leakage.
-> - **Good labels are:** Clear and unambiguous, consistently defined, verifiable, reasonably balanced.
-> - **Models are artifacts:** Trained models are files that need versioning, deployment, and monitoring—like Terraform state or Docker images.
+> **Practitioner’s Lessons:**
+> - **Features = Inputs:** The measurable stuff you feed into your model.
+> - **Labels = Outputs:** What you're trying to predict.
+> - **Models = Learned Logic:** Patterns discovered from examples, not hand-coded.
+> - **Feature engineering matters:** Good features amplify signal and avoid leakage.
+> - **Good features:** Available, relevant, reliable, and consistent.
+> - **Good labels:** Clear, consistent, verifiable, and balanced.
+> - **Models are artifacts:** Version, deploy, and monitor them like code.
 {: .prompt-tip }
 
 ---
-
-## Connecting to Automation
-
-| Automation Concept  | ML Equivalent             | Example                                |
-| ------------------- | ------------------------- | -------------------------------------- |
-| Variables           | Features                  | `instance_type`, `files_changed`       |
-| Outputs             | Labels                    | `server_id`, `risk_level`              |
-| Configuration logic | Model                     | Resource definitions, learned patterns |
-| Terraform locals    | Engineered features       | Derived values, composite features     |
-| Variable validation | Feature validation        | Type checks, range checks              |
-| State file          | Model artifact            | `terraform.tfstate`, `model.pkl`       |
-| Conditional logic   | Model decision boundaries | `var.env == "prod" ? ...`              |
-
----
-
-## What's Next
-
 
 ## What's Next?
 

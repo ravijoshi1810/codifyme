@@ -13,72 +13,53 @@ published: true
 mermaid: true
 ---
 ---
+
 ## When Bad Data Breaks Everything
 
 ---
 
-After understanding ML types (supervised, unsupervised, etc.), I started thinking about the deployment risk assessment example more practically.
+After learning about ML types, I realized: **Bad data doesn't just break systems—it teaches models to make wrong predictions.**
 
-Then a question hit me: **What if the historical deployment data is incomplete or wrong?**
+> **What if the historical deployment data is incomplete or wrong?**
 
-In automation, I've learned this the hard way:
-- Bad config → broken infrastructure
-- Wrong variables → failed deployments  
-- Incomplete state → drift and surprises
-
-With ML, I realized the problem is actually worse. Bad data doesn't just break the system—**it teaches the model to confidently make wrong predictions.**
+In automation, bad config or variables cause immediate failures. In ML, bad data can silently lead to confident, wrong predictions.
 
 > **Warning:** Bad data = bad model. No matter how sophisticated the algorithm, if the training data is garbage, the predictions will be garbage.
 {: .prompt-warning }
 
-**What I'm documenting here:** My understanding of data quality, why it matters more than I initially thought, and how to think about preparing data for ML.
+**What I'm documenting here:**
+
+- My evolving understanding of data quality
+- Why it matters more than I thought
+- How to prepare data for ML (from an automation mindset)
 
 ---
 
 ## 1. What I Learned About Data Requirements
 
-When I first thought about building an ML model, I assumed: "I have deployment logs, so I have data. Done."
 
-Not quite.
+At first, I thought: "I have deployment logs, so I have data. Done." Not quite.
 
-Reading about ML projects that failed, I noticed a pattern. The data issues that mattered:
-
-- **Quality:** Does the data accurately represent the problem?
-- **Quantity:** Is there enough to learn meaningful patterns?
-- **Balance:** Is it biased toward one outcome (e.g., 95% successful deployments)?
+The real issues are:
+- **Quality:** Does the data represent the problem?
+- **Quantity:** Is there enough to learn patterns?
+- **Balance:** Is it biased toward one outcome?
 - **Relevance:** Do the features actually predict what matters?
 
 > **My realization:** Having data ≠ having the right data.
 {: .prompt-info }
 
-**The parallel I drew:**
-
-In automation, I can write perfect Terraform code, but if my variable files are wrong, my infrastructure will be wrong.
-
-In ML, I could choose perfect algorithms, but if my training data is wrong, my predictions will be wrong.
-
-**The scary difference I learned:** Bad Terraform variables fail immediately with clear error messages. Bad ML data succeeds in training but fails silently in production.
-
-This is why data quality kept coming up in everything I read about ML failures.
+In automation, wrong variables break infra. In ML, wrong data breaks predictions—often silently.
 
 ### What I Learned About Data vs Algorithms
 
-One paper that changed my thinking: In 2009, Google researchers (including Peter Norvig) published findings showing that **for many complex problems, more data with simpler algorithms often beats less data with sophisticated algorithms.**
+One paper changed my thinking: In 2009, Google researchers (including Peter Norvig) showed that **for many complex problems, more data with simpler algorithms often beats less data with sophisticated algorithms.**
 
-> Their key insight:
+> **Key insight:**
 > "Choose a representation that can use unsupervised learning on unlabeled data, which is so much more plentiful than labeled data."
 {: .prompt-info }
 
-**What this meant for me:**
-
-Instead of obsessing over finding the "perfect algorithm," I should focus on:
-- Getting more quality data
-- Cleaning and preparing it properly
-- Understanding what it actually represents
-
-
-> **Automation Parallel:** It's like infrastructure scaling—1,000 well-configured servers are better than 100 over-optimized servers. 10,000 quality deployment examples beat 1,000 examples with fancy analysis. Data is leverage. Get it right first, then worry about algorithms.
-{: .prompt-info }
+Focus on quality and quantity of data before worrying about the perfect algorithm.
 
 ---
 
@@ -87,6 +68,9 @@ Instead of obsessing over finding the "perfect algorithm," I should focus on:
 ### For Automation Engineers
 
 When you write Terraform or Ansible, you work with:
+
+<details markdown="1">
+<summary><strong>See Example: Terraform Variables</strong></summary>
 
 ```hcl
 # Terraform variables
@@ -104,11 +88,16 @@ variable "environment" {
 }
 ```
 
+</details>
+
 These variables **define the inputs** to your automation logic.
 
 ### For Machine Learning
 
 In ML, data serves the same purpose:
+
+<details markdown="1">
+<summary><strong>See Table: Automation vs ML Concepts</strong></summary>
 
 | Automation Concept  | ML Equivalent       | Purpose                              |
 | ------------------- | ------------------- | ------------------------------------ |
@@ -117,6 +106,7 @@ In ML, data serves the same purpose:
 | State file          | Model weights       | Captures learned patterns            |
 | Outputs             | Predictions         | What the system produces             |
 
+</details>
 
 > **Tip:** Just as you validate Terraform variables, you must validate training data.
 {: .prompt-tip }
@@ -133,22 +123,29 @@ In automation, if I run:
 terraform apply -var="instance_type=invalid_type"
 ```
 
-Result: **Immediate failure with clear error message**
+**Result:** Immediate failure with a clear error message.
 
 I fix the variable and try again. Fast feedback loop.
+
+---
 
 ### What I Learned About ML
 
 Now imagine training an ML model with:
+
 - Mislabeled data
 - Missing values
 - Biased samples
 - Inconsistent formats
 
-Result: **Model succeeds in training** ✓ (no errors)  
-But: **Model fails in production** ✗ (wrong predictions)
+**Result:** Model succeeds in training (no errors)
 
-**This is what scared me:** Bad data doesn't cause training to fail. It causes the model to confidently learn the wrong patterns.
+But: Model fails in production (wrong predictions)
+
+**This is what scared me:**
+
+- Bad data doesn't cause training to fail
+- It causes the model to confidently learn the wrong patterns
 
 ### Example That Made It Real
 
@@ -158,24 +155,28 @@ Thinking about deployment risk assessment:
 
 **What if the training data has problems?**
 
-| Data Issue                                           | What The Model Learns                                    |
-| ---------------------------------------------------- | -------------------------------------------------------- |
-| All "High risk" deployments mislabeled as "Low risk" | Model learns backwards\u2014predicts safe when dangerous |
-| Missing "time of day" for night deployments          | Model never learns that 3 AM deployments are riskier     |
-| Only includes successful deployments                 | Model can't recognize failure patterns                   |
-| Biased toward one team's deployments                 | Model performs poorly for other teams                    |
+<details markdown="1">
+<summary><strong>See Table: Data Issues and Model Impact</strong></summary>
+
+| Data Issue                                           | What The Model Learns                                |
+| ---------------------------------------------------- | ---------------------------------------------------- |
+| All "High risk" deployments mislabeled as "Low risk" | Model learns backwards—predicts safe when dangerous  |
+| Missing "time of day" for night deployments          | Model never learns that 3 AM deployments are riskier |
+| Only includes successful deployments                 | Model can't recognize failure patterns               |
+| Biased toward one team's deployments                 | Model performs poorly for other teams                |
+
+</details>
 
 Each issue creates a model that **appears to work in training** but makes **dangerous predictions in production.**
 
-
-> **Warning:** The silent failure one need to watch for — bad data can make your model appear to work in training but make dangerous predictions in production.
+> **Warning:** The silent failure to watch for—bad data can make your model appear to work in training but make dangerous predictions in production.
 {: .prompt-warning }
 
 ---
 
 ## 4. Data Quality Checklist I'm Using
 
-Before training any model, these are the questions I've learned to ask:
+Before training any model, I now ask:
 
 ### 1. **Completeness**
 
@@ -192,19 +193,18 @@ missing = df[required_features].isnull().sum()
 ```
 
 **For deployment risk:**
+
 - Do all deployments have timestamp?
 - Do all have team information?
 - Do all have outcome (success/failure)?
+
 
 ### 2. **Accuracy**
 
 Is the data correct?
 
-**Automation example:**  
-Instance type "t3.mediam" (typo) → deployment fails immediately
-
-**ML example:**  
-Deployment labeled "High risk" but actually succeeded → model learns wrong pattern
+- **Automation:** Instance type "t3.mediam" (typo) → deployment fails immediately
+- **ML:** Deployment labeled "High risk" but actually succeeded → model learns wrong pattern
 
 **For deployment risk:**
 - Are risk labels verified?
@@ -215,12 +215,16 @@ Deployment labeled "High risk" but actually succeeded → model learns wrong pat
 
 Is the data formatted uniformly?
 
+<details markdown="1">
+<summary><strong>See Table: Data Consistency Issues</strong></summary>
+
 | Inconsistent Data                         | Problem                           |
 | ----------------------------------------- | --------------------------------- |
 | Team names: "DevOps", "devops", "Dev-Ops" | Model treats as 3 different teams |
 | Timestamps: UTC vs local time             | Time-based patterns break         |
 | Risk levels: "HIGH" vs "high" vs "H"      | Labels don't match                |
 
+</details>
 
 > **Best Practice:** Normalize your data before training, just like normalizing Terraform variable names.
 {: .prompt-tip }
@@ -229,23 +233,19 @@ Is the data formatted uniformly?
 
 Does the data actually predict what you care about?
 
-**Automation example:**  
-Checking instance color doesn't tell you if deployment will succeed
+- **Automation:** Checking instance color doesn't tell you if deployment will succeed
+- **ML:** Developer's favorite coffee ☕ doesn't predict deployment risk
 
-**ML example:**  
-Developer's favorite coffee ☕ doesn't predict deployment risk
-
-**For deployment risk:**  
-Include: deployment size, time, change count, environment  
-Exclude: developer name, commit message length, office location
+**For deployment risk:**
+- Include: deployment size, time, change count, environment
+- Exclude: developer name, commit message length, office location
 
 ### 5. **Timeliness**
 
 Is the data recent and representative?
 
-**Problem:** Training on 2-year-old deployment data  
-**Reality:** Your infrastructure, processes, and teams have changed
-
+- **Problem:** Training on 2-year-old deployment data
+- **Reality:** Your infrastructure, processes, and teams have changed
 
 > **Best Practice:** Use recent data and retrain periodically (we'll cover this in the MLOps series).
 {: .prompt-tip }
@@ -254,7 +254,7 @@ Is the data recent and representative?
 
 Does the training data represent the real-world cases you'll encounter?
 
-**Critical principle:** In order to generalize well, your training data must be representative of the new cases you want to predict.
+> **Key principle:** In order to generalize well, your training data must be representative of the new cases you want to predict.
 
 **Automation example:**  
 Testing deployments only during business hours  
@@ -266,6 +266,9 @@ Training deployment risk model only on small deployments (< 50 files)
 
 **For deployment risk:**
 
+<details markdown="1">
+<summary><strong>See Table: Representativeness Issues</strong></summary>
+
 | Training Data               | Real World                 | Problem                                    |
 | --------------------------- | -------------------------- | ------------------------------------------ |
 | Only weekday deployments    | Weekend deployments happen | Model has never seen weekend patterns      |
@@ -273,13 +276,14 @@ Training deployment risk model only on small deployments (< 50 files)
 | Only successful deployments | Need to predict failures   | Model can't recognize failure patterns     |
 | Only Team A's deployments   | All teams deploy           | Model biased toward Team A's practices     |
 
+</details>
+
 **Solution:** Ensure training data covers:
 - All time periods (weekday, weekend, day, night)
 - All environments (dev, staging, prod)
 - All teams and regions
 - Both successes AND failures
 - Full range of deployment sizes
-
 
 > **Tip:** Representativeness is about coverage of real-world scenarios. Even unbiased data can be non-representative if it doesn't cover the variety of cases you'll see in production.
 {: .prompt-tip }
@@ -292,23 +296,26 @@ Just as you have CI/CD pipelines for code, you need data pipelines for ML.
 
 ```mermaid
 flowchart LR
-    A[Raw Data] --> B[Cleaning]
-    B --> C[Validation]
-    C --> D[Transformation]
-    D --> E[Feature Engineering]
-    E --> F[Ready for Training]
+  A[Raw Data] --> B[Cleaning]
+  B --> C[Validation]
+  C --> D[Transformation]
+  D --> E[Feature Engineering]
+  E --> F[Ready for Training]
     
-    style A fill:#e1f5ff
-    style B fill:#ffe1e1
-    style C fill:#fff4e1
-    style D fill:#e1ffe1
-    style E fill:#f0e1ff
-    style F fill:#90EE90
+  style A fill:#e1f5ff
+  style B fill:#ffe1e1
+  style C fill:#fff4e1
+  style D fill:#e1ffe1
+  style E fill:#f0e1ff
+  style F fill:#90EE90
 ```
 
 ### Step 1: Cleaning
 
 Remove or fix problematic data:
+
+<details markdown="1">
+<summary><strong>See Example: Data Cleaning (Python)</strong></summary>
 
 ```python
 # Remove duplicates
@@ -321,6 +328,7 @@ df['deployment_size'].fillna(df['deployment_size'].median(), inplace=True)
 df = df[df['files_changed'] < 10000]
 ```
 
+</details>
 
 > **Automation Parallel:** Removing invalid configuration entries is like cleaning your ML data.
 {: .prompt-info }
@@ -328,6 +336,9 @@ df = df[df['files_changed'] < 10000]
 ### Step 2: Validation
 
 Ensure data meets quality standards:
+
+<details markdown="1">
+<summary><strong>See Example: Data Validation (Python)</strong></summary>
 
 ```python
 # Check for required fields
@@ -340,6 +351,7 @@ assert (df['risk_level'].isin(['High', 'Medium', 'Low'])).all()
 print(df['risk_level'].value_counts())
 ```
 
+</details>
 
 > **Automation Parallel:** `terraform validate` before apply is like validating your ML data before training.
 {: .prompt-info }
@@ -347,6 +359,9 @@ print(df['risk_level'].value_counts())
 ### Step 3: Transformation
 
 Convert data to usable formats:
+
+<details markdown="1">
+<summary><strong>See Example: Data Transformation (Python)</strong></summary>
 
 ```python
 # Convert timestamps to features
@@ -356,10 +371,11 @@ df['is_weekend'] = df['day_of_week'].isin([5, 6])
 
 # Encode categorical variables
 df['environment_encoded'] = df['environment'].map({
-    'dev': 0, 'staging': 1, 'prod': 2
+  'dev': 0, 'staging': 1, 'prod': 2
 })
 ```
 
+</details>
 
 > **Automation Parallel:** Converting YAML to JSON for API consumption is like transforming your ML data into usable formats.
 {: .prompt-info }
@@ -368,12 +384,16 @@ df['environment_encoded'] = df['environment'].map({
 
 Create new features from existing data (we'll dive deeper into this in a moment):
 
+<details markdown="1">
+<summary><strong>See Example: Feature Engineering (Python)</strong></summary>
+
 ```python
 # Create composite features
 df['deployment_velocity'] = df['files_changed'] / df['deployment_duration']
 df['risk_score'] = df['files_changed'] * df['is_prod'] * df['is_weekend']
 ```
 
+</details>
 
 > **Automation Parallel:** Creating derived Terraform locals from variables is like feature engineering in ML.
 {: .prompt-info }
@@ -388,6 +408,9 @@ df['risk_score'] = df['files_changed'] * df['is_prod'] * df['is_weekend']
 
 Going back to our Terraform analogy:
 
+<details markdown="1">
+<summary><strong>See Example: Feature Engineering Analogy (Terraform)</strong></summary>
+
 ```hcl
 # Raw inputs
 variable "instance_count" { default = 5 }
@@ -399,6 +422,8 @@ locals {
   estimated_cost = local.total_vcpus * var.hourly_rate
 }
 ```
+
+</details>
 
 The `estimated_cost` is more useful for decision-making than raw inputs.
 
@@ -418,6 +443,9 @@ The engineered features make patterns easier for the model to learn.
 
 ### For Deployment Risk Assessment
 
+<details markdown="1">
+<summary><strong>See Table: Raw vs Engineered Features</strong></summary>
+
 | Raw Data                          | Engineered Feature           | Why It Helps                   |
 | --------------------------------- | ---------------------------- | ------------------------------ |
 | `files_changed: 200`              | `is_large_deployment: True`  | Simplifies threshold learning  |
@@ -425,25 +453,22 @@ The engineered features make patterns easier for the model to learn.
 | `previous_failures: [3, 0, 1, 2]` | `failure_rate: 0.25`         | Aggregates history             |
 | `team: "Platform"`                | `team_experience_score: 0.9` | Incorporates team reliability  |
 
+</details>
 
 > **Engineering Insight:** Help the model by giving it features that directly relate to the problem.
 {: .prompt-info }
 
 ---
 
-## Data Splits: Training, Validation, and Test
+## 7. Data Splits: Training, Validation, and Test
 
 When you develop automation code, you test in multiple environments:
 
-```text
-Dev → Staging → Production
-```
+> Dev → Staging → Production
 
 In ML, you split your data into three sets:
 
-```text
-Training → Validation → Test
-```
+> Training → Validation → Test
 
 ### The Three Splits Explained
 
@@ -470,30 +495,26 @@ flowchart TB
 
 **Purpose:** The data the model learns from
 
-**Automation analogy:** Your dev environment where you experiment and iterate
+- **Automation analogy:** Your dev environment where you experiment and iterate
+- **For deployment risk:** Use 70% of historical deployments to train the model on patterns
 
-**For deployment risk:**  
-Use 70% of historical deployments to train the model on patterns
 
 ### Validation Set (15-20%)
 
 **Purpose:** Tune the model and check performance during development
 
-**Automation analogy:** Staging environment where you verify before production
-
-**For deployment risk:**  
-Use 15% of deployments to validate the model isn't overfitting (we'll cover this in Chapter 3.2)
+- **Automation analogy:** Staging environment where you verify before production
+- **For deployment risk:** Use 15% of deployments to validate the model isn't overfitting (we'll cover this in Chapter 3.2)
 
 **Important:** You can look at validation results and adjust your model based on them
+
 
 ### Test Set (15-20%)
 
 **Purpose:** Final evaluation on completely unseen data
 
-**Automation analogy:** Production deployment—the real test
-
-**For deployment risk:**  
-Use 15% of deployments as a final check before deploying the model
+- **Automation analogy:** Production deployment—the real test
+- **For deployment risk:** Use 15% of deployments as a final check before deploying the model
 
 
 > **Best Practice:** Never look at test data during development. Only use it once at the very end.
@@ -502,6 +523,7 @@ Use 15% of deployments as a final check before deploying the model
 ### Why This Matters
 
 **Bad practice:**
+
 ```python
 # Train on ALL data
 model.fit(all_data)
@@ -510,11 +532,11 @@ model.fit(all_data)
 accuracy = model.score(all_data)  # 99% accurate! 🎉
 ```
 
-
 > **Warning:** If you train and test on the same data, the model memorizes instead of learning patterns—leading to failure on new deployments.
 {: .prompt-warning }
 
 **Good practice:**
+
 ```python
 # Split data
 train, val, test = split_data(all_data, [0.7, 0.15, 0.15])
@@ -531,7 +553,7 @@ final_accuracy = model.score(test)  # 85% (realistic)
 
 ---
 
-## Data Bias: The Hidden Danger
+## 8. Data Bias: The Hidden Danger
 
 Bias in data is like bias in configuration—it leads to inconsistent and unfair outcomes.
 
@@ -541,22 +563,18 @@ Bias in data is like bias in configuration—it leads to inconsistent and unfair
 
 **Definition:** Your training data doesn't represent reality
 
-**Automation example:**  
-Testing only on `t3.medium` instances, then deploying to `t3.large`—things break
-
-**ML example:**  
-Training deployment risk model only on Platform team's deployments  
-**Result:** Model performs poorly for other teams
+- **Automation:** Testing only on `t3.medium` instances, then deploying to `t3.large`—things break
+- **ML:** Training deployment risk model only on Platform team's deployments
+  - **Result:** Model performs poorly for other teams
 
 #### 2. **Historical Bias**
 
 **Definition:** Past decisions were biased, and model learns those biases
 
-**Example:**  
-- Historical data: "All deployments by Team X flagged as High Risk"
-- Reason: Team X was new and had early failures
-- Model learns: "Team X = High Risk" even though team improved
-
+- **Example:**
+  - Historical data: "All deployments by Team X flagged as High Risk"
+  - Reason: Team X was new and had early failures
+  - Model learns: "Team X = High Risk" even though team improved
 
 > **Best Practice:** Use recent data and weight recent examples more heavily to avoid historical bias.
 {: .prompt-tip }
@@ -565,11 +583,10 @@ Training deployment risk model only on Platform team's deployments
 
 **Definition:** How you measure/label data introduces bias
 
-**Example:**  
-- "High risk" defined by one person's judgment
-- Different people have different risk tolerance
-- Model learns inconsistent labels
-
+- **Example:**
+  - "High risk" defined by one person's judgment
+  - Different people have different risk tolerance
+  - Model learns inconsistent labels
 
 > **Best Practice:** Standardize your labeling process and use objective criteria to avoid measurement bias.
 {: .prompt-tip }
@@ -587,41 +604,54 @@ print(df.groupby('team')['risk_level'].value_counts())
 # Team B: 30% Low Risk, 30% Medium, 40% High  ← Biased!
 ```
 
-
 > **Tip:** If one group is disproportionately labeled as risky, investigate why—this may reveal hidden bias in your data.
 {: .prompt-tip }
 
 ---
 
-## Practical Guidelines for Data Preparation
+## 9. Practical Guidelines for Data Preparation
 
 Based on automation engineering principles:
 
+
 ### 1. **Automate Data Validation**
+
+Automate checks to ensure your data meets quality standards before training.
+
+> **Best Practice:** Automate data validation to catch issues early, just like you would with infrastructure code.
+{: .prompt-tip }
+
+<details markdown="1">
+<summary><strong>See Example: Automate Data Validation</strong></summary>
 
 ```python
 def validate_deployment_data(df):
-    """
-    Validate deployment data quality
-    Like 'terraform validate' but for ML data
-    """
-    checks = {
-        'no_missing_timestamps': df['timestamp'].notnull().all(),
-        'valid_risk_levels': df['risk_level'].isin(['High', 'Medium', 'Low']).all(),
-        'reasonable_file_counts': (df['files_changed'] > 0).all() & (df['files_changed'] < 10000).all(),
-        'recent_data': (df['timestamp'] > '2024-01-01').all()
-    }
+  """
+  Validate deployment data quality
+  Like 'terraform validate' but for ML data
+  """
+  checks = {
+    'no_missing_timestamps': df['timestamp'].notnull().all(),
+    'valid_risk_levels': df['risk_level'].isin(['High', 'Medium', 'Low']).all(),
+    'reasonable_file_counts': (df['files_changed'] > 0).all() & (df['files_changed'] < 10000).all(),
+    'recent_data': (df['timestamp'] > '2024-01-01').all()
+  }
     
-    failed = [k for k, v in checks.items() if not v]
-    if failed:
-        raise ValueError(f"Data validation failed: {failed}")
+  failed = [k for k, v in checks.items() if not v]
+  if failed:
+    raise ValueError(f"Data validation failed: {failed}")
     
-    return True
+  return True
 ```
+
+</details>
 
 ### 2. **Version Your Data**
 
-Just like you version Terraform state:
+Keep track of changes in your data just like you version your code or infrastructure.
+
+<details markdown="1">
+<summary><strong>See Example: Version Your Data</strong></summary>
 
 ```bash
 data/
@@ -633,18 +663,22 @@ data/
       └── deployment_history.csv  # Changed labeling criteria
 ```
 
+</details>
 
 > **Best Practice:** Track what changed between data versions (we'll cover this more in the MLOps series).
 {: .prompt-tip }
 
 ### 3. **Document Data Provenance**
 
+Document where your data comes from and any known issues for future reference.
 
 > **Best Practice:** Create a data README to document data provenance and known issues.
 {: .prompt-tip }
 
-```markdown
+<details markdown="1">
+<summary><strong>See Example: Data README (Provenance)</strong></summary>
 
+```markdown
 # Deployment Risk Dataset v2.0
 
 ## Source
@@ -666,30 +700,44 @@ data/
 2026-01-07
 ```
 
+</details>
+
+
+
 
 ### 4. **Monitor Data Quality Over Time**
 
+Regularly check if your new data still matches the patterns and quality of your training data.
+
+> **Best Practice:** Continuously monitor for data drift to ensure your models remain reliable as new data arrives.
+{: .prompt-tip }
+
+<details markdown="1">
+<summary><strong>See Example: Monitor Data Quality Over Time</strong></summary>
+
 ```python
 def monitor_data_drift(current_data, reference_data):
-    """
-    Check if new data distribution matches training data
-    Like monitoring drift in Terraform state
-    """
-    metrics = {
-        'avg_files_changed': current_data['files_changed'].mean(),
-        'risk_distribution': current_data['risk_level'].value_counts(),
-        'deployment_frequency': len(current_data) / days_span
-    }
+  """
+  Check if new data distribution matches training data
+  Like monitoring drift in Terraform state
+  """
+  metrics = {
+    'avg_files_changed': current_data['files_changed'].mean(),
+    'risk_distribution': current_data['risk_level'].value_counts(),
+    'deployment_frequency': len(current_data) / days_span
+  }
     
-    # Compare with reference
-    # Alert if significant drift detected
+  # Compare with reference
+  # Alert if significant drift detected
 ```
+
+</details>
 
 ---
 
-## Key Takeaways
+## What I Wish I Knew Earlier
 
-> **Takeaway:**
+> **Practitioner’s Lessons:**
 > - **Data is configuration for ML:** Bad data = bad model, just like bad variables = broken infrastructure.
 > - **Quality matters more than quantity:** 1,000 high-quality labeled deployments > 10,000 messy ones.
 > - **Data preparation is not optional:** It's the foundation—skip it and your model will fail.
@@ -698,19 +746,6 @@ def monitor_data_drift(current_data, reference_data):
 > - **Watch for bias:** Biased data leads to biased models.
 > - **Automate and version everything:** Treat data pipeline like infrastructure code.
 {: .prompt-tip }
-
----
-
-## Connecting to Automation
-
-| Automation Practice   | ML Equivalent         |
-| --------------------- | --------------------- |
-| Variable validation   | Data quality checks   |
-| Terraform locals      | Feature engineering   |
-| State file versioning | Data versioning       |
-| Dev/Staging/Prod      | Train/Val/Test splits |
-| Monitoring drift      | Data drift detection  |
-| Configuration as code | Data pipeline as code |
 
 ---
 

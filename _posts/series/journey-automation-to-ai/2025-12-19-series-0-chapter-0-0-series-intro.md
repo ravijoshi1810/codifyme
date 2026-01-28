@@ -1,16 +1,19 @@
 ---
-layout: series
-title: "From Automation to AI – A Practitioner's Journey"
-permalink: /series/journey-automation-to-ai/
-is_series_index: true
-series: "From Automation to AI – A Practitioner's Journey"
-description: "A learning journey documenting AI from the perspective of a Solution Architect working with automation, IaC, DevOps, and cloud platforms. Architecture-focused, concept-first, and tool-agnostic."
-date: 2025-12-20
-show_sidebar: true
+title: "Series Introduction – From Automation to AI: A Practitioner's Journey"
+layout: post
 author: ravijoshi1810
-categories: [Automation, AI, DevOps, Architecture]
+date: 2025-12-19
+series: "From Automation to AI – A Practitioner's Journey"
+series_order: 0.0
+categories: [ai, ml, deep-learning, generative-ai, llm]
 tags: [automation, ai, devops, terraform, ansible, solution-architecture]
-published: false
+description: "Landing page and introduction for the 'From Automation to AI' series. What to expect, who it's for, and how to navigate."
+published: true
+mermaid: true
+image:
+  path: /assets/series/journey-automation-to-ai/journey-automation-to-ai-hero.png
+  alt: "From Automation to AI – A Practitioner's Journey"
+
 ---
 
 ## From Automation to AI – A Practitioner’s Journey
@@ -52,23 +55,6 @@ You are the intended audience.
 
 ---
 
-## How This Series Is Structured
-
-The series progresses logically from familiar ground to newer concepts:
-
-```text
-Automation Foundations
-        ↓
-Machine Learning Concepts
-        ↓
-Deep Learning (Intuition)
-        ↓
-Generative AI & LLMs
-        ↓
-MLOps (AI in Production)
-```
-
----
 
 ## Series 0 – Foundations & Mindset
 
@@ -80,7 +66,7 @@ This introductory series sets the context, motivation, and learning strategy.
 - Where rule-based systems reach their limits
 - How AI naturally augments IaC and CI/CD
 
-➡ [Read Chapter 0.1](chapter-0-1-why-automation-engineers-should-learn-ai)
+➡ [Read Chapter 0.1](/codifyme/posts/series-0-chapter-0-1-why-automation-engineers-should-learn-ai/)
 
 ### ✅ Chapter 0.2 – My Background & Learning Strategy
 
@@ -88,7 +74,7 @@ This introductory series sets the context, motivation, and learning strategy.
 - Why not the data scientist path
 - How this series approaches AI learning
 
-➡ [Read Chapter 0.2](chapter-0-2-background-and-learning-strategy)
+➡ [Read Chapter 0.2](/codifyme/posts/series-0-chapter-0-2-background-and-learning-strategy/)
 
 ---
 
@@ -103,7 +89,7 @@ This series establishes clear definitions before going deeper.
 - Real examples: Auto-scaling (rule-based) vs ML-based scaling
 - Where AI fits in modern architectures
 
-➡ [Read Chapter 1.1](chapter-1-1-what-is-ai-really)
+➡ [Read Chapter 1.1](/codifyme/posts/series-1-chapter-1-1-what-is-ai-really/)
 
 ### ✅ Chapter 1.2 – How Machines Learn
 
@@ -113,7 +99,7 @@ This series establishes clear definitions before going deeper.
 - Automation vs ML comparison with real examples
 - Running example: Intelligent Change & Deployment Risk Assessment
 
-➡ [Read Chapter 1.2](chapter-1-2-how-machines-learn)
+➡ [Read Chapter 1.2](/codifyme/posts/series-1-chapter-1-2-how-machines-learn/)
 
 ### ✅ Chapter 1.3 – Types of Machine Learning
 
@@ -121,11 +107,9 @@ This series establishes clear definitions before going deeper.
 - When to use each approach
 - Practical decision framework with running example
   
-➡ [Read Chapter 1.3](chapter-1-3-types-of-machine-learning)
+➡ [Read Chapter 1.3](/codifyme/posts/series-1-chapter-1-3-types-of-machine-learning/)
 
 ---
-
-## 🔜 What's Coming Next 
 
 ###  Series 2 – Machine Learning Basics (Practitioner View)
 
@@ -141,7 +125,7 @@ Understanding ML from an engineering perspective: data preparation, model traini
 - Data bias and how to detect it
 - Practical automation-inspired guidelines
 
-➡ [Read Chapter 2.1](chapter-2-1-data-quality-and-preparation)
+➡ [Read Chapter 2.1](/codifyme/posts/series-2-chapter-2-1-data-quality-and-preparation/)
 
 #### ✅ Chapter 2.2 – Features, Labels, and Models
 
@@ -153,7 +137,7 @@ Understanding ML from an engineering perspective: data preparation, model traini
 - Common pitfalls and how to avoid them
 - Practical automation-inspired guidelines
 
-➡ [Read Chapter 2.2](chapter-2-2-features-labels-and-models)
+➡ [Read Chapter 2.2](/codifyme/posts/series-2-chapter-2-2-features-labels-and-models/)
 
 #### ✅ Chapter 2.3 – Model Training vs Execution
 
@@ -165,7 +149,7 @@ Understanding ML from an engineering perspective: data preparation, model traini
 - Data drift and concept drift
 - Retraining strategies and triggers
 
-➡ [Read Chapter 2.3](chapter-2-3-training-vs-inference)
+➡ [Read Chapter 2.3](/codifyme/posts/series-2-chapter-2-3-training-vs-inference/)
 
 ---
 
@@ -181,58 +165,83 @@ Understanding machine learning algorithms and model behavior from a practical pe
 - How all previous concepts connect
 - Complete end-to-end example
 
-➡ [Read Chapter 3.0](chapter-3-0-ml-project-workflow)
+➡ [Read Chapter 3.0](/codifyme/posts/series-3-chapter-3-0-ml-project-workflow/)
 
----
+### ✅ Chapter 3.1 – Common ML Algorithms (Intuition Only)
 
-## Future Series (Planned)
-
-#### 🚧 Chapter 3.1 – Common ML Algorithms (Intuition Only) (Coming Soon)
-
-- Linear Regression
-- Decision Trees
-- Random Forest
-- K-Nearest Neighbors (KNN)
+- Linear Regression, Decision Trees, Random Forest, KNN, and more
 - Focus: When to use and why they work (not equations)
 
-#### 🚧 Chapter 3.2 – Overfitting & Underfitting (Coming Soon)
+➡ [Read Chapter 3.1](/codifyme/posts/series-3-chapter-3-1-common-ml-algorithms/)
+
+### ✅ Chapter 3.2 – Overfitting & Underfitting
 
 - "Works in dev, fails in prod" analogy
 - Why models fail in production
 - Balancing model complexity
 
-#### 🚧 Chapter 3.3 – Model Evaluation (Coming Soon)
+➡ [Read Chapter 3.2](/codifyme/posts/series-3-chapter-3-2-overfitting-underfitting/)
+
+### ✅ Chapter 3.3 – Model Evaluation
 
 - Accuracy, precision, recall (intuition)
 - Why accuracy alone is misleading
 - Choosing the right metrics
 
+➡ [Read Chapter 3.3](/codifyme/posts/series-3-chapter-3-3-model-evaluation/)
+
+### ✅ Chapter 3.4 – Feature Engineering
+
+- Transforming raw data into useful features
+- Where 80% of ML work happens
+
+➡ [Read Chapter 3.4](/codifyme/posts/series-3-chapter-3-4-feature-engineering/)
+
 ---
 
-### Series 4 – Deep Learning (Demystified)
+## Series 4 – Deep Learning (Demystified)
 
 Understanding neural networks and deep learning from an infrastructure perspective.
 
-#### 🚧 Chapter 4.1 – Why Deep Learning Exists (Coming Soon)
+### ✅ Chapter 4.0 – Deep Learning Roadmap
+
+- Overview of deep learning concepts and applications
+
+➡ [Read Chapter 4.0](/codifyme/posts/series-4-chapter-4-0-deep-learning-roadmap/)
+
+### ✅ Chapter 4.1 – Why Deep Learning Exists
 
 - Limits of traditional ML
 - Problems suited for deep learning: images, text, speech
 - When to consider deep learning
 
-#### 🚧 Chapter 4.2 – Neural Networks Explained Like Infrastructure (Coming Soon)
+➡ [Read Chapter 4.1](/codifyme/posts/series-4-chapter-4-1-why-deep-learning-exists/)
+
+### ✅ Chapter 4.2 – Neural Networks Explained Like Infrastructure
 
 - Neurons as processing units
 - Layers as pipelines
 - Weights as configuration values
 - Backpropagation (conceptually)
 
-#### 🚧 Chapter 4.3 – Popular Deep Learning Models (Coming Soon)
+➡ [Read Chapter 4.2](/codifyme/posts/series-4-chapter-4-2-neural-networks-explained-like-infrastructure/)
+
+### ✅ Chapter 4.3 – Deep Learning Architectures: CNNs, RNNs
 
 - CNNs (Convolutional Neural Networks) for images
 - RNNs / LSTM for sequences
 - Transformers and modern AI architecture
 
+➡ [Read Chapter 4.3](/codifyme/posts/series-4-chapter-4-3-deep-learning-architectures-cnn-rnn/)
+
+### ✅ Chapter 4.4 – Transformers & Modern Architectures
+
+- Transformers, attention mechanisms, and modern deep learning
+
+➡ [Read Chapter 4.4](/codifyme/posts/series-4-chapter-4-4-transformers-modern-architectures/)
+
 ---
+## Future Series (Planned)
 
 ### Series 5 – Generative AI & LLMs
 
@@ -279,30 +288,6 @@ Practical AI applications in automation, IaC, and DevOps workflows.
 - Smarter forms and input validation
 - Recommendation engines
 - Risk-based approvals
-
----
-
-### Series 7 – MLOps (AI's DevOps)
-
-Operating AI systems in production with reliability and governance.
-
-#### 🚧 Chapter 7.1 – What Is MLOps (Coming Soon)
-
-- CI/CD vs ML lifecycle
-- Why models rot over time
-- MLOps vs traditional DevOps
-
-#### 🚧 Chapter 7.2 – Model Versioning & Deployment (Coming Soon)
-
-- Model ≠ code
-- Data versioning strategies
-- Deployment patterns for ML models
-
-#### 🚧 Chapter 7.3 – Monitoring AI in Production (Coming Soon)
-
-- Data drift detection
-- Concept drift and model degradation
-- Retraining triggers and automation
 
 ---
 

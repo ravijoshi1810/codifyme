@@ -9,8 +9,14 @@ categories: [ai, deep-learning, ml]
 tags: [deep-learning, cnn, rnn, architectures, automation, engineering]
 description: "A practical, engineer-focused guide to core deep learning architectures (CNNs, RNNs), their use cases, and pitfalls—explained with automation analogies."
 permalink: /series/journey-automation-to-ai/chapter-4-3-deep-learning-architectures-cnn-rnn/
-published: false
+published: true
 mermaid: true
+---
+
+---
+
+# Deep Learning Architectures: CNNs, RNNs & Practical Examples
+
 ---
 
 # TL;DR
@@ -21,11 +27,6 @@ mermaid: true
 > - Practical engineering analogies make deep learning architectures easier to grasp for automation and DevOps professionals.
 > - Avoid using advanced architectures when a simple rule or classic ML model will do.
 {: .prompt-info }
-
----
-
-# Deep Learning Architectures: CNNs, RNNs & Practical Examples
-
 ## Introduction
 
 Building on our neural network fundamentals, this chapter explores the most important deep learning architectures—Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs)—with practical, automation-inspired analogies for engineers.

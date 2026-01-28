@@ -170,3 +170,6 @@ include:
 
 # Google Search Console verification
 google_site_verification: QjpYArnVm19JwasXg2TK74OyWE6Xsp54jhd_x9-CF48
+
+# Enable post preview images
+post_preview_image: true

@@ -16,15 +16,20 @@ mermaid: true
 
 ## The ML Version of "Works in Dev, Fails in Prod"
 
+---
+
 Every automation engineer has encountered this scenario: a script runs flawlessly in development, passes all tests in staging, then mysteriously fails in production. The logic is correct, the syntax is valid, but something about the real-world environment breaks your carefully crafted solution.
 
 Machine learning has the exact same problem—and it's called **overfitting** and **underfitting**.
 
 Understanding these concepts isn't about mathematics. It's about recognizing why models that perform brilliantly during training can fail spectacularly when they encounter real data. More importantly, it's about learning to balance model complexity—the same way we balance automation complexity in production systems.
 
+> Key realization: The biggest reason ML models fail in production is the same as automation scripts: they either memorize the test environment (overfitting) or ignore real complexity (underfitting).
+{: .prompt-tip }
+
 ---
 
-## What Is Overfitting?
+## Overfitting — Memorizing, Not Learning
 
 ### The Intuition
 
@@ -100,15 +105,17 @@ graph TD
 - Learns that Server B fails when memory reaches exactly 12.7GB at midnight
 - Memorizes the specific noise patterns in the training week's data
 
-> **Result:**
-> - Training accuracy: 98%
-> - Production accuracy: 62%
-{: .prompt-info }
-- **The model can't generalize to new servers, new times, or new patterns**
+**Result:**
+- Training accuracy: 98%
+- Production accuracy: 62%
+
+**Problem** 
+> The model can't generalize to new servers, new time periods, or unseen patterns.
+{: .prompt-warning }
 
 ---
 
-## What Is Underfitting?
+## Underfitting — Ignoring Real Complexity
 
 ### The Intuition
 
@@ -123,7 +130,8 @@ port = 8080  # Just use 8080 for everything
 
 ### In Machine Learning Terms
 
-**Underfitting occurs when a model is too simple to capture the underlying patterns in the data.**
+> Underfitting occurs when a model is too simple to capture the underlying patterns in the data.
+{: .prompt-info }
 
 **The symptoms:**
 - **Poor training performance** (e.g., 65% accuracy on training data)
@@ -140,7 +148,10 @@ port = 8080  # Just use 8080 for everything
 **Result:**
 - Training accuracy: 68%
 - Production accuracy: 67%
-- **The model is consistently mediocre—it's too simple to be useful**
+
+**Problem:**
+> The model is consistently mediocre — it's too simple to be useful.
+{: .prompt-warning }
 
 ---
 
@@ -394,7 +405,10 @@ xychart-beta
 
 ---
 
-## Key Takeaways
+## What I Wish I Knew Earlier
+
+> **Practitioner’s Lessons:**
+> 
 > - **Overfitting:**
 >   - Model is too complex
 >   - Memorizes training data including noise

@@ -184,13 +184,14 @@ Specifically:
 
 ---
 
-## 8. Key Takeaways
+## What I Wish I Knew Earlier
 
+> **Practitioner’s Lessons:**
 > - AI is the next step in the automation-to-architecture evolution
 > - Focus: architectural understanding, not academic depth
 > - Approach: concepts → intuition → examples
 > - Goal: design AI-enabled systems, not build ML algorithms
-{: .prompt-info }
+{: .prompt-tip }
 
 ## What's Next?
 

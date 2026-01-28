@@ -9,11 +9,13 @@ categories: [ai, deep-learning, ml]
 tags: [deep-learning, automation, devops, engineering]
 description: "Why deep learning emerged, what problems it solves, and when engineers should actually use it."
 permalink: /series/journey-automation-to-ai/chapter-4-1-why-deep-learning-exists
-published: false
+published: true
 mermaid: true
 ---
 
 # Why Deep Learning Exists
+
+---
 
 When I first heard *deep learning*, I honestly thought it just meant “bigger machine learning models with more data.”
 

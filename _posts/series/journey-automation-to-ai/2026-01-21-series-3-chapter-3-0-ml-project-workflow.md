@@ -16,24 +16,32 @@ mermaid: true
 
 ## Putting It All Together: From Scattered Concepts to Complete Workflow
 
-After spending weeks learning AI fundamentals, I kept asking: **"Okay, but how do I actually BUILD something?"**
+**Why this chapter?**  
+If the last few chapters felt like puzzle pieces, this is where they come together. Here, you’ll see the full ML project workflow, how each step connects to what you’ve already learned, and how it sets you up for the advanced topics ahead.
 
-In Series 0-2, I learned individual concepts:
+> **Automation anology**
+> This is like learning individual Terraform/Ansible resources—important, but scattered. I needed to see the complete workflow from problem → production.
+
+**How to use this chapter:**  
+This chapter is that workflow. It’s my attempt to document the end-to-end ML journey I wish I had when starting. Each phase links back to earlier chapters—revisit those if you need a refresher. This is your bridge from learning concepts to building real solutions.
+
+---
+
+### Review: What You’ve Learned So Far
+
 - **Series 0:** Why this matters for automation engineers ([Chapter 0.1](chapter-0-1-why-automation-engineers-should-learn-ai))
 - **Series 1:** What AI is ([1.1](chapter-1-1-what-is-ai-really)), how machines learn ([1.2](chapter-1-2-how-machines-learn)), ML types ([1.3](chapter-1-3-types-of-machine-learning))
 - **Series 2:** Data quality ([2.1](chapter-2-1-data-quality-and-preparation)), features/labels ([2.2](chapter-2-2-features-labels-and-models)), training vs inference ([2.3](chapter-2-3-training-vs-inference))
 
-But those chapters felt like **learning individual Terraform resources**—important, but scattered. I needed to see **the complete workflow** from problem → production.
+---
 
-This chapter is that workflow. It's my attempt to document the **end-to-end ML journey** I wish I had when starting. Each phase maps back to what we already learned, so you can see WHY we covered those topics.
-
+### Why This Structure Matters (Analogy)
 
 > **Automation analogy:**
 > - Series 0-2 = Learning what aws_instance, aws_vpc, variables, state files mean. 
 > - Chapter 3.0 = Your first complete project: VPC → Subnet → EC2 → Deploy → Monitor. 
 > - Series 3+ = Advanced patterns, modules, remote state, team workflows.
 {: .prompt-info }
-
 
 > **Confidence check:** The phase mappings below connect to previous chapters. If something doesn't make sense, it means either (a) I'm still learning that part, or (b) the reference is wrong—let me know!
 {: .prompt-info }
@@ -184,9 +192,12 @@ Here's the complete checklist. Keep this handy when starting your ML journey.
 
 ---
 
+
 ### Phase 4: Prepare the Data
 
 **Foundation:** [Chapter 2.1 (Data Quality)](chapter-2-1-data-quality-and-preparation), [Chapter 2.2 (Features & Labels)](chapter-2-2-features-labels-and-models)
+
+> **For practical techniques and real-world tips on feature engineering, see [Chapter 3.4 – Feature Engineering](chapter-3-4-feature-engineering).** (See mapping table above)
 
 | Step                        | What                                              | Why                                                                                             |
 | --------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -211,9 +222,13 @@ pipeline = Pipeline([
 
 ---
 
+
+
 ### Phase 5: Train the Model
 
 **Why this connects:** [Chapter 1.2](chapter-1-2-how-machines-learn) showed us **machines learn by adjusting parameters to minimize errors**. [Chapter 2.3](chapter-2-3-training-vs-inference) explained **training = build time**. **Now we actually train.**
+
+> **For help choosing the right algorithm, see [Chapter 3.1 – Common ML Algorithms](chapter-3-1-common-ml-algorithms).** (See mapping table above)
 
 | Step                     | What                                        | Why                                                                                        |
 | ------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -228,9 +243,15 @@ pipeline = Pipeline([
 
 ---
 
+
+
 ### Phase 6: Evaluate
 
 **Foundation:** [Chapter 2.3 (Training vs Inference)](chapter-2-3-training-vs-inference)
+
+> **For understanding overfitting/underfitting, see [Chapter 3.2 – Overfitting & Underfitting](chapter-3-2-overfitting-underfitting).**
+> 
+> **For evaluation metrics and honest model assessment, see [Chapter 3.3 – Model Evaluation](chapter-3-3-model-evaluation).** (See mapping table above)
 
 | Step                        | What                                     | Why                                                                                          |
 | --------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -296,15 +317,17 @@ Print this and check off as you go:
 - [ ] Scale features
 - [ ] Build pipeline
 
+
 **Train**
-- [ ] Select algorithm
+- [ ] Select algorithm ([3.1](chapter-3-1-common-ml-algorithms))
 - [ ] Train on training set
 - [ ] Cross-validate
 - [ ] Fine-tune hyperparameters
 
+
 **Evaluate**
-- [ ] Analyze errors
-- [ ] Test on test set (once!)
+- [ ] Analyze errors ([3.2](chapter-3-2-overfitting-underfitting))
+- [ ] Test on test set (once!) ([3.3](chapter-3-3-model-evaluation))
 
 **Deploy**
 - [ ] Launch to production

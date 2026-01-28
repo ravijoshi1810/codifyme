@@ -288,15 +288,15 @@ The simplest effective solution usually wins.
 
 ---
 
-## 7. What I Wish I Knew Earlier
+## What I Wish I Knew Earlier
 
-> **Summary Takeaways:**
+> **Practitioner’s Lessons:**
 > - AI is an umbrella term, not one technology
 > - Automation ≠ AI (different fundamentals)
 > - ML is a subset of AI; DL is a subset of ML
 > - Generative AI builds on deep learning
 > - Precise definitions lead to better designs
-{: .prompt-info }
+{: .prompt-tip }
 
 ---
 

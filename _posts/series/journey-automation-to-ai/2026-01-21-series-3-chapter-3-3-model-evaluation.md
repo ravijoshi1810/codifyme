@@ -12,9 +12,10 @@ permalink: /series/journey-automation-to-ai/chapter-3-3-model-evaluation/
 published: true
 mermaid: true
 ---
----
 --- 
 ## The Dashboard That Lied
+
+---
 
 Remember my deployment risk model from [Chapter 3.0](/series/journey-automation-to-ai/chapter-3-0-ml-project-workflow)? I was so proud when I finished training it. The evaluation metrics looked amazing:
 

@@ -9,10 +9,15 @@ categories: [ai, deep-learning, ml]
 tags: [deep-learning, neural-networks, automation, devops, engineering]
 description: "A practical, infrastructure-inspired guide to neural networks for engineers."
 permalink: /series/journey-automation-to-ai/chapter-4-2-neural-networks-explained-like-infrastructure/
-published: false
+published: true
 mermaid: true
 ---
 
+---
+
+# Neural Networks Explained Like Infrastructure
+
+---
 # TL;DR
 
 > **TL;DR:**
@@ -22,10 +27,6 @@ mermaid: true
 > - Backpropagation is the feedback loop that lets networks learn from mistakes.
 > - These concepts map directly to automation and infrastructure, making neural networks intuitive for engineers.
 {: .prompt-info }
-
----
-
-# Neural Networks Explained Like Infrastructure
 
 This chapter builds on the motivation from 4.1 and dives into the mechanics of neural networks, using infrastructure and automation analogies to make the concepts clear for engineers.
 

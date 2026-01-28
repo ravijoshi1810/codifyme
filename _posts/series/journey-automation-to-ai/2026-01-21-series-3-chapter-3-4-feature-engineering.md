@@ -13,8 +13,11 @@ published: true
 mermaid: true
 
 ---
+
 ---
 ## The Hidden Truth About Machine Learning
+
+---
 
 > **Key Insight:** 80% of the work in machine learning isn't choosing algorithms or tuning hyperparameters—it's preparing and transforming data into useful features.
 {: .prompt-tip }

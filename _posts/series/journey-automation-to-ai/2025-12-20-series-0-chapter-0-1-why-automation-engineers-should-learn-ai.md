@@ -194,13 +194,14 @@ Automation Foundations → ML Concepts → Deep Learning (Intuition)
 - Architecture-first thinking
 - A reference for practitioners who build systems
 
-## 8. Key Takeaways
- 
+## What I Wish I Knew Earlier
+
+> **Practitioner’s Lessons:**
 > - AI is automation's evolution, not its replacement
 > - AI starts where rules become unmaintainable
 > - You don't need heavy math—you need architectural intuition
 > - Your automation background is an advantage
-{: .prompt-info }
+{: .prompt-tip }
 
 ---
 ## What's Next?
