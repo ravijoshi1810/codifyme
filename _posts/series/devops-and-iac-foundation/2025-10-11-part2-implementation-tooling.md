@@ -695,12 +695,12 @@ build_id: "1689"
 ## Why These Conventions Matter
 This structure:
 
-✅ Enables webhook intent inference
-✅ Keeps pipelines generic
-✅ Hides platform complexity from app teams
-✅ Allows platform teams to evolve tooling safely
-✅ Minimizes drift
-✅ Makes governance enforceable without meetings
+- ✅ Enables webhook intent inference
+- ✅ Keeps pipelines generic
+- ✅ Hides platform complexity from app teams
+- ✅ Allows platform teams to evolve tooling safely
+- ✅ Minimizes drift
+- ✅ Makes governance enforceable without meetings
 
 It shifts the question from:
 > “How do I deploy infrastructure?”
