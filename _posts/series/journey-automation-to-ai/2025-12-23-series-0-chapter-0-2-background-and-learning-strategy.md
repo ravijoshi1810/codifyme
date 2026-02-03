@@ -9,6 +9,9 @@ categories: [ai, ml]
 tags: [automation, ai, terraform, ansible, devops, cloud]
 description: "How a solution architect approaches learning AI, and why the traditional data scientist path may not fit. Part of the 'From Automation to AI' series."
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter0-2-hero.png
+  alt: "From Automation to AI – A Practitioner's Journey"
 ---
 ---
 

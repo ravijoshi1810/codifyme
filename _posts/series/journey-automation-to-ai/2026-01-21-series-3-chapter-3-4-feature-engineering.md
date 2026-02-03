@@ -11,6 +11,9 @@ description: "Feature engineering techniques explained for automation engineers.
 permalink: /series/journey-automation-to-ai/feature-engineering/
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter3-4-hero.png
+  alt: "Feature Engineering: The Real Work Behind ML"
 
 ---
 

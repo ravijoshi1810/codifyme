@@ -11,6 +11,9 @@ description: "How misleading metrics can hide real problems, and how to evaluate
 permalink: /series/journey-automation-to-ai/chapter-3-3-model-evaluation/
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter3-3-hero.png
+  alt: "Model Evaluation"
 ---
 --- 
 ## The Dashboard That Lied

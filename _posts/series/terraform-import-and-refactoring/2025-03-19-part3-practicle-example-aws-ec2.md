@@ -9,6 +9,10 @@ categories: [terraform, iac, refactoring, aws, ec2, import]
 tags: [terraform, iac, refactoring, aws, ec2, import]
 description: "Hands-on example of importing AWS EC2 resources into Terraform."
 mermaid: true
+published: true
+image: 
+  path: assets/series/terraform-import-and-refactoring/images/part3-hero.png
+  alt: "Terraform Import- Why it matters?"
 ---
 
 # 🕹️ Terraform Import: Bringing Resources Under Control 

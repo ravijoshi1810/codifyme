@@ -11,6 +11,10 @@ description: "Understanding the difference between training and inference, mappe
 permalink: /series/journey-automation-to-ai/chapter-2-3-training-vs-inference
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter2-3-hero.png
+  alt: "Model Training vs Execution"
+---
 
 ---
 

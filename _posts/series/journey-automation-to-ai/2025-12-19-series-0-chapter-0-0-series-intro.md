@@ -10,8 +10,8 @@ tags: [automation, ai, devops, terraform, ansible, solution-architecture]
 description: "Landing page and introduction for the 'From Automation to AI' series. What to expect, who it's for, and how to navigate."
 published: true
 mermaid: true
-image:
-  path: /assets/series/journey-automation-to-ai/journey-automation-to-ai-hero.png
+image: 
+  path: assets/series/journey-automation-to-ai/chapter0-0-hero.png
   alt: "From Automation to AI – A Practitioner's Journey"
 
 ---

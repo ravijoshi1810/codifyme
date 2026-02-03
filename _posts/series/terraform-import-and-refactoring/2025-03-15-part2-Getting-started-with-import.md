@@ -9,6 +9,10 @@ categories: [terraform, iac, refactoring, aws, ec2, import]
 tags: [terraform, iac, refactoring, aws, ec2, import]
 description: "Step-by-step guide to using terraform import, prerequisites, setup, and common challenges."
 mermaid: true
+published: true
+image: 
+  path: assets/series/terraform-import-and-refactoring/images/part2-hero.png
+  alt: "Terraform Import- Why it matters?"
 ---
 
 # 🔰 Getting Started with Terraform Import

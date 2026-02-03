@@ -11,6 +11,9 @@ description: "Understanding features, labels, and models through the lens of aut
 permalink: /series/journey-automation-to-ai/chapter-2-2-features-labels-and-models
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter2-2-hero.png
+  alt: "Features, Labels, and Models"
 ---
 ---
 

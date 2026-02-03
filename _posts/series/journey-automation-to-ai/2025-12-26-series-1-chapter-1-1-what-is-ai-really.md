@@ -9,6 +9,9 @@ categories: [ai, ml]
 tags: [ai, machine-learning, deep-learning, automation, solution-architecture]
 description: "Cutting through the hype to define what AI really means for automation engineers. Part of the 'From Automation to AI' series."
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter1-1-hero.png
+  alt: "What AI really Means ?"
 ---
 ---
 ## Cutting Through the AI Hype

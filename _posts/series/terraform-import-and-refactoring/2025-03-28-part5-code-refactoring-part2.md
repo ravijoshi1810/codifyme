@@ -9,6 +9,10 @@ categories: [terraform, iac, refactoring, aws, ec2, import]
 tags: [terraform, iac, refactoring, aws, ec2, import]
 description: "Advanced refactoring techniques for Terraform code after import."
 mermaid: true
+published: true
+image: 
+  path: assets/series/terraform-import-and-refactoring/images/part5-hero.png
+  alt: "Terraform Import- Why it matters?"
 ---
 
 # ♻️ Code Refactoring: Enhancing Terraform Configurations (Part 2) 

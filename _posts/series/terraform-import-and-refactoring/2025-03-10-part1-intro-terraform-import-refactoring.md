@@ -9,6 +9,11 @@ categories: [terraform, iac, refactoring, aws, ec2, import]
 tags: [terraform, iac, refactoring, aws, ec2, import]
 description: "Kickoff to the Terraform Import and Refactoring series: why Day 2 operations matter, challenges, and how Terraform Import bridges the gap."
 mermaid: true
+published: true
+image: 
+  path: assets/series/terraform-import-and-refactoring/images/part1-hero.png
+  alt: "Terraform Import- Why it matters?"
+
 ---
 
 # 🛠️ Introduction to Terraform Import and Refactoring - Why It Matters

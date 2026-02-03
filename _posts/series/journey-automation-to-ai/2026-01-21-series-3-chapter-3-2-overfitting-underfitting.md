@@ -11,6 +11,9 @@ description: "Understanding overfitting and underfitting through the 'works in d
 permalink: /series/journey-automation-to-ai/chapter-3-2-overfitting-underfitting/
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter3-2-hero.png
+  alt: "Polular ML Algorithms"
 ---
 ---
 

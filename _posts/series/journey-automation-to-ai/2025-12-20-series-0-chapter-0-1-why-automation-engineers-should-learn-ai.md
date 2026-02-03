@@ -9,6 +9,10 @@ categories: [ai, ml]
 tags: [automation, ai, ml, devops, cloud, learning-journey]
 description: "Why automation engineers should learn AI, and what to avoid when starting out. Part of the 'From Automation to AI' series."
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter0-1-hero.png
+  alt: "Why Automation Engineers Should Learn AI"
+
 ---
 ---
 ## Why Automation Engineers Should Learn AI  

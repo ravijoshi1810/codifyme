@@ -11,6 +11,9 @@ description: "The complete end-to-end ML workflow mapped to automation concepts.
 permalink: /series/journey-automation-to-ai/chapter-3-0-ml-project-workflow
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter3-0-hero.png
+  alt: "The ML Project Workflow"
 ---
 ---
 

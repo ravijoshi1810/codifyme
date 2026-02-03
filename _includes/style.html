@@ -1,0 +1,81 @@
+<style>
+/* =======================================
+   Chirpy: unify post card + image surface
+======================================= */
+
+/* Outer anchor is the real card */
+.post-preview {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Post title color: blue for both themes */
+.post-text h2,
+.post-preview h2 {
+  color: #1976d2;
+  transition: color .2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-text h2,
+  .post-preview h2 {
+    color: #42a5f5;
+  }
+  .post-meta {
+    color: #b0b8c1 !important;
+  }
+  .post-text p,
+  .post-text p.mb-0,
+  .post-text > p.mb-0,
+  .post-preview .post-text p.mb-0,
+  .post-preview p {
+    color: rgb(255, 255, 255) !important;
+  }
+}
+
+/* Kill inner white card */
+.post-preview > .card,
+.post-preview > .card > .card-body {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Make layout full height */
+.post-preview > .card {
+  height: 100%;
+}
+
+/* Post card image container and image: ensure no margin/padding, full height, and rounded corners match card */
+.post-card-image-container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  height: 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+.post-card-image {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  display: block;
+}
+
+/* Unified hover */
+.post-preview:hover h2,
+.post-preview:hover p {
+  color: #D17A5D !important;
+}
+
+</style>

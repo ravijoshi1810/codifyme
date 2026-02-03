@@ -5,30 +5,62 @@
 
 <div class="post-list">
   {% for post in posts_array %}
-    <a href="{{ post.url | relative_url }}" class="post-preview card mb-4 text-decoration-none">
-      <div class="card-body">
-        <h2 class="card-title h5 mb-2">
-          {{ post.title }}
-        </h2>
-
-        <div class="mb-2 text-muted small">
-          {{ post.date | date: "%b %d, %Y" }}
-          {% if post.author %} | {{ post.author }}{% endif %}
-          {% if post.categories %}
-            | {% for cat in post.categories %}
-                {{ cat }}{% unless forloop.last %}, {% endunless %}
-              {% endfor %}
+    <article class="mb-4 position-relative card-hover-group">
+      <div class="card post-preview overflow-hidden rounded-4" style="position:relative; height: 240px; min-height: 240px;">
+        <div class="d-flex flex-row align-items-stretch" style="height: 100%; min-height: 240px;">
+          <!-- Text -->
+          <div class="flex-grow-1 d-flex flex-column justify-content-between p-4 post-text" style="height: 100%; min-height: 240px;">
+            <h2 class="h5 mb-2">{{ post.title }}</h2>
+            <div class="post-meta small mb-2 text-muted">
+              <span><!-- calendar icon -->
+                📅 {{ post.date | date: "%b %d, %Y" }}
+              </span>
+              {% if post.author or post.authors %}
+                <span class="mx-1">|</span>
+                <span><!-- author icon -->
+                  👤
+                </span>
+                <span>
+                  {% if post.author %}
+                    {{ post.author }}
+                  {% elsif post.authors %}
+                    {{ post.authors | join: ', ' }}
+                  {% endif %}
+                </span>
+              {% endif %}
+              {% assign words = post.content | number_of_words %}
+              {% assign readtime = words | divided_by:200 | plus:1 %}
+              <span class="mx-1">|</span>
+              <span><!-- clock icon -->
+                ⏱️ {{ readtime }} min read
+              </span>
+              {% if post.categories %}
+                <span class="mx-1">|</span>
+                <span><!-- category icon -->
+                  📂
+                </span>
+                {% for cat in post.categories %}
+                  {{ cat }}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <p class="mb-0">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+          </div>
+          <!-- Image -->
+          {% if post.image %}
+            {% assign img_path = post.image.path | default: post.image %}
+            <div class="post-card-image-container" style="flex: 0 0 280px; height: 100%; min-height: 240px; display: flex; align-items: stretch; overflow: hidden; border-top-right-radius: 1rem; border-bottom-right-radius: 1rem;">
+              <img src="{{ img_path | absolute_url }}" alt="{{ post.image.alt | default: post.title }}" class="post-card-image" style="width: 100%; height: 100%; min-height: 240px; object-fit: cover; border-top-right-radius: 1rem; border-bottom-right-radius: 1rem;">
+            </div>
           {% endif %}
         </div>
-
-        <p class="card-text">
-          {{ post.excerpt | strip_html | truncate: 120 }}
-        </p>
-
-        <span class="btn btn-outline-primary btn-sm mt-2">
-          Read More
-        </span>
+        <a href="{{ post.url | relative_url }}" class="stretched-link" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;"></a>
       </div>
-    </a>
+    </article>
+    
+  
   {% endfor %}
 </div>
+
+
+{% include style.html %}

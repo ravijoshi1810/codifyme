@@ -8,9 +8,12 @@ seo_description: "A comprehensive guide on managing AWS EC2 instances using Terr
 categories: [terraform, ansible, aws]
 tags: [terraform, ansible, ec2, automation]
 description: "A comprehensive guide on managing AWS EC2 instances using Terraform and Ansible."
+image: 
+  path: assets/blog/ec2-mgmt-terraform/images/ec2-mgmt-terraform-hero.png
+  alt: "Managing AWS EC2 Lifecycle with Terraform and Ansible"
+  
+
 ---
-
-
 
 Efficiently managing the lifecycle of Amazon EC2 instances is crucial for ensuring seamless provisioning, configuration, and maintenance of cloud resources. This blog explores how Terraform and Ansible can work together to automate Day 1 (provisioning) and Day 2 (modifications, maintenance, and decommissioning) operations for EC2 instances. By leveraging Terraform's infrastructure-as-code capabilities alongside Ansible's powerful configuration management tools, users can streamline workflows and reduce manual effort. Additionally, the native integration of Ansible resources through the Terraform provider ensures seamless management of pre- and post-configuration tasks without relying on separate pipelines or API calls.
 

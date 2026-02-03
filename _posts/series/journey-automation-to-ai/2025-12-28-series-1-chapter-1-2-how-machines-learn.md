@@ -11,6 +11,9 @@ description: "How machines learn: the core mental shift for automation engineers
 permalink: /series/journey-automation-to-ai/chapter-1-2-how-machines-learn/
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter1-2-hero.png
+  alt: "How machines learn"
 ---
 ---
 
@@ -43,30 +46,7 @@ Model + New Input → Prediction
 
 Here's a visual summary of the difference:
 
-```mermaid
-flowchart TB
-    subgraph automation["Traditional Programming"]
-        A1[Input Data] --> A2[Explicit Rules\nWritten by You]
-        A2 --> A3[Deterministic Output]
-        style A1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-        style A2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-        style A3 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    end
-    style automation fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
-    subgraph ml["Machine Learning"]
-        M1[Historical Data\n+ Outcomes] --> M2[Learning Algorithm]
-        M2 --> M3[Trained Model\nLearned Patterns]
-        M4[New Input Data] --> M3
-        M3 --> M5[Probabilistic Prediction]
-        style M1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-        style M2 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-        style M3 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-        style M4 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-        style M5 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    end
-    style ml fill:#fafafa,stroke:#666,stroke-width:2px,stroke-dasharray: 5 5
-```
-
+![How machine Learns](assets/series/journey-automation-to-ai/chapter1-2-how-machine-learns.png)
 
 ## 2. Why Rule-Based Systems Stop Scaling
 

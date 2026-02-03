@@ -11,7 +11,10 @@ description: "Understanding common ML algorithms through intuition and automatio
 permalink: /series/journey-automation-to-ai/chapter-3-1-common-ml-algorithms
 published: true
 mermaid: true
-
+image: 
+  path: assets/series/journey-automation-to-ai/chapter3-1-hero.png
+  alt: "Polular ML Algorithms"
+---
 ---
 # Understanding the Tools in the Toolbox
 

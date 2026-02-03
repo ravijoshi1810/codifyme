@@ -100,6 +100,16 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  
+  - scope:
+      path: assets/img/favicons
+    values:
+      swcache: true
+  
+  - scope:
+      path: assets/js/dist
+    values:
+      swcache: true
 
 # =====================================================
 # Markdown & Syntax Highlighting
@@ -108,19 +118,26 @@ defaults:
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:
+    css_class: highlight
+    # default_lang: console
+    span:
+    line_numbers: false
     block:
       line_numbers: true
+      start_line: 1
 
 # =====================================================
 # Assets
 # =====================================================
 
-cdn:
+cdn: ""
 
 assets:
   self_host:
-    enabled: false
-
+    enabled: # boolean, keep empty means false
+    # specify the Jekyll environment, empty means both
+    # only works if `assets.self_host.enabled` is 'true'
+    env: # [development|production]
 # =====================================================
 # PWA
 # =====================================================
@@ -170,6 +187,3 @@ include:
 
 # Google Search Console verification
 google_site_verification: QjpYArnVm19JwasXg2TK74OyWE6Xsp54jhd_x9-CF48
-
-# Enable post preview images
-post_preview_image: true

@@ -7,8 +7,11 @@ description: "Configuration as Code (CaaC) for Ansible Automation Platform."
 categories: [ansible]
 tags: [ansible, configuration-as-code, automation]
 comments: true
+image: 
+  path: assets/blog/ansible-aap-caac/images/ansible-aap-caac-hero.png
+  alt: "Configuration as Code (CaaC) for Ansible"
+  
 ---
-
 
 ## Introduction
 

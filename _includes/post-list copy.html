@@ -1,0 +1,118 @@
+{% assign posts_array = include.posts %}
+{% unless posts_array.size %}
+  {% assign posts_array = [include.posts] %}
+{% endunless %}
+
+<div class="post-list">
+  {% for post in posts_array %}
+    <article class="mb-4">
+      <div class="card post-preview overflow-hidden">
+        <div class="d-flex flex-row" style="align-items: stretch; height: 240px; width: 100%;">
+
+          <!-- Text -->
+          <a href="{{ post.url | relative_url }}"
+             class="flex-grow-1 d-flex flex-column justify-content-between p-4 post-text text-decoration-none">
+            <h2 class="h5 mb-2">{{ post.title }}</h2>
+            <div class="post-meta small mb-2 text-muted">
+              <span>{{ post.date | date: "%b %d, %Y" }}</span>
+              {% if post.categories %}
+                <span class="mx-1">·</span>
+                {% for cat in post.categories %}
+                  {{ cat }}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <p class="mb-0">
+              {{ post.excerpt | strip_html | truncate: 140 }}
+            </p>
+          </a>
+
+          <!-- Image -->
+          {% if post.image %}
+            {% assign img_path = post.image.path | default: post.image %}
+            <div class="post-thumb" style="flex:0 0 280px; overflow:hidden;">
+              <img
+                src="{{ img_path | absolute_url }}"
+                alt="{{ post.image.alt | default: post.title }}"
+                loading="lazy"
+                style="height:100%;width:100%;object-fit:cover;display:block;"
+              />
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+
+
+<style>
+/* =======================================
+   Chirpy: unify post card + image surface
+======================================= */
+
+/* Outer anchor is the real card */
+.post-preview {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Post title color: blue for both themes */
+.post-text h2,
+.post-preview h2 {
+  color: #1976d2;
+  transition: color .2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-text h2,
+  .post-preview h2 {
+    color: #42a5f5;
+  }
+  .post-meta {
+    color: #b0b8c1 !important;
+  }
+}
+
+/* Kill inner white card */
+.post-preview > .card,
+.post-preview > .card > .card-body {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Make layout full height */
+.post-preview > .card {
+  height: 100%;
+}
+
+/* Clip image into same card */
+.post-preview > .preview-img,
+.post-preview > .preview-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0 !important;
+}
+
+/* Remove image container background */
+.post-preview > .preview-img {
+  background: transparent !important;
+}
+
+/* Unified hover */
+.post-preview:hover {
+  background: var(--card-hover-bg);
+}
+
+.post-preview:hover h2 {
+  color: var(--link-hover-color);
+}
+
+
+</style>

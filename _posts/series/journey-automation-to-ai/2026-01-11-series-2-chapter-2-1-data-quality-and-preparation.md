@@ -11,6 +11,9 @@ description: "Understanding data quality, preparation, and splits from an automa
 permalink: /series/journey-automation-to-ai/chapter-2-1-data-quality-and-preparation
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter2-1-hero.png
+  alt: "Data Quality and Prepration"
 ---
 ---
 

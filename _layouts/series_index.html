@@ -3,5 +3,8 @@ layout: default
 ---
 <div class="container">
   <h1>{{ page.title }}</h1>
+  {% if page.image %}
+    <img src="{{ page.image.path }}" alt="{{ page.image.alt }}" class="series-cover" style="max-width:100%;margin-bottom:2rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+  {% endif %}
   {{ content }}
 </div>

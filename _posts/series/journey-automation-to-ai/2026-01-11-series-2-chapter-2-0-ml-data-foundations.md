@@ -11,6 +11,9 @@ description: "How data quality, features, and the training/inference split form 
 permalink: /series/journey-automation-to-ai/chapter-2-0-ml-data-foundations
 published: true
 mermaid: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter2-0-hero.png
+  alt: "ML Data Foundations: The Bridge"
 ---
 ---
 
