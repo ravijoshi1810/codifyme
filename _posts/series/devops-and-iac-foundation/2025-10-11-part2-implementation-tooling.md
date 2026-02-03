@@ -693,6 +693,7 @@ build_id: "1689"
 ---
 
 ## Why These Conventions Matter
+
 This structure:
 
 - ✅ Enables webhook intent inference
