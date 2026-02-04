@@ -2,7 +2,7 @@
 title: "Streamlining Application Infra Deployment: Advanced Practices & Adoption"
 layout: post
 author: ravijoshi1810
-date: 2025-10-12
+date: 2025-08-22
 series: "DevOps and IaC Foundation"
 series_order: 3
 categories: [devops]
@@ -12,7 +12,7 @@ published: true
 excerpt: "Turn your IaC foundation into a production-grade platform with GitOps automation, enterprise execution models, and scalable adoption practices."
 mermaid: true
 image:
-  path: /assets/series/devops-and-iac-foundation/images/devops-part2.png
+  path: /assets/series/devops-and-iac-foundation/images/devops-part3.png
   alt: "End-to-End GitOps Execution Flow"
 ---
 

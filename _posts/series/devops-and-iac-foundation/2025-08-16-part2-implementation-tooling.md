@@ -2,7 +2,7 @@
 title: "Streamlining Application Infra Deployment: Implementation & Tooling"
 layout: post
 author: ravijoshi1810
-date: 2025-10-11
+date: 2025-08-16
 series: "DevOps and IaC Foundation"
 series_order: 2
 categories: [devops]
