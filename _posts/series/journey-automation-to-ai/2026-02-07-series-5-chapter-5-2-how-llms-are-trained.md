@@ -9,7 +9,10 @@ categories: [ai, llm, training, machine-learning]
 tags: [llm, training, transformers, rlhf, pretraining, fine-tuning]
 description: "A practical, non-academic look at how large language models are trained — and why that training shapes how they behave in real-world usage."
 permalink: /series/journey-automation-to-ai/chapter-5-2-how-llms-are-trained/
-published: false
+published: true
+image: 
+    path: assets/series/journey-automation-to-ai/chapter5-2-hero.png
+    alt: "How Large Language Models Are Trained"
 mermaid: true
 ---
 # How Large Language Models Are Trained (High Level)

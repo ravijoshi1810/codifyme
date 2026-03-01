@@ -9,7 +9,10 @@ categories: [ai, generative-ai, llm]
 tags: [generative-ai, llm, gpt, architecture, automation, engineering]
 description: "What generative AI actually is, how it works, and why it feels different from everything that came before — from an engineer’s perspective."
 permalink: /series/journey-automation-to-ai/chapter-5-1-what-is-generative-ai/
-published: false
+published: true
+image: 
+  path: assets/series/journey-automation-to-ai/chapter5-1-hero.png
+  alt: "What Is Generative AI"
 mermaid: true
 ---
 # What Is Generative AI?

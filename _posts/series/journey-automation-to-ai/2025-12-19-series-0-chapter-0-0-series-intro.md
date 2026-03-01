@@ -241,55 +241,60 @@ Understanding neural networks and deep learning from an infrastructure perspecti
 ➡ [Read Chapter 4.4](/codifyme/posts/series-4-chapter-4-4-transformers-modern-architectures/)
 
 ---
-## Future Series (Planned)
+## Series 5 – Generative AI & LLMs
 
-### Series 5 – Generative AI & LLMs
+Practical Generative AI and LLM concepts from an automation engineer’s perspective, focused on using models reliably in real workflows.
 
-Understanding how ChatGPT and similar models work.
-
-#### 🚧 Chapter 5.1 – What Is Generative AI (Coming Soon)
+### ✅ Chapter 5.1 – What Is Generative AI
 
 - Predicting the next token
 - Why ChatGPT works
 - Generative vs discriminative models
 
-#### 🚧 Chapter 5.2 – How LLMs Are Trained (High Level) (Coming Soon)
+➡ [Read Chapter 5.1](/codifyme/posts/series-5-chapter-5-1-what-is-generative-ai/)
+
+### ✅ Chapter 5.2 – How LLMs Are Trained (High Level)
 
 - Pre-training on massive datasets
 - Fine-tuning for specific tasks
 - RLHF (Reinforcement Learning from Human Feedback)
 
-#### 🚧 Chapter 5.3 – Prompt Engineering for Engineers (Coming Soon)
+➡ [Read Chapter 5.2](/codifyme/posts/series-5-chapter-5-2-how-llms-are-trained/)
 
-- Prompts as interfaces
+### ✅ Chapter 5.3 – Prompt Engineering for Engineers
+
+- Prompts as interfaces and contracts
 - Deterministic vs probabilistic outputs
-- Best practices for working with LLMs
+- Practical best practices for working with LLMs
+
+➡ [Read Chapter 5.3](/codifyme/posts/series-5-chapter-5-3-prompt-engineering-for-engineers/)
+
+### ✅ Chapter 5.4 – Prompt Engineering in Practice: Workflow & Effective Patterns
+
+- End-to-end prompt engineering workflow
+- JSON schemas, validation, and error handling
+- Real scenario: AWS multi-region landing zone RFP response generator
+
+➡ [Read Chapter 5.4](/codifyme/posts/series-5-chapter-5-4-prompt-engineering-in-practice/)
+
+### ✅ Chapter 5.5 – Tokens, Context Windows, and Why Prompts Matter
+
+- Tokens and context windows explained
+- How prompt structure affects what the model “remembers”
+- Designing prompts that respect model limits
+
+➡ [Read Chapter 5.5](/codifyme/posts/series-5-chapter-5-5-tokens-context-windows-prompts/)
+
+### ✅ Chapter 5.6 – Advanced Prompt Chaining and Orchestration
+
+- Chaining prompts into reliable multi-step workflows
+- Orchestrating LLM calls with state, retries, and validation
+- Real-world automation patterns and series-level wrap-up
+
+➡ [Read Chapter 5.6](/codifyme/posts/series-5-chapter-5-6-advanced-prompt-chaining-orchestration/)
 
 ---
 
-### Series 6 – AI for Automation Engineers (Your Strength)
-
-Practical AI applications in automation, IaC, and DevOps workflows.
-
-#### 🚧 Chapter 6.1 – Where AI Fits in Automation (Coming Soon)
-
-- Incident prediction and detection
-- Smart remediation
-- ChatOps and conversational interfaces
-
-#### 🚧 Chapter 6.2 – AI + IaC (Coming Soon)
-
-- Drift detection and analysis
-- Intelligent policy enforcement
-- Code generation limits and realities
-
-#### 🚧 Chapter 6.3 – AI in Self-Service Catalogs (Coming Soon)
-
-- Smarter forms and input validation
-- Recommendation engines
-- Risk-based approvals
-
----
 
 ## How to Read This Series
 
